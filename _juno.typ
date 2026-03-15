@@ -1,6 +1,6 @@
 #let equation-numbering = "(1)"
 
-= Solar wind discontinuities in the outer heliosphere: spatial distribution between 1 and 5 AU
+= Solar Wind Discontinuities in the Outer Heliosphere: Spatial Distribution between 1 and 5 AU
 <solar-wind-discontinuities-in-the-outer-heliosphere-spatial-distribution-between-1-and-5-au>
 == Motivation
 <motivation>
@@ -22,17 +22,10 @@ The paper is structured as follows. First, we outline the missions, instruments,
 #ref(<fig-overview>, supplement: [Figure]) provides an overview of Juno's cruise phase (2011-2016) and the corresponding solar wind conditions. The solar wind plasma state, as evidenced by the sunspot number (shown in Panel (c)), plays a crucial role in understanding the dynamics of discontinuities. Early in the Juno mission @boltonJunoMission2017, the sunspot numbers reached a peak, indicating a period of increased solar activity. By 2016, however, they had declined significantly. This variation underscores the need to account for temporal, solar-cycle-related variability when calibrating and interpreting discontinuity properties.
 
 #figure(
-  [
-    #box(image("figures/juno/fig_overview.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/juno/fig_overview.pdf"),
+  caption: [
       Overview. #strong[\(a)] Juno's orbit during its cruise phase (2011-2016). #strong[\(b)] Absolute difference in heliographic longitude between Juno and Earth (blue) and between Juno and Stereo-A (STA, green). #strong[\(c)] Monthly and smoothed sunspot numbers. #strong[\(d-g)] Solar wind plasma density and speed from Near-Earth (OMNI) and STEREO-A missions.
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
 )
 <fig-overview>
 
@@ -48,17 +41,13 @@ The time resolution of magnetic field and plasma data varies across the missions
 Since in-situ measurements from JADE are only available for the final 40 days of its cruise phase prior to Jupiter arrival @wilsonSolarWindProperties2018, we rely on solar wind propagation models to estimate the thickness and current density of discontinuities for the remainder of the cruise. A direct comparison between the modeled solar wind properties and JADE observations during the overlapping interval is presented in Panels (a-d) of #ref(<fig-juno_sw_comparison>, supplement: [Figure]) in the Appendix. Specifically, we employ the Two-Dimensional Outer Heliosphere Solar Wind Modeling (MSWIM2D) @keeblerMSWIM2DTwodimensionalOuter2022 to determine the ion bulk velocity ($v$) and plasma density ($n$) at Juno's location. This model, which utilizes the BATSRUS MHD solver@tothAdaptiveNumericalAlgorithms2012, simulates the propagation of the solar wind from 1 to 75 astronomical units (AU) in the ecliptic plane, effectively covering the region pertinent to our study. The MSWIM2D model provides output data with an hourly time resolution, as shown in #ref(<fig-model>, supplement: [Figure]). After averaging Juno data to the same time resolution, comparing magnetic field magnitudes from MSWIM2D with those of Juno reveals a strong correlation, confirming the model's applicability to our study.
 
 #figure(
-  [
-    #box(image("figures/juno/juno_model_validation_full.pdf"))
-  ],
+  image("figures/juno/juno_model_validation_full.pdf"),
   caption: figure.caption(
     position: bottom,
     [
       #strong[\(a)] Magnetic field magnitude from MSWIM2D and Juno. #strong[\(b-c)] Plasma speed and density from MSWIM2D model. #strong[\(d)] Juno radial distance from the Sun.
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  )
 )
 <fig-model>
 
@@ -92,17 +81,10 @@ Assuming that the SWD structures are planar, the normal direction can be obtaine
 #ref(<fig-examples>, supplement: [Figure]) shows several examples of solar wind discontinuities detected by different spacecraft. Panels (a-c) show three examples of SWDs observed by Juno at 1, 3, and 5 AU distances, whereas Panels (d-f) show three examples of SWDs observed by Wind, ARTEMIS, and STEREO-A (for these three, we also show solar wind flow speed). All discontinuities share the same magnetic field configuration (in local $L M N$ coordinates): the main magnetic field component, $B_l$, reverses sign across the discontinuity, whereas the decrease of the magnetic pressure, $tilde.op B_l^2 \/ 2 mu_0$, is compensated by local enhancement of $B_m$ component. Such magnetic field rotation across the discontinuity keeps $\| upright(bold(B)) \|$ almost constant @artemyevKineticNatureSolar2019@vaskoKineticscaleCurrentSheets2022@lotekarKineticscaleCurrentSheets2022@vaskoKineticScaleCurrentSheets2024. The solar wind flow speed (three panels for Wind, THEMIS-B, and STEREO-A) shows a typical jump across the discontinuities @artemyevIonNongyrotropySolar2020.
 
 #figure(
-  [
-    #box(image("figures/juno/fig_examples.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/juno/fig_examples.pdf"),
+  caption: [
       Examples of solar wind discontinuities observed by various spacecraft at different heliocentric distances and times. Panels (a)--(c) display data from Juno at 1 AU (a), 3 AU (b), and 5 AU (c), showing magnetic field components $B_l$ (blue), $B_n$ (red), $B_m$ (green), and the magnetic field magnitude $B_(upright("total"))$ (black). Panels (d)--(f) show magnetic field and ion speed observations at 1 AU from other spacecraft: THEMIS-B (ARTEMIS) on March 27, 2012 (d), STEREO-A on June 28, 2016 (e), and Wind on August 26, 2011 (f).
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-examples>
 
@@ -128,9 +110,7 @@ where $alpha$ and $theta$ represent the shape and scale parameters, respectively
     [
       Waiting time probability density functions $p \( tau \)$ for Juno at 1 AU in 2011 (top) and 5 AU in 2016 (bottom). Observed data (black) are fitted with Weibull (blue) and exponential (orange) distributions. Vertical dashed lines denote the mean waiting times for each fitted distribution. %In 2011, the Weibull distribution is characterized by parameters $alpha = 0.99 \, theta = 30.29$, and a mean waiting time of 30.41 minutes, while the exponential distribution has a mean of 30.42 minutes. In 2016, the Weibull distribution has parameters $alpha = 0.65 \, theta = 110.50$, and a mean of 150.96 minutes, whereas the exponential distribution has a mean of 165.02 minutes.
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  )
 )
 <fig-waitingTime>
 
@@ -158,9 +138,7 @@ The normalized occurrence rate is shown in Panel (b) of #ref(<fig-rate>, supplem
     [
       Left: the occurrence rate of discontinuities measured by Juno, STEREO-A, THEMIS-B, and Wind. Right: the normalized occurrence rate as a function of radial distance, where the radial distance of Juno for 2011-2016 is shown in #ref(<fig-model>, supplement: [Figure])\(d).
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  )
 )
 <fig-rate>
 
@@ -190,9 +168,7 @@ Panels (a,c) show that the thickness increases with radial distance. However, af
     [
       Distribution of various properties of SWDs observed by Juno, grouped by radial distance from the Sun (with color coding shown at the top). The label data indicates distributions calculated using solar wind properties from JADE observations rather than model predictions. Panels show: (a) discontinuity thickness, (b) current density, (c) normalized thickness, and (d) normalized current density.
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  )
 )
 <fig-junoDistribution>
 
@@ -206,25 +182,16 @@ Panels (a,c) show that the thickness increases with radial distance. However, af
     [
       Distribution of various properties of SWDs observed by 1-AU satellites (Wind, ARTEMIS and STEREO-A), grouped by the year of observation (with colors shown at the top). Panel (a) thickness, (b) current density, (c) normalized thickness, (d) normalized current density.
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  )
 )
 <fig-windDistribution>
 
 
 #figure(
-  [
-    #box(image("figures/juno/wind_sw_paramters.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/juno/wind_sw_paramters.pdf"),
+  caption: [
       Solar wind parameters associated with the SWDs observed by 1-AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) solar wind density, (b), plasma beta, (c) magnetic field, (d) fitted magnetic field $B_(l \, i)$ in Equation~#ref(<eq-fit>, supplement: [Equation]).
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
 )
 <fig-swParameters>
 
@@ -273,9 +240,7 @@ This appendix includes #ref(<fig-juno_sw_comparison>, supplement: [Figure]), whi
     [
       \(a-d) Comparison of solar wind properties between the model (x-axis) and JADE observations (y-axis): velocity (a), density (b), temperature (c), and plasma beta (d). (e-h) Comparison of discontinuity properties between the model and JADE observations: thickness (e), current density (f), normalized thickness (g), and normalized current density (h). The blue dots represent values derived using the cross-product normal method, while the yellow dots correspond to those obtained using the minimum variance analysis (MVA). (i-j) Scatter plots directly comparing discontinuity thickness (i) and current density (j), with values from the cross-product method on the y-axis and those from MVA on the x-axis.
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  )
 )
 <fig-juno_sw_comparison>
 
@@ -289,9 +254,7 @@ This appendix includes #ref(<fig-juno_sw_comparison>, supplement: [Figure]), whi
     [
       The relative percentage of events as a function of radial distance (in AU) for different values of the parameter $T$ (20s, 30s, 40s, 50s, and 60s). At a given radial distance, we remove duplicate discontinuities identified across multiple datasets with different values of the parameter $T$. Specifically, discontinuities identified at lower $T$ values are excluded from datasets with higher $T$ values. Subsequently, we calculate the relative percentage of discontinuities, normalized to the total number of discontinuities identified across all $T$ values.
     ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  )
 )
 <fig-TEffect>
 

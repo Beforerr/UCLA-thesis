@@ -1,0 +1,1 @@
+#let citet(..citation) = cite(..citation, form: "prose")

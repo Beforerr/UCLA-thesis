@@ -1,6 +1,6 @@
 #let equation-numbering = "(1)"
 
-= Quantification of particle scattering by solar wind current sheets: pitch-angle diffusion rates
+= Quantification of Particle Scattering by Solar Wind Current Sheets: Pitch-angle Diffusion Rates
 <quantification-of-particle-scattering-by-solar-wind-current-sheets-pitch-angle-diffusion-rates>
 == Introduction
 <introduction-2>
@@ -21,17 +21,10 @@ $
 where $B$ is the magnitude of the magnetic field, and $theta$ is the azimuthal angle between the normal $upright(bold(B_z)) = B cos theta med upright(bold(e_z)) equiv B_n upright(bold(e_z))$ and the magnetic field. More specifically, we assume the following form: $phi \( z \) = beta tanh \( z \/ L \)$, where $L$ is the thickness of the current sheet and the shear half-angle $beta$ is one half of the in-plane rotation angle $omega_(i n)$. The transverse magnetic field $upright(bold(B_t)) = B_t sin phi \( z \) med upright(bold(e_x)) + B_t cos phi \( z \) med upright(bold(e_y))$ rotates by an angle $omega_(i n)$ from $- oo$ to $+ oo$ where $B_t = B sin theta$. As an example, we present an observation from the ARTEMIS mission @angelopoulosARTEMISMission2011, which captures a magnetic field transition consistent with our model. #ref(<fig-ARTEMIS>, supplement: [Figure]) shows the variations in $upright(bold(B))$, $theta$, and $phi$ across the current sheet. The transverse field rotates smoothly, with $phi$ following a hyperbolic tangent profile (note that time is linearly proportional to the spatial coordinate $z approx v_n t$ where $v_n$ is the solar wind velocity along the normal to the current sheet surface), while $theta$ remains nearly constant near $pi \/ 2$, indicating a small normal component $B_n$. (A three-dimensional visualization of a typical current sheet magnetic field structure, represented by the magnetic field line, together with three representative particle trajectories is provided in #ref(<fig-B_diagram_particle_trajectory>, supplement: [Figure]).)
 
 #figure(
-  [
-    #box(image("figures/scattering/thc.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
-      Example of a current sheet observed by ARTEMIS@angelopoulosARTEMISMission2011. Top: magnetic field in the current sheet #strong[lmn] coordinate system @sonnerupMinimumMaximumVariance1998 where $l$ represents the maximum variance direcction ($B_x = B_t sin phi$ in our model), $m$ the intermediate variance direction ($B_y = B_t cos phi$), and $n$ the minimum variance direction ($B_z = B cos theta$). Here, $B_t$ and $B$ represent the tangential and total magnetic fields, respectively (see text for detailed definitions). Bottom: variations of the azimuthal angle $phi$ and the azimuthal angle $theta$ across the current sheet. Vertical lines indicate the current sheet boundaries, and the horizontal line represents $pi \/ 2$. The analysis is based on magnetic field data with a 0.25-second resolution from the Fluxgate Magnetometer @austerTHEMISFluxgateMagnetometer2008.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+  image("figures/scattering/thc.pdf"),
+  caption: [
+      Example of a current sheet observed by ARTEMIS@angelopoulosARTEMISMission2011. Top: magnetic field in the current sheet #strong[lmn] coordinate system @sonnerupMinimumMaximumVariance1998 where $l$ represents the maximum variance direction ($B_x = B_t sin phi$ in our model), $m$ the intermediate variance direction ($B_y = B_t cos phi$), and $n$ the minimum variance direction ($B_z = B cos theta$). Here, $B_t$ and $B$ represent the tangential and total magnetic fields, respectively (see text for detailed definitions). Bottom: variations of the azimuthal angle $phi$ and the azimuthal angle $theta$ across the current sheet. Vertical lines indicate the current sheet boundaries, and the horizontal line represents $pi \/ 2$. The analysis is based on magnetic field data with a 0.25-second resolution from the Fluxgate Magnetometer @austerTHEMISFluxgateMagnetometer2008.
+    ]
 )
 <fig-ARTEMIS>
 
@@ -65,42 +58,28 @@ This is an exact Hamiltonian of a charged particle, incorporating the effect of 
 
 == Adiabatic invariance and its violations at separatrix crossings
 <sec-adiabatic-invariance>
-For current sheets where $B_n \/ B_t lt.double 1$, the variables $\( kappa x \, p_x \)$ evolve significantly more slowly compared to $\( z \, p_z \)$ along particle trajectories (with $dot(p)_x prop kappa$, where $kappa = cot theta$). Assuming that $x$ and $p_x$ are effectively frozen, the Hamiltonian describes periodic motion within the $\( z \, p_z \)$ plane, governed by the effective potential energy $U \( z \) = H - p_z^2 \/ 2$. When variations in $\( kappa x \, p_x \)$ occur on a timescale much longer than the fast oscillations in $\( z \, p_z \)$, the generalized magnetic moment $I_z = \( 2 pi \)^(- 1) integral.cont p_z d z$ is approximately conserved as an adiabatic invariant with exponential accuracy @neishtadtAccuracyPersistenceAdiabatic2000. Far from the current sheet, where the magnetic field is nearly uniform ($\| z \/ L \| gt.double 1$), the pitch angle defined by $alpha = arccos upright(bold(B)) dot.op upright(bold(v)) \/ \| upright(bold(B)) \| \| upright(bold(v)) \|$ remains constant (i.e., $partial alpha \/ partial upright(bold(r)) = 0$), where $upright(bold(v))$ is the velocity, $upright(bold(B))$ is the magnetic field, and $r$ is the position. Since the simultaneous conservation of energy and $I_z$ fully determines the motion of the particle, the velocity $upright(bold(v))$ can be expressed as a function of position $upright(bold(r))$, invariant $I_z$, and energy $E$: $upright(bold(v)) = upright(bold(v)) \( upright(bold(r)) \, I_z \, H \)$. Given that energy is exactly conserved in a static magnetic field, the pitch angle $alpha$ depends solely on $I_z$. Therefore, in the absence of $I_z$ destruction, there is no pitch-angle scattering across the current sheet.
+For current sheets where $B_n \/ B_t lt.double 1$, the variables $\( kappa x \, p_x \)$ evolve significantly more slowly compared to $\( z \, p_z \)$ along particle trajectories (with $dot(p)_x prop kappa$, where $kappa = cot theta$). Assuming that $x$ and $p_x$ are effectively frozen, the Hamiltonian describes periodic motion within the $\( z \, p_z \)$ plane, governed by the effective potential energy $U \( z \) = H - p_z^2 \/ 2$. When variations in $\( kappa x \, p_x \)$ occur on a timescale much longer than the fast oscillations in $\( z \, p_z \)$, the generalized magnetic moment $I_z = \( 2 pi \)^(- 1) integral.cont p_z d z$ is approximately conserved as an adiabatic invariant with exponential accuracy @neishtadtAccuracyPersistenceAdiabatic2000. Far from the current sheet, where the magnetic field is nearly uniform ($abs(z \/ L) gt.double 1$), the pitch angle defined by $alpha = arccos upright(bold(B)) dot.op upright(bold(v)) \/ abs(upright(bold(B))) abs(upright(bold(v)))$ remains constant (i.e., $partial alpha \/ partial upright(bold(r)) = 0$), where $upright(bold(v))$ is the velocity, $upright(bold(B))$ is the magnetic field, and $r$ is the position. Since the simultaneous conservation of energy and $I_z$ fully determines the motion of the particle, the velocity $upright(bold(v))$ can be expressed as a function of position $upright(bold(r))$, invariant $I_z$, and energy $E$: $upright(bold(v)) = upright(bold(v)) \( upright(bold(r)) \, I_z \, H \)$. Given that energy is exactly conserved in a static magnetic field, the pitch angle $alpha$ depends solely on $I_z$. Therefore, in the absence of $I_z$ destruction, there is no pitch-angle scattering across the current sheet.
 
 #figure(
-  [
-    #box(image("figures/scattering/fig-bcPlot.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/scattering/fig-bcPlot.pdf"),
+  caption: [
       \(a) Phase portraits of the Hamiltonian in the plane of $\( z \, p_z \)$ at fixed $\( kappa x \, p_x \)$ for $beta = 1$. Each curve corresponds to a specific $H$, indicated on the plots. The left panel corresponds to $kappa x = 4$, $p_x = 1$, while the right panel corresponds to $kappa x = 0$, $p_x = 0.5$. (b) Phase plane of the Hamiltonian in the $\( kappa x \, p_x \)$ space. The red line represents the uncertainty curve and the blue line delineates the boundary encompassing all possible phase points. (c) Potential energy profiles defined by $U \( z \) = H - p_z^2 \/ 2$ at different locations in the $\( kappa x \, p_x \)$ place, corresponding to the labeled positions (\#) in panel (b).
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-zPz_phase>
+#pagebreak(weak: true)
 
-
-The Hamiltonian () admits two distinct types of particle motion in the $\( z \, p_z \)$ plane, as illustrated in #ref(<fig-zPz_phase>, supplement: [Figure])\(a). In the left panel, there are two potential wells in $U \( z \)$, resulting in three possible types of orbits in the $\( z \, p_z \)$ plane depending on the value of $H$: particles can move (oscillate) within one of local $U \( z \)$ minima, or can move outside these minima along #emph[figure-eight] orbits. In contrast, the right panel represents a case with only one possible type of orbits in the $\( z \, p_z \)$ plane for a fixed $H$. As $\( kappa x \, p_x \)$ evolve slowly, the particle's trajectory in the $\( z \, p_z \)$ plane undergoes a gradual transformation. Transitions between motion types can occur, accompanied by significant trajectory reconfigurations when the particle crosses the separatrix, the curve separating motion within one of two local minima of $U \( z \)$ and motion along #emph[eight-like] orbit (separatrix is shown by red bold line in #ref(<fig-zPz_phase>, supplement: [Figure])\(a)). Near the separatrix, the instantaneous period of motion in the $\( z \, p_z \)$ plane increases logarithmically, diverging as the trajectory approaches it @lichtenbergRegularStochasticMotion1983. When the timescale (period) of fast oscillations in the $\( z \, p_z \)$ plane and variations in the control parameter ($kappa x$) become comparable, the particle accumulates a nonvanishing change in the adiabatic invariant, resulting in a jump in $I_z$ @neishtadtChangeAdiabaticInvariant1999@caryAdiabaticinvariantChangeDue1986. Concurrently, the projection of the particle's phase point onto the $\( kappa x \, p_x \)$ plane lies along the so-called uncertainty curve #ref(<fig-zPz_phase>, supplement: [shown by red bold line in]), where each point on the curve corresponds to a particle trajectory in ($z \, p_z$) coinciding with the separatrix.
+The Hamiltonian admits two distinct types of particle motion in the $\( z \, p_z \)$ plane, as illustrated in #ref(<fig-zPz_phase>, supplement: [Figure])\(a). In the left panel, there are two potential wells in $U \( z \)$, resulting in three possible types of orbits in the $\( z \, p_z \)$ plane depending on the value of $H$: particles can move (oscillate) within one of local $U \( z \)$ minima, or can move outside these minima along #emph[figure-eight] orbits. In contrast, the right panel represents a case with only one possible type of orbits in the $\( z \, p_z \)$ plane for a fixed $H$. As $\( kappa x \, p_x \)$ evolve slowly, the particle's trajectory in the $\( z \, p_z \)$ plane undergoes a gradual transformation. Transitions between motion types can occur, accompanied by significant trajectory reconfigurations when the particle crosses the separatrix, the curve separating motion within one of two local minima of $U \( z \)$ and motion along #emph[eight-like] orbit (separatrix is shown by red bold line in #ref(<fig-zPz_phase>, supplement: [Figure])\(a)). Near the separatrix, the instantaneous period of motion in the $\( z \, p_z \)$ plane increases logarithmically, diverging as the trajectory approaches it @lichtenbergRegularStochasticMotion1983. When the timescale (period) of fast oscillations in the $\( z \, p_z \)$ plane and variations in the control parameter ($kappa x$) become comparable, the particle accumulates a nonvanishing change in the adiabatic invariant, resulting in a jump in $I_z$ @neishtadtChangeAdiabaticInvariant1999@caryAdiabaticinvariantChangeDue1986. Concurrently, the projection of the particle's phase point onto the $\( kappa x \, p_x \)$ plane lies along the so-called uncertainty curve #ref(<fig-zPz_phase>, supplement: [shown by red bold line in]), where each point on the curve corresponds to a particle trajectory in ($z \, p_z$) coinciding with the separatrix.
 
 The jump of $I_z$ due to the separatrix crossing comprises two distinct components. The first component, termed the #emph[dynamical jump], arises from the singularity of the period of motion in the vicinity of the separatrix and, in our asymmetric case of the $\( z \, p_z \)$ plane about the $z$-axis (stemming from the term in $f_1$) is proportional to $kappa ln kappa$ @neishtadtMechanismsDestructionAdiabatic2019[and references therein], resulting in slight changes to particle trajectories. The second component, referred to as the #emph[geometric jump], corresponds to the difference between the areas enclosed by the particle's trajectory within one of the separatrix wells and the area in the external region outside the separatrix. For instance, when a particle drifts from the boundary immediately before crossing, the total area enclosed by the separatrix increases to the value of the adiabatic invariant, $I_0 = \( 2 pi \)^(- 1) S \( kappa x \, p_x \)$. Upon crossing, the adiabatic invariant $I_z$ undergoes a jump to approximately the area of the left well $S_l \( kappa x \, p_x \)$ or the right well $S_r \( kappa x \, p_x \) = S \( kappa x \, p_x \) - S_l \( kappa x \, p_x \)$, reflecting the reduction in the accessible phase space area for the particles. This geometric jump is independent of $kappa$ and of order unity @neishtadtMechanismsDestructionAdiabatic2019[and references therein]. For a single separatrix crossing and small values of $kappa$, this jump of adiabatic invariance arises primarily from geometric destruction @artemyevSuperfastIonScattering2020. In symmetric Hamiltonians -- where $U \( - z \) = U \( z \)$ -- the differences in the enclosed areas during two successive crossings effectively cancel: the area deficit incurred when entering one of two wells is offset by the excess upon exiting, so that the net geometric jump over two crossings is zero @neishtadtChangeAdiabaticInvariant1999@buchnerRegularChaoticCharged1989. However, in our case, the term $f_1 \( z \)$ introduces an asymmetry in the $\( z \, p_z \)$ plane #ref(<fig-zPz_phase>, supplement: [see]), leading to an asynchronous evolution of the two areas. As a result, the difference in areas at each crossing does not cancel between successive crossings. This produces a nonzero change in $I_z$ that enhances pitch-angle scattering and drives rapid chaotization of the particle dynamics @artemyevIonMotionCurrent2013@artemyevSuperfastIonScattering2020. %Although the dynamical jumps tend to average out to zero @neishtadtChangeAdiabaticInvariant1999@buchnerRegularChaoticCharged1989 for two successive crossings occur, the uncompensated geometric jumps accumulate, producing a nonzero net change in $I_z$ that enhances pitch-angle scattering and drives rapid chaotization of the particle dynamics @artemyevIonMotionCurrent2013.
 
 Due to the symmetry of particle motion about the $p_z = 0$ line, the potential energy $U \( z \)$ reaches a local maximum along the $z$-direction at the saddle point $z = z_c \, p_z = 0$ of the separatrix (shown as $z_c$ in Fig. (left panel)). At this point, conditions $partial U \/ partial z = 0$ and $partial^2 U \/ partial z^2 < 0$ are satisfied. These conditions allow us to express the slow variables along the uncertainty curve in the $\( kappa x \, p_x \)$ plane as functions of $z_c$. When a particle trajectory crosses the $z = 0$ plane, the crossing point is confined within a circular region defined by $\( p_x - f_1 \( 0 \) \)^2 + \( kappa x + f_2 \( 0 \) \)^2 = 2 H$. The likelihood of the trajectory intersecting the uncertainty curve is therefore approximately proportional to the uncertainty curve length $L_(upright("uc"))$, normalized by the square root of the particle energy, $sqrt(H)$, as illustrated in #ref(<fig-UCLength>, supplement: [Figure]). For fixed $H$, $L_(upright("uc")) \/ sqrt(H)$ increases with $beta$, indicating higher scattering probabilities at larger magnetic field rotation angles. Similarly, at a fixed $beta$, $L_(upright("uc")) \/ sqrt(H)$ increases with $H$, suggesting that high-energy particles are more susceptible to pitch-angle scattering. Next, we will demonstrate these changes using test particles in realistic fields, to characterize their properties as functions of system parameters.
 
 #figure(
-  [
-    #box(image("figures/scattering/UCLength.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/scattering/UCLength.pdf"),
+  caption: [
       The uncertainty curve length $L_(upright("uc")) \/ sqrt(H)$ as a function of $beta$ and normalized particle energy $H$.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-UCLength>
 
@@ -110,60 +89,38 @@ Due to the symmetry of particle motion about the $p_z = 0$ line, the potential e
 To quantitatively analyze how particles are scattered by solar wind current sheets, we conducted extensive test particle simulations using a dataset of solar wind current sheets at 1 AU. Since the primary focus is on protons, the particle mass was set to $m_p$ (proton mass) and the charge to the elementary charge $q = e$. According to the dimensionless Hamiltonian, the critical current sheet parameters that influence particle dynamics are angles $theta$ and $beta = omega_(i n) \/ 2$, along with the parameter $B_t L$, which appears in the normalization factors $p$ and $h = frac(q^2 L^2 B_t^2, m c^2)$. By a simple transformation, $B_t = B sin theta$, the key current sheet parameters become $theta$, $omega_(i n)$, and $tilde(v)_B equiv v_B \/ c$, where $v_B equiv q B L \/ \( m_p c \) = Omega L$ and $Omega$ is the proton gyrofrequency associated with the magnetic field $B$.
 
 #figure(
-  [
-    #box(image("figures/scattering/wind_hist3d.png"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/scattering/wind_hist3d.png"),
+  caption: [
       3D density plots of the azimuthal angle $theta$, in-plane rotation angle $omega_(i n)$, and logarithm of the characteristic velocity $log tilde(v)_B$. The left panel corresponds to cases where the MVAB accuracy conditions are satisfied, while the right panel represents cases where they are not satisfied.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-windHist3D>
 
 
-Using data from the ARTEMIS @angelopoulosARTEMISMission2011 and the Wind mission @acunaGlobalGeospaceScience1995, we compiled a dataset of 100000 current sheets @zhangSolarWindDiscontinuities2025@liuMagneticDiscontinuitiesSolar2022. The orientations of these current sheets were determined using the minimum variance analysis of the magnetic field (MVAB) method @sonnerupMinimumMaximumVariance1998. Accurate orientation determination was crucial for estimating the thickness of the current sheets ($L$) and the in-plane magnetic field rotation angle ($omega_(i n)$), both of which significantly influence particle scattering. To ensure reliability, only current sheets with $Delta \| B \| \/ \| B \| > 0.05$ or $omega > 60 degree$ were used in the following analysis, as these conditions improve the accuracy of the MVAB method, as noted by . Note, these conditions do not constrain the discontinuity normal. An alternative approach to orientation determination @wangSolarWindCurrent2024@knetterFourpointDiscontinuityObservations2004 involves using the cross-product method to estimate the normal orientation and is largely based on the assumption that $B_n$ is effectively zero.
+Using data from the ARTEMIS @angelopoulosARTEMISMission2011 and the Wind mission @acunaGlobalGeospaceScience1995, we compiled a dataset of 100000 current sheets @zhangSolarWindDiscontinuities2025@liuMagneticDiscontinuitiesSolar2022. The orientations of these current sheets were determined using the minimum variance analysis of the magnetic field (MVAB) method @sonnerupMinimumMaximumVariance1998. Accurate orientation determination was crucial for estimating the thickness of the current sheets ($L$) and the in-plane magnetic field rotation angle ($omega_(i n)$), both of which significantly influence particle scattering. To ensure reliability, only current sheets with $Delta abs(B) \/ abs(B) > 0.05$ or $omega > 60 degree$ were used in the following analysis, as these conditions improve the accuracy of the MVAB method, as noted by . Note, these conditions do not constrain the discontinuity normal. An alternative approach to orientation determination @wangSolarWindCurrent2024@knetterFourpointDiscontinuityObservations2004 involves using the cross-product method to estimate the normal orientation and is largely based on the assumption that $B_n$ is effectively zero.
 #ref(<fig-windHist3D>, supplement: [Figure]) shows 3D density plots of the azimuthal angle $theta$, the in-plane rotation angle $omega_(i n)$, and logarithm of the characteristic velocity $log tilde(v)_B$, categorized by whether the MVAB accuracy conditions are satisfied (left for accurate, right for not accurate). Current sheets with accurately determined orientations typically have smaller azimuthal angles $theta$, indicating a smaller $B_n$, and moderate in-plane rotation angles $omega_(i n)$. In contrast, current sheets with potentially inaccurate normal orientations display larger $theta$ (larger $B_n$) and larger $omega_(i n)$. The most probable values observed in the distribution are a characteristic velocity ($v_B$) of approximately 500 km/s (which corresponds to a typical energy $tilde.op 1$ keV), an in-plane rotation angle ($omega_(i n)$) near 100 degrees, and an azimuthal angle ($theta$) around 85-95 degrees.
 
 For each magnetic field configuration, we initialize an ensemble of particles far away from the current sheet center (i.e., with an initial $z$ position satisfying $\| z_0 \| > 6 L + 2 r_g$, where $r_g$ is the gyro radius). The particles are uniformly binned in pitch angle ($alpha_0$) from $0^compose$ to $180^compose$ in 180 bins of size $Delta alpha = 1^compose$, with gyro phase ($psi_0$) uniformly sampled from $0^compose$ to $360^compose$ in 120 bins of size $Delta psi = 3^compose$. In this simulation, the current sheet is consistently configured with a positive $B_z$ component. Consequently, particles with an initial positive pitch-angle cosine $mu equiv cos alpha$ ($alpha_0 < 90^compose$\; $mu_0 > 0$) are interpreted to originate below the current sheet (and move toward the current sheet), while those with a negative cosine ($alpha_0 > 90^compose$\; $mu_0 < 0$) are considered to come from above it (and move toward the current sheet). The particle trajectories are then numerically integrated until each particle fully exits the current sheet ($\| z \( t \) \| > \| z_0 \| + 2 r_g$). #ref(<fig-B_diagram_particle_trajectory>, supplement: [Figure]) shows three representative particle trajectories in a typical magnetic field configuration characterized by $beta = 75^compose$ and $theta = 85^compose$. All particles have the same initial pitch angle $alpha_0 = 90^compose$ and velocity $v_p = 8 v_B$, but differ slightly in their initial gyrophases: $phi.alt_0 = 163.3^compose \, 164.4^compose$, and $165.6^compose$.
 These cases illustrate distinct scattering behaviors: one particle exhibits a negligible change in pitch angle, another undergoes a finite pitch-angle deflection, and the third is reflected by the current sheet. For each trajectory, the final pitch angle $alpha_1$ is recorded. These pitch angles are then organized into bins to construct a transition matrix (TM), also known as a stochastic matrix @durrettEssentialsStochasticProcesses2016, which represents the probability distribution of pitch-angle changes resulting from a single particle interaction with the current sheet.
 
 #figure(
-  [
-    #box(image("figures/scattering/fig-B_diagram_particle_trajectory.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/scattering/fig-B_diagram_particle_trajectory.pdf"),
+  caption: [
       Three particle trajectories (T1, T2, T3) with identical initial pitch angles ($alpha_0 = 90^compose$) and velocity $v_p = 8 v_B$, but slightly different initial gyrophases ($phi.alt_0 = 163.3^compose \, 164.4^compose \, 165.6^compose$) in a representative magnetic field profile ($beta = 75^compose \, theta = 85^compose$). The orange star marks the initial particle position. The black and gray lines represent the magnetic field lines to which the reflected particle (T3) is initially and finally attached, respectively, before and after interaction with the current sheet.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-B_diagram_particle_trajectory>
-
+#pagebreak(weak: true)
 
 #ref(<fig-tm-example>, supplement: [Figure]) illustrates the transition matrix for 100 keV particles (velocity $v_p approx 4000$ km/s) under four magnetic field configurations: (i) $v_B = 500$ km/s, $theta = 85 degree$, $beta = 50 degree$\; (ii) $v_B = 500$ km/s, $theta = 85 degree$, $beta = 75 degree$\; (iii) $v_B = 500$ km/s, $theta = 60 degree$, $beta = 50 degree$\; and (iv) $v_B = 4000$ km/s, $theta = 85 degree$, $beta = 50 degree$. Enhanced probability along the diagonal corresponds to weakly scattered particles ($laplace alpha = alpha_1 - alpha_0 approx 0$), while spreading around the diagonal reflects diffusive scattering. Large pitch-angle jumps are represented by non-diagonal elements.
 
 #figure(
-  [
-    #box(image("figures/scattering/example_subset.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/scattering/example_subset.pdf"),
+  caption: [
       Transition matrix for 100 keV protons under four distinct magnetic field configurations: (i) $v_p = 8 v_B$, $theta = 85 degree$, $beta = 50 degree$\; (ii) $v_p = 8 v_B$, $theta = 85 degree$, $beta = 75 degree$\; (iii) $v_p = 8 v_B$, $theta = 60 degree$, $beta = 50 degree$\; and (iv) $v_p = v_B$, $theta = 85 degree$, $beta = 50 degree$.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-tm-example>
-
 
 The transition matrix color maps for various current sheet configurations reveal that particle pitch-angle evolution during multiple current sheet crossings is determined by a combination of weak/strong diffusion and large jumps. For example, in current sheets with a typical shear half-angle $beta = 50 degree$ and azimuthal angle $theta = 85 degree$ (configuration (i)), particles entering from above the sheet ($z > 0$\; assuming positive $B_n$) often experience significant pitch-angle jumps or strong diffusion. In contrast, particles entering from below the sheet ($z < 0$) typically undergo minimal pitch-angle changes. Occasionally, interactions with current sheets having very large shear half-angles ($beta$, e.g., configuration (ii)) or smaller azimuthal angles ($theta$, e.g., configuration (iii)) result in enhanced diffusion and the reflection of certain particles from the current sheet, indicated by a reversal in the sign of $cos alpha$. For high-energy particles, interactions with current sheets of comparable characteristic speed ($v_B tilde.op v_p$, configuration (iv)) are characterized by weak scattering occurring only over a narrow range of pitch angles. The interplay between non-diffusive jumps and continuous diffusive processes drives a dynamic evolution of the particle ensemble. %Over time, this leads to a broadened and redistributed pitch-angle profile, reflecting the statistical nature of interactions with solar wind current sheets.
 
@@ -174,25 +131,10 @@ The scattering process depends on the particle's initial conditions, $\( upright
 
 The final pitch angle, however, is highly sensitive to initial conditions $\( alpha_0 \, psi_0 \)$, where small variations in the gyro phase can lead to significantly different final pitch angles @malaraChargedparticleChaoticDynamics2021. Therefore, the scattering process $Pi : \( alpha_0 \, psi_0 \) arrow.r \( alpha_1 \, psi_1 \)$ is better represented as a probabilistic transition $p \( alpha_1 \| alpha_0 \, Pi \)$, with the probability derived by numerical interpolation in the $alpha_1$-space. Here, $Pi$ characterizes the current sheet configuration. This probabilistic representation is further motivated by the fact that the gyro phase depends on the particle's location and may undergo random shifts during the crossing of a current sheet. Additionally, numerical integration methods, such as the Boris method, introduce a phase error proportional to $Delta t$, making the gyro phase less reliable. Thus, it is more appropriate to model the gyro phase as a random variable. This probabilistic approach eliminates the dependence on the gyro phase, instead focusing on the statistical relationship between the initial pitch angle $alpha_0$ and the final pitch angle $alpha_1$, as governed by the properties of the current sheets.
 
-For particles with a specific energy, a (weighted-average) mixture distribution @fruhwirth-schnatterFiniteMixtureMarkov2006 can be constructed based on the observed distribution of solar wind discontinuities (SWDs): $p \( alpha_1 \| alpha_0 \) = sum_i p \( alpha_1 \| alpha_0 \, Pi_i \) w_i$, where the weight $w_i$ corresponds to the empirical probabilities of specific SWD configurations. After binning, this yields a weighted transition matrix (WTM), which represents the varying likelihoods of particles encountering SWDs with different properties and encapsulates the overall probability of a particle undergoing a pitch-angle jump due to interactions with an ensemble of SWDs at 1 AU.
-
-#figure(
-  [
-    #box(image("figures/scattering/tm_stats_100keV.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
-      Weighed transition matrix for 100 keV particles constructed from the observed distribution of current sheet at 1 AU.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
-)
-<fig-tm-stats-100keV>
-
+For particles with a specific energy, a (weighted-average) mixture distribution @fruhwirth-schnatterFiniteMixtureMarkov2006 can be constructed based on the observed distribution of solar wind discontinuities (SWDs): $p \( alpha_1 \| alpha_0 \) = sum_i p \( alpha_1 \| alpha_0 \, Pi_i \) w_i$, where the weight $w_i$ corresponds to the empirical probabilities of specific SWD configurations. After binning, this yields a weighted transition matrix (WTM), which represents the varying likelihoods of particles encountering Sw Ds with different properties and encapsulates the overall probability of a particle undergoing a pitch-angle jump due to interactions with an ensemble of SWDs at 1 AU.
 
 As illustrated in #ref(<fig-tm-stats-100keV>, supplement: [Figure]), the WTM for 100 keV protons at 1 AU shows a strong likelihood of minimal changes in pitch angle, as evidenced by the bright diagonal. However, there exist significant probabilities associated with diffusive scattering and with large pitch-angle changes. The latter arise mainly from interactions with current sheets whose characteristic scales ($L$) are comparable to or smaller than the gyroradius of (in this case) 100 keV protons. Such strong scattering cannot be adequately described by diffusion alone. However, the mapping described in Equation\~ enables the direct application of the mixture distribution for simulating the long-term evolution of particle pitch-angle distributions (such map is a discretized approximation of stochastic differential equations that describe particle dynamics with a given scattering probability; see @jacodDiscretizationProcesses2012@ukhorskiyRoleDriftOrbit2011@artemyevMappingNonlinearElectron2020@tonoianElectronResonantInteraction2023):
+
 
 #math.equation(block: true, numbering: equation-numbering, [ $
   alpha_(n + 1 \, i) = W_Pi (alpha_(n \, i) \, xi_(n \, i))
@@ -200,20 +142,23 @@ $ ])<eq-mapping>
 
 where $n$ is the number of interactions (with SWDs), $i$ is the particle index within the ensemble, and $W_Pi$ determines the subsequent pitch angle from the mixture distribution, using the previous pitch angle and a uniformly sampled random variable $xi_(n \, i)$.
 
+#pagebreak(weak: true)
+#figure(
+  image("figures/scattering/tm_stats_100keV.pdf"),
+  caption: [
+      Weighed transition matrix for 100 keV particles constructed from the observed distribution of current sheet at 1 AU.
+    ]
+)
+<fig-tm-stats-100keV>
+#pagebreak(weak: true)
+
 #ref(<fig-pa-jump-history>, supplement: [Figure]) illustrates two representative solutions of the dynamical pitch-angle mapping equation derived from the mixture distribution at 1 AU for 100 keV and 1 MeV protons. A key feature of the pitch-angle dynamics is the occurrence of infrequent but substantial jumps, including rare, large-angle changes that can lead to particle reflection from the current sheet.
 
 #figure(
-  [
-    #box(image("figures/scattering/pa_jump_history_high.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/scattering/pa_jump_history_high.pdf"),
+  caption:[
       Examples of particle pitch-angle scattering by solar wind current sheets for 100 keV and 1 MeV protons.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-pa-jump-history>
 
@@ -231,17 +176,10 @@ To translate the number of interactions $n$ into a physical time, we consider th
 This approach provides a simplified yet effective means to account for current-sheet-induced scattering in broader models of energetic particle dynamics.
 
 #figure(
-  [
-    #box(image("figures/scattering/mixing_rate.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/scattering/mixing_rate.pdf"),
+  caption: [
       Top: Second moment of the pitch-angle distribution, $M_2 \( n \)$, as a function of interaction number ($n$) for different particle energies (100 eV, 5 keV, 100 keV, 1 MeV), The estimated mixing rates, $D_(mu mu)$, are indicated in the legend. Bottom: Pitch-angle diffusion rates $cal(D)_(mu mu)$ as a function of particle energy $E$.
-    ],
-  ),
-  kind: "quarto-float-fig",
-  supplement: "Figure",
+    ]
 )
 <fig-mixing-rate>
 

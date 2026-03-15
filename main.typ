@@ -1,13 +1,10 @@
 #import "lib.typ": uclathesis
-#import "@preview/cmarker:0.1.8"
-
-#let citet(..citation) = cite(..citation, form: "prose")
 
 #show: uclathesis.with(
-  title: [Kinetic-scale solar wind current sheets: statistical characteristics and their role in energetic particle transport],
+  title: [Kinetic-scale Solar Wind Current Sheets: Statistical Characteristics and Their Role in Energetic Particle Transport],
   author: "Zijin Zhang",
   degree: "Doctor of Philosophy",
-  major: "Your Major",
+  major: "Planetary Science",
   year: 2026,
   doc-type: "dissertation", // or "thesis" for master's
   committee-chair: "Vassilis Angelopoulos",
@@ -26,29 +23,14 @@
 
 #include "_intro.typ"
 
-#pagebreak()
-
 #include "_review_current_sheet.typ"
-
-#pagebreak()
 
 #include "_review_energetic_particles.typ"
 
-#pagebreak()
-
 #include "_juno.typ"
-
-#pagebreak()
 
 #include "_psp.typ"
 
-#pagebreak()
-
 #include "_scattering.typ"
 
-#pagebreak()
-
 #include "_summary.typ"
-
-#pagebreak()
-

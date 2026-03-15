@@ -295,9 +295,11 @@
 
   // Heading styles
   set heading(numbering: "1.1")
+  set heading(supplement: [Chapter])
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
     v(0.5in)
+    counter(figure.where(kind: image)).update(0)
     set text(size: 14pt, weight: "bold")
     if it.numbering != none {
       [Chapter ]
@@ -331,7 +333,10 @@
   // Figure and table captions
   set figure(gap: 1em)
   show figure.caption: set text(size: 10pt)
-
+  set figure(numbering: (..num) =>
+    numbering("1.1", counter(heading).get().first(), num.pos().first())
+  )
+  
   // Footnotes: single-spaced with blank line between
   show footnote.entry: set text(size: 10pt)
   set footnote.entry(gap: 1.2em)
@@ -399,7 +404,6 @@
   // Table of Contents
   {
     show outline.entry.where(level: 1): it => {
-      v(0.5em, weak: true)
       strong(it)
     }
     outline(
@@ -412,7 +416,8 @@
 
   // List of Figures (if any figures exist)
   context {
-    let figs = query(figure.where(kind: image))
+    // let figs = query(figure.where(kind: image))
+    let figs = query(figure)
     if figs.len() > 0 {
       outline(
         title: [List of Figures],
