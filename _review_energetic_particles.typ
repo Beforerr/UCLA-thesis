@@ -1,0 +1,429 @@
+#let equation-numbering = "(1)"
+
+= Energetic Particle Interaction With Solar Wind Current Sheets
+<energetic-particle-interaction-with-solar-wind-current-sheets>
+
+The transport of energetic particles through the heliosphere is governed not only by the large-scale structure of the interplanetary magnetic field, but also by the small-scale, intermittent structures embedded within it @ewartCosmicrayTransportInhomogeneous2025@engelbrechtTheoryCosmicRay2022@oughtonSolarWindTurbulence2021@vandenbergPrimerFocusedSolar2020. Chief among these are current sheets---thin layers of intense current and rapid magnetic field rotation that occupy a small fraction of the heliospheric volume yet exert a disproportionate influence on particle dynamics. This chapter reviews the theoretical and observational foundations necessary to understand how energetic particles interact with these structures, with particular focus on the mechanisms by which current sheets scatter particles in pitch angle and modulate their transport through the heliosphere.
+
+We begin with the heliospheric context: the sources and classification of solar energetic particles, and the observational phenomena---reservoir effects and dropout events---that reveal the dual role of current sheets as both barriers and facilitators of transport. We then describe the standard transport frameworks within which pitch-angle scattering is parameterized, and discuss how solar wind turbulence intermittency motivates going beyond classical wave-based scattering theories. The core of the chapter develops the quasi-adiabatic theory of charged particle dynamics near magnetic field reversals, tracing how the adiabatic invariant breaks down at separatrix crossings through geometrical and dynamical jumps---a scattering mechanism qualitatively distinct from, and potentially more efficient than, wave--particle resonance @artemyevElectronPitchangleDiffusion2013. The chapter closes with a summary of the key results and a discussion of the open questions that motivate the quantitative program developed in subsequent chapters.
+
+== Energetic Particles in the Heliosphere
+<energetic-particles-in-the-heliosphere>
+=== Sources of Energetic Particles
+<sources-of-energetic-particles>
+The heliosphere hosts several distinct populations of energetic particles spanning a vast range of energies and origins @simnettEnergeticParticlesHeliosphere2017. #emph[Galactic cosmic rays] (GCRs) are high-energy particles originating from outside the solar system---primarily accelerated by supernova shocks---that propagate inward through the heliosphere and are modulated by the solar wind and heliospheric magnetic field @prantzosOriginCompositionGalactic2012@moraalCosmicRayModulationEquations2013. #emph[Anomalous cosmic rays] (ACRs) represent a population of singly charged ions that originate as interstellar neutral atoms, become ionized upon entering the heliosphere (forming pickup ions), and are subsequently accelerated to energies of tens of MeV at the heliospheric termination shock @giacaloneAnomalousCosmicRays2022. #emph[Solar energetic particles] (SEPs), the population most relevant to this thesis, are accelerated at or near the Sun during transient eruptive events and span energies from suprathermal (a few keV) to relativistic ($tilde.op$few GeV) @reamesTwoSourcesSolar2013@desaiLargeGradualSolar2016@kleinAccelerationPropagationSolar2017@anastasiadisSolarEnergeticParticles2019.
+
+Unlike the quasi-steady GCR background, SEP events are episodic and highly variable. Intensities can increase by several orders of magnitude within minutes and exhibit dramatic event-to-event variations in spectral shape, heavy-ion composition, charge states, and spatial distribution @anastasiadisSolarEnergeticParticles2019. This variability reflects both the diverse acceleration mechanisms at the Sun and the complex transport processes that particles undergo as they propagate through the structured, turbulent interplanetary medium @kleinAccelerationPropagationSolar2017.
+
+=== Two Classes of Solar Energetic Particle Events
+<two-classes-of-solar-energetic-particle-events>
+SEP events are broadly classified into two categories based on their acceleration mechanism and observational characteristics @reamesTwoSourcesSolar2013@desaiLargeGradualSolar2016@vlahosSourcesSolarEnergetic2019:
+
+#figure(
+  [
+    #box(image(
+      "figures/ref/desaiLargeGradualSolar2016-fig3.png",
+      alt: "The two-class picture for SEP events. @desaiLargeGradualSolar2016",
+    ))
+  ],
+  caption: figure.caption(
+    position: bottom,
+    [
+      The two-class picture for SEP events. #cite(<desaiLargeGradualSolar2016>, form: "prose")
+    ],
+  ),
+  kind: "quarto-float-fig",
+  supplement: "Figure",
+)
+
+
+#emph[Impulsive SEP events] are produced by magnetic reconnection-driven processes during solar flares. In the standard picture, reconnection in the solar corona---occurring along open magnetic field lines---accelerates particles through stochastic processes related to turbulence and fragmented current sheets in the reconnection region @vlahosSourcesSolarEnergetic2019. Impulsive events are typically short-lived (minutes to hours) and are characterized by several distinctive compositional signatures: large enhancements of $""^3 upright("He") \/^4 upright("He")$ (by factors up to $tilde.op$ 1000 relative to solar wind values), elevated heavy-ion ratios such as Fe/O, high charge states indicating source temperatures of $tilde.op 3 times 10^7$ K, and relatively high electron-to-proton ratios @reamesTwoSourcesSolar2013. Because the accelerated particles are injected onto a narrow range of magnetic flux tubes rooted in the compact flare site, impulsive events are observed only by spacecraft that are magnetically well-connected to the source---typically spanning only a few tens of degrees in solar longitude.
+
+#emph[Gradual SEP events] are driven by shock waves propagating through the corona and interplanetary space, typically associated with fast coronal mass ejections (CMEs) @leeShockAccelerationIons2012. The CME-driven shock provides a spatially extended acceleration region that can fill a broad range of magnetic field lines as it expands outward, beginning when the shock reaches approximately 2 solar radii @desaiLargeGradualSolar2016. Particles are accelerated through diffusive shock acceleration (DSA), in which ions are scattered back and forth across the shock front by self-generated Alfvén waves amplified by the streaming accelerated protons themselves @kleinAccelerationPropagationSolar2017. Gradual events typically last for several days, are proton-dominant, and exhibit elemental abundances similar to the solar corona and charge states corresponding to source temperatures of $tilde.op 3 times 10^6$ K. These events produce by far the highest SEP intensities observed near Earth and represent the primary source of radiation hazard to astronauts, spacecraft electronics, and passengers on high-altitude polar flight routes @anastasiadisSolarEnergeticParticles2019.
+
+While this two-class paradigm provides a useful organizational framework, it is important to note that the boundary between the two classes is not always sharp @kleinOriginSolarEnergetic2001. Many large gradual events show elevated $""^3$He and Fe/O ratios at high energies, suggesting that residual suprathermal ions from previous impulsive events can serve as a seed population for subsequent shock acceleration @desaiLargeGradualSolar2016. Furthermore, recent multi-spacecraft observations from widely distributed vantage points (STEREO, ACE, SOHO, and more recently Parker Solar Probe and Solar Orbiter) have revealed that SEPs can fill remarkably broad regions of the heliosphere---often extending over more than 180° in longitude---challenging simple models of localized injection and raising fundamental questions about the relative roles of extended shock geometry, coronal transport, and interplanetary cross-field diffusion in distributing particles throughout the inner heliosphere @anastasiadisSolarEnergeticParticles2019@kleinAccelerationPropagationSolar2017.
+
+=== Reservoir and Dropout Phenomena
+<reservoir-and-dropout-phenomena>
+Two contrasting observational signatures of SEP transport provide particularly compelling evidence for the role of magnetic structure in controlling particle propagation:
+
+The #strong[reservoir effect] (or invariant spectra) is frequently observed during the decay phase of large gradual SEP events. Particle intensities measured by widely separated spacecraft (sometimes at different heliocentric distances and heliolatitudes) become nearly equal and exhibit similar temporal decay profiles, with energy spectra that maintain an invariant shape as overall intensities decrease @reamesTwoSourcesSolar2013@desaiLargeGradualSolar2016. The three-dimensional character of the reservoir, revealed by high-heliolatitude observations from the Ulysses mission @dallaPropertiesHighHeliolatitude2003, favors explanations involving substantial cross-field transport that distributes particles throughout a large volume of the inner heliosphere, rather than simple trapping behind an expanding magnetic-bottle-like structure. The velocity-dependent migration of particles through the tangled interplanetary field---potentially mediated by interactions with current sheets and other coherent structures---is a natural candidate mechanism for establishing such spatially uniform distributions.
+
+In stark contrast, #strong[dropout events] are characterized by abrupt, sharp variations (depletions) in energetic particle intensity, often observed during impulsive SEP events @mazurInterplanetaryMagneticField2000@tesseinEffectCoherentStructures2015. Spacecraft crossing from one magnetic flux tube into an adjacent one observe sudden drops (or increases) in particle count rates, with the intensity boundaries occurring on spatial scales comparable to particle gyroradii @neugebauerEnergeticParticlesTangential2015. This behavior indicates that particles are effectively confined within distinct flux tubes with minimal lateral transport. The sharp boundaries between particle-filled and particle-empty flux tubes are frequently identified with tangential discontinuities in the solar wind magnetic field, which act as barriers to cross-field propagation because no magnetic field component threads through their surface ($B_n = 0$).
+
+Together, these observations highlight a fundamental duality: current sheets can both #emph[impede] particle transport (when acting as flux tube boundaries at tangential discontinuities) and #emph[facilitate] it (through scattering that decouples particles from their field lines at rotational discontinuities). The relative importance of these two effects depends on the internal structure of the current sheets and the particle energy---a theme developed quantitatively in this thesis.
+
+=== Turbulence Transport Frameworks
+<turbulence-transport-frameworks>
+The large-scale transport of energetic particles through the heliosphere is governed by a competition between parallel streaming along magnetic field lines, scattering by magnetic fluctuations, adiabatic focusing in the diverging interplanetary magnetic field, convection with the solar wind, and gradient-curvature drifts @dallaSolarEnergeticParticle2013. The foundational framework is the Parker transport equation @parkerPassageEnergeticCharged1965, which describes the evolution of the nearly isotropic part of the particle distribution using a diffusive approximation (justified when the particle scattering time is short compared to the timescale of interest):
+
+$
+  frac(partial f, partial t) = frac(partial, partial x_i) [kappa_(i j) frac(partial f, partial x_j)] - U_i frac(partial f, partial x_i) - V_(d \, i) frac(partial f, partial x_i) + 1 / 3 frac(partial U_i, partial x_i) frac(partial f, partial ln p) + upright("Sources") - upright("Losses") \,
+$
+
+where $f$ is the omnidirectional distribution function, $kappa_(i j)$ is the symmetric part of the diffusion tensor, $U_i$ is the solar wind velocity, $V_(d \, i)$ is the gradient-curvature drift velocity, and $p$ is the particle momentum. The drift velocity can be formally derived from the guiding center approximation averaged over a nearly isotropic distribution, and can be included as the antisymmetric part of the diffusion tensor. The diffusion tensor can be decomposed into components parallel ($kappa_parallel$) and perpendicular ($kappa_perp$) to the mean magnetic field: $kappa_(i j) = kappa_perp delta_(i j) + \( kappa_parallel - kappa_perp \) B_i B_j \/ B^2$.
+
+The parallel diffusion coefficient is related to the pitch-angle diffusion coefficient $D_(mu mu)$ through the quasilinear theory (QLT) framework @jokipiiCosmicRayPropagationCharged1966:
+
+$ kappa_parallel = v^2 / 8 integral_(- 1)^1 frac(\( 1 - mu^2 \)^2, D_(mu mu) \( mu \)) thin d mu \, $
+
+where $mu = cos alpha$ is the pitch-angle cosine and $v$ is the particle speed. This relation makes $D_(mu mu)$ the central microphysical quantity controlling parallel transport: all the physics of particle--field interaction is encoded in this single function of pitch angle.
+
+When significant anisotropy is present---as during the early phases of SEP events, near interplanetary shocks, or when focusing effects are important---the focused transport equation @roelofPropagationSolarCosmic1969@earlEffectAdiabaticFocusing1976 retains the explicit pitch-angle dependence:
+
+$
+  frac(partial f, partial t) + mu v frac(partial f, partial z) + frac(v, 2 L) \( 1 - mu^2 \) frac(partial f, partial mu) = frac(partial, partial mu) (D_(mu mu) frac(partial f, partial mu)) \,
+$
+
+where $L = - B \( d B \/ d z \)^(- 1)$ is the focusing length characterizing the divergence of the magnetic field.
+
+In both frameworks, the pitch-angle diffusion coefficient $D_(mu mu)$ is the quantity most directly shaped by magnetic turbulence. Its value is governed by several key turbulence parameters --- spatial inhomogeneity, fluctuation level ($delta B \/ B_0$), spectral index, and wave-vector anisotropy @pucciEnergeticParticleTransport2016@chandranScatteringEnergeticParticles2000. Solar wind turbulence spans an enormous range of scales, from the large-scale coherence length (\~0.01 AU) down to kinetic dissipation scales near the thermal ion gyroradius (\~100 km). The most relevant portion for energetic particle transport is the inertial range: for a 5 nT background field, this range corresponds to proton gyroradii from roughly 1 keV to 1 GeV, a window encompassing nearly all SEPs.
+
+Classical scattering theory evaluates $D_(mu mu)$ by modeling the turbulence as a superposition of random, low-amplitude, phase-uncorrelated waves with power-law spectra, in which particles scatter via cyclotron resonance with fluctuations at scales matching their gyroradius @jokipiiCosmicRayPropagationCharged1966@jokipiiCosmicRayPropagationIi1967. Many numerical models adopt the same idealization, constructing magnetic fluctuations --- such as the slab component $delta upright(bold(B))^s$ and two-dimensional component $delta upright(bold(B))^(2 D)$ (#ref(<eq-δ𝐁>, supplement: [Equation])) --- without accounting for the intermittent, structured nature of real solar wind turbulence. This approach has well-known limitations: it fails to scatter particles through $mu = 0$ (the 90° pitch-angle problem) and produces mean free paths that disagree with observational inferences.
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  & delta 𝐁^s = sum_(n = 1)^(N_m) A_n [cos alpha_n (cos phi.alt_n hat(x) + sin phi.alt_n hat(y)) + i sin alpha_n \( - sin phi.alt_n hat(x) + cos phi.alt_n hat(y) \)] times exp (i k_n z + i beta_n)\
+  & delta 𝐁^(2 D) = sum_(n = 1)^(N_m) A_n i (- sin phi.alt_n hat(x) + cos phi.alt_n hat(y)) times exp [i k_n (cos phi.alt_n x + sin phi.alt_n y) + i beta_n]
+$ ])<eq-δ𝐁>
+
+=== New model of particle transport in reversing magnetic fields
+<new-model-of-particle-transport-in-reversing-magnetic-fields>
+The standard paradigm of cosmic ray transport assumes small-amplitude fluctuations ($delta B \/ B_0 lt.double 1$) about a strong mean magnetic field and relies on quasi-linear theory to relate the pitch-angle diffusion rate to the magnetic power spectrum. #cite(<kempskiCosmicRayTransport2023>, form: "prose") and #cite(<lemoineParticleTransportLocalized2023>, form: "prose") challenge this paradigm by studying particle transport in the opposite asymptotic limit: large-amplitude MHD turbulence with $delta B \/ B_0 gt.double 1$, where the turbulence stretches and folds field lines into highly intermittent structures with ubiquitous small-scale reversals.
+
+The magnetic field geometry is characterized by the field-line curvature $K_parallel equiv \| hat(upright(bold(b))) dot.op nabla hat(upright(bold(b))) \|$ and the inverse perpendicular reversal scale $K_perp equiv \| hat(upright(bold(b))) times \( hat(upright(bold(b))) times nabla ln B \) \|$. The PDFs of these quantities reveal that $K_perp^(- 1) lt.double l_B$, where $l_B$ is the parallel coherence length, indicating that the field is organized into #emph[fold]-like structures: elongated regions of roughly straight field connected by tight bends where $K_parallel tilde.op K_perp$. Regions of large curvature have systematically weaker fields, with $chevron.l B \( K_parallel \) chevron.r prop K_parallel^(- 1 \/ 2)$---consistent with approximate constancy of the magnetic tension $upright(bold(B)) dot.op nabla upright(bold(B))$. This anti-correlation between curvature and field strength appears to be a robust feature of MHD turbulence: similar curvature statistics have been measured in diverse simulation settings @schekochihinStructureSmallscaleMagnetic2001@yangRoleMagneticField2019@yuenCurvatureMagneticField2020, and confirmed #emph[in situ] in the Earth's magnetosheath @bandyopadhyaySituMeasurementCurvature2020@huangObservationsMagneticField2020 and solar wind @huInterplanetaryMagneticField2025.
+
+#figure(
+  [
+    #box(image("figures/ref/kempskiCosmicRayTransport2023-fig7.jpeg"))
+  ],
+  caption: figure.caption(
+    position: bottom,
+    [
+      Schematic of particle transport in a magnetic fold. The fold has parallel coherence length $tilde.op l_B$ and perpendicular reversal scale $K_perp^(- 1) lt.double l_B$. Along the straight segments $K_parallel lt.double K_perp$\; at the bend, $K_parallel tilde.op K_perp$. The magenta trajectory illustrates a particle whose gyroradius grows as $B$ weakens near the bend @kempskiCosmicRayTransport2023.
+    ],
+  ),
+  kind: "quarto-float-fig",
+  supplement: "Figure",
+)
+<fig-kempski-fold>
+
+
+The transport of a particle through such a fold depends on its gyroradius relative to the perpendicular reversal scale. A particle with $r_(L 0) gt.double K_perp^(- 1)$ is not magnetized on the scale of the fold: it samples many field reversals within a single gyro-orbit, so the opposing field contributions partially cancel and the effective magnetic force on the particle is suppressed. Such high-energy particles are largely insensitive to the fold structure. For $r_(L 0) < K_perp^(- 1)$, the particle can gyrate around the field line along the straight segments where $K_parallel lt.double K_perp$, but as it approaches the bend the weakening field increases its gyroradius and decreases its gyrofrequency. Three outcomes then result: (i) if $Omega gt.double K_parallel c$ at the bend, the particle adiabatically follows the reversing field, undergoing effective spatial 'scattering' through the field-line random walk without pitch-angle change---a mechanism with no analogue in strong guide-field transport, where a particle perfectly following a field line does not random walk; (ii) if $Omega tilde.op K_parallel c$, the particle experiences 'resonant curvature'---order-unity pitch-angle scattering analogous to the $kappa_l r_g gt.tilde 1$ criterion of #cite(<lemoineParticleTransportLocalized2023>, form: "prose")\; (iii) if $Omega lt.double K_parallel c$, the particle demagnetizes and drifts out of the fold via $nabla B$ drift before completing the reversal. The resulting heuristic scattering frequency is
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  nu \( r_(L 0) \) tilde.op c / l_B integral^(K_(upright(m a x))) P \( K_perp \) thin upright(d) K_perp \,
+$ ])<eq-kempski-nu>
+
+where $l_B = integral K_parallel^(- 1) P \( K_parallel \) thin upright(d) K_parallel$ is the characteristic parallel coherence length. The upper limit $K_(upright(m a x)) \( r_(L 0) \)$ encodes the magnetization condition at the bend: $K_(upright(m a x)) thin r_(L 0) = f_r thin chevron.l B \( K_parallel = K_(upright(m a x)) \) chevron.r \/ B_(upright(r m s))$, with $f_r tilde.op cal(O) \( 1 \)$. Using $chevron.l B chevron.r prop K_parallel^(- 1 \/ 2)$ yields $K_(upright(m a x)) prop r_(L 0)^(- 2 \/ 3)$, so that lower-energy particles can traverse a larger fraction of folds and are better confined.
+
+The perpendicular reversal scale $K_perp$ plays a role with no analogue in quasi-linear theory. In effect, it controls the fraction of the fold population that contributes to the effective scattering frequency. It does not directly scatter particles, but sets the curvature of the bend at the end of each fold, thereby determining whether particles satisfy the resonant-curvature condition or follow the reversal adiabatically.
+
+=== Pitch-Angle Scattering by Current Sheets
+<pitch-angle-scattering-by-current-sheets>
+Solar wind turbulence is highly intermittent: magnetic energy and current density concentrate into thin, intense current sheets that occupy a small fraction of the volume yet account for a disproportionate share of the dissipation @borovskyContributionStrongDiscontinuities2010. The scattering produced by these coherent structures is fundamentally different from wave--particle resonance. When a particle's gyroradius is comparable to the sheet thickness ($rho tilde.op L$), the interaction involves separatrix crossings in phase space and the associated destruction of the quasi-adiabatic invariant $I_z$ (discussed in detail in the following sections). The resulting pitch-angle changes are large---$Delta alpha tilde.op cal(O) \( 1 \)$ in the case of geometrical chaotization---and occur on timescales comparable to a single gyroperiod, far faster than the gradual diffusion assumed in quasilinear theory. Because kinetic-scale current sheets are abundant in the solar wind @vaskoKineticscaleCurrentSheets2022@vasquezNumerousSmallMagnetic2007, and their thickness overlaps with the gyroradii of energetic particles at typical field strengths, a propagating particle will encounter many such structures en route from the Sun to Earth. The cumulative pitch-angle scattering from these encounters contributes to an effective $D_(mu mu)$ through a mechanism that is qualitatively distinct from---and potentially more efficient than---classical wave--particle resonance.
+
+A complementary perspective comes from #cite(<lemoineParticleTransportLocalized2023>, form: "prose"), who studied the role of sharp magnetic field bends---characterized by the local curvature $kappa equiv B^(- 1) \| upright(bold(b)) times \( upright(bold(b)) dot.op nabla \) upright(bold(B)) \|$---in a simulation of incompressible MHD without a mean field. When a particle crosses a region where the curvature radius shrinks below its gyroradius ($kappa_l r_g gt.tilde 1$ on scale $l tilde.op r_g$), the magnetic moment changes by order unity---precisely the 'resonant curvature' mechanism identified by #cite(<kempskiCosmicRayTransport2023>, form: "prose"). In a root-mean-square sense, such regions should not exist: the characteristic curvature scales as $kappa_l tilde.op \( l \/ ell_c \)^(- 1 \/ 3) thin ell_c^(- 1)$ following the Goldreich--Sridhar cascade, giving $kappa_l r_g lt.double 1$ for $r_g lt.double ell_c$. The key insight is that the non-Gaussian, power-law tails of the curvature p.d.f. (see #ref(<fig-lemoine-curvature>, supplement: [Figure])) guarantee that sufficiently many scattering-strength bends exist on all scales $l < ell_c$ to sustain transport. This yields a mean free path
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  lambda_s equiv frac(l, integral_1^oo p_(hat(kappa)_l l) \( x \) thin upright(d) x) #scale(x: 240%, y: 240%)[\|] _(l tilde.op macron(r)_g) tilde.op ell_c^0.7 thin macron(r)_g^0.3 \,
+$ ])<eq-lemoine-mfp>
+
+a scaling distinct from quasi-linear predictions that arises entirely from the intermittent structure of the turbulence. Particle tracking confirms that magnetic moment diffusion proceeds through localized, violent interactions rather than continuous weak scattering: the p.d.f.~of the normalized magnetic moment $hat(M) \( t \) equiv M \( t \) \/ M \( 0 \)$ broadens via power-law tails rather than Gaussian spreading, producing non-Brownian transport on scales $lt.tilde ell_c$.
+
+#figure(
+  [
+    #box(image("figures/ref/lemoineParticleTransportLocalized2023_fig3.png"))
+  ],
+  caption: figure.caption(
+    position: bottom,
+    [
+      #cite(<lemoineParticleTransportLocalized2023>, form: "prose") (a) Statistics of the curvature $kappa_l$ coarse grained on scale $l$ (multiplied by $l$ ), as measured through direct sampling in the JHU-MHD simulation, for various coarse-graining scales, as indicated. Note that the $y$-axis shows $x p_(kappa_l l) \( x \)$ where $x equiv kappa_l l$. The dotted line shows a scaling $p_(kappa_l l) \( x \) prop x^(- 2.5)$, for reference. (b) Same, for the normalized curvature $hat(kappa)_l l$. The dotted line shows a scaling $p_(hat(kappa)_l l) \( x \) prop x^(- 2.0)$, for reference. See text for details.
+    ],
+  ),
+  kind: "quarto-float-fig",
+  supplement: "Figure",
+)
+<fig-lemoine-curvature>
+
+
+=== Perpendicular Transport
+<perpendicular-transport>
+While parallel transport is relatively well understood, perpendicular (cross-field) transport remains more elusive due to its nonlinear and non-resonant nature @shalchiPerpendicularDiffusionEnergetic2021@costajr.CrossfieldDiffusionEnergetic2013. In the classical picture, cross-field diffusion arises from two mechanisms: the random walk of magnetic field lines, which carries particles across the mean field, and the decorrelation of particles from their original field lines through scattering. The perpendicular diffusion coefficient $kappa_perp$ is typically assumed to be a small fraction of $kappa_parallel$ @giacaloneTransportCosmicRays1999, but this assumption is challenged on two fronts: observations---such as the reservoir effect and the broad longitudinal spread of SEP events---demand significant cross-field transport, and recent simulations show that $kappa_perp$ can be substantial and strongly dependent on particle energy and turbulence structure @dundovicNovelAspectsCosmic2020. The dimensionality of the turbulence also matters @giacaloneChargedParticleMotionMultidimensional1994: in models with at least one ignorable spatial coordinate (e.g., slab geometry), cross-field diffusion is artificially suppressed, omitting essential physics.
+
+The intermittent-scattering framework introduces cross-field mechanisms that go beyond the classical field-line random walk, which dominates cross-field motion in the quasi-linear regime with a strong guide field. In the fold-propagation model of #cite(<kempskiCosmicRayTransport2023>, form: "prose"), particles that demagnetize at fold bends ($Omega lt.double K_parallel c$) drift out via $nabla B$ drift, producing cross-field displacements of order $K_perp^(- 1)$. For particles that do traverse the bend, the field-line random walk provides rigidity-independent perpendicular diffusion with $kappa_B tilde.op c thin l_B$. The relative importance of these two channels depends on the particle energy through the hierarchy of $K_(upright(m a x)) \( r_(L 0) \)$ and $K_(upright(p e a k))$, the latter defined as the $K_perp$ at which $K_perp P \( K_perp \)$ is maximal. For large $r_(L 0)$ with $K_(upright(m a x)) gt.double K_(upright(p e a k))$, resonant-curvature scattering dominates and cross-field transport is rigidity-dependent; for small $r_(L 0)$ with $K_(upright(m a x)) lt.double K_(upright(p e a k))$, the field-line random walk takes over and the perpendicular diffusion becomes independent of particle energy. The transition between these regimes, and the interplay of the two contributions, may produce a $kappa_perp$ with complex energy dependence qualitatively different from the standard $kappa_perp prop kappa_parallel$ scaling.
+
+#cite(<lemoineParticleTransportLocalized2023>, form: "prose") emphasizes a complementary mechanism rooted in the same intermittent structures. The systematic anti-correlation between field-line curvature and magnetic field strength means that non-adiabatic, magnetic-moment-violating interactions occur precisely where the field is weak and inhomogeneous on gyroradius scales. During such interactions, the particle is effectively demagnetized and can jump to a neighbouring field line. Even outside these non-adiabatic regions, strong curvature and $nabla B$ gradients drive perpendicular drifts with velocities $v_D tilde.op v thin r_g \/ \( 3 L \)$ for modes on scale $L > r_g$. While the displacement per interaction is small (\$r\_g l / L \$), the cumulative effect over many scattering events provides an additional source of cross-field transport.
+
+Current sheets deserve particular attention in this context, as they concentrate several of these mechanisms simultaneously. For an idealized one-dimensional force-free current sheet (e.g., a force-free Harris sheet), however, there is no $nabla B$ drift and no field-line random walk---the classical perpendicular transport channels are absent. Nonetheless, the field becomes highly inhomogeneous on scales comparable to or smaller than the gyroradius: particles become unmagnetized and escape their initial field lines. This current-sheet-driven mechanism may constitute a genuinely non-diffusive contribution to cross-field transport.
+
+A quantitative theory of perpendicular transport in the intermittent-scattering regime remains to be developed. The joint statistics of the curvature $kappa$ and the mirror term $m equiv B^(- 1) hat(upright(bold(b))) dot.op \( hat(upright(bold(b))) dot.op nabla \) B$ along field lines are likely correlated---both are large at current sheets---yet their combined influence on perpendicular decorrelation has not been quantified @lemoineParticleTransportLocalized2023. The topology of high-curvature regions, whether they form isolated patches or connected networks, will determine how efficiently successive scattering events translate into macroscopic cross-field diffusion. Furthermore, the non-Brownian character of parallel transport on scales $lt.tilde ell_c$ identified by #cite(<lemoineParticleTransportLocalized2023>, form: "prose") suggests that perpendicular transport may also exhibit anomalous features on sub-coherence-length scales.
+
+=== Evidence for Current Sheet Modulation of SEP Intensity
+<evidence-for-current-sheet-modulation-of-sep-intensity>
+Direct observational evidence for the influence of current sheets on SEP transport comes from studies at both large and small scales. At the large scale of the heliospheric current sheet (HCS), #cite(<liouSolarEnergeticParticle2024>, form: "prose") performed a superposed epoch analysis of 319 HCS crossings observed by the Wind spacecraft, finding a systematic drop in 2--10 MeV/nucleon helium flux at the HCS that was strongest at low energies and diminished at higher energies. They identified 15 individual SEP flux dropout events coinciding with HCS crossings, all originating from western-hemisphere sources at longitudes far from the crossing location---indicating that the HCS severed the magnetic connection between the particle source and the observer. The energy dependence of the dropout fraction is consistent with more effective scattering or blocking of lower-energy particles whose gyroradii are comparable to the current sheet thickness. The transport and drift effects of the HCS have also been characterized through simulation. #cite(<battarbeeSolarEnergeticParticle2017>, form: "prose") integrated fully three-dimensional proton trajectories near an analytically defined flat HCS in the 1--800 MeV range, finding that gradient and curvature drifts along the sheet can carry protons to longitudes far from their injection site---producing multi-component intensity profiles that could be misinterpreted as evidence for multiple injection events---and confirming that the HCS acts as an effective barrier to cross-hemisphere transport. Extending this work to a more realistic geometry, #cite(<battarbeeModelingSolarEnergetic2018>, form: "prose") modeled SEP propagation near a wavy HCS whose position was constrained by fits to magnetic source surface maps. They found that the waviness of the sheet introduces longitudinally periodic enhancements in particle fluence and enables efficient longitudinal transport along the sheet, with the magnitude and spatial distribution of these effects depending sensitively on the IMF polarity configuration (A+ vs.~A−) and the HCS tilt angle.
+
+At smaller scales, #cite(<tesseinEffectCoherentStructures2015>, form: "prose") analyzed over 12 years of ACE observations and found a strong statistical correlation between coherent structures---identified using the partial variance of increments (PVI) method, which detects current sheets and sharp magnetic field gradients---and energetic particle intensity variations in the 0.047--4.78 MeV range. Local PVI maxima frequently coincided with regions of rising or falling particle intensity, suggesting that magnetic discontinuities act as local barriers or modulators of transport. This correlation persisted after removing shock-associated intervals, confirming that the effect is intrinsic to the current sheets rather than a byproduct of shock-related enhancements.
+
+=== Non-Diffusive Transport Effects
+<non-diffusive-transport-effects>
+Beyond classical diffusion, SEP observations and measurements near interplanetary shocks frequently reveal anomalous transport behavior, characterized by subdiffusive or superdiffusive scaling of mean-square displacement with time, $chevron.l Delta x^2 \( t \) chevron.r prop t^alpha$ with $alpha eq.not 1$ @zimbardoSuperdiffusiveSubdiffusiveTransport2006@zimbardoSuperdiffusiveTransportLaboratory2015. These deviations from normal diffusion ($alpha = 1$) are attributed to the intermittent, structured nature of solar wind turbulence and are better captured by generalized frameworks such as fractional diffusion models @del-castillo-negreteNondiffusiveTransportPlasma2005 or Lévy statistics @zaburdaevLevyWalks2015.
+
+The interactions with current sheets have implications that extend beyond modifications to the diffusion coefficients. When pitch-angle changes are dominated by rare but intense jumps rather than continuous weak scattering, the statistical assumptions underlying the diffusion approximation can break down @lemoineParticleTransportLocalized2023. Current sheets can induce non-Markovian memory effects @zimbardoNonMarkovianPitchangleScattering2020: correlations in the spatial arrangement and properties of current sheets mean that scattering at one structure influences both the likelihood and character of scattering at the next. The intermittent, clustered distribution of current sheets in the solar wind naturally generates the heavy-tailed step-size distributions that underlie anomalous transport in both regimes---subdiffusive ($alpha < 1$) when sheets trap particles, and superdiffusive ($alpha > 1$) when intense encounters produce large pitch-angle jumps and correspondingly large spatial displacements.
+
+== Quasi-Adiabatic Dynamics of Charged Particles and Its Destruction in Current Sheets
+<quasi-adiabatic-dynamics-of-charged-particles-and-its-destruction-in-current-sheets>
+=== Adiabatic Motion and Its Breakdown
+<adiabatic-motion-and-its-breakdown>
+A charged particle moving in a magnetic field that varies slowly in space and time possesses an approximate conservation law. The particle gyrates around the magnetic field line with a characteristic frequency---the cyclotron frequency $Omega_c = q B \/ m c$---and a characteristic radius---the gyroradius (or Larmor radius) $rho = v_perp \/ Omega_c$, where $v_perp$ is the velocity component perpendicular to the magnetic field. If the magnetic field changes only gradually over the spatial scale of the gyro-orbit, the particle's magnetic moment
+
+$ mu = frac(m v_perp^2, 2 B) $
+
+is approximately conserved. This quantity, the first adiabatic invariant, is the foundation of guiding-center theory @northropAdiabaticChargedparticleMotion1963, in which the rapid gyromotion is averaged out and the particle is described by the drift of its guiding center along and across the magnetic field. The conservation of $mu$ underlies many fundamental phenomena in space physics, including magnetic mirroring, radiation belt trapping, and the confinement of particles in magnetic bottles.
+
+The key assumption of guiding-center theory is that the magnetic field varies on spatial scales much larger than the particle's gyroradius: $L_B gt.double rho$, where $L_B$ is the characteristic length scale of the field gradient. When a particle encounters a magnetic structure whose thickness $lambda$ is comparable to or smaller than its gyroradius---that is, when $lambda tilde.op rho$---this assumption breaks down. The particle can no longer complete a full gyration within a region of approximately uniform field. The magnetic moment ceases to be conserved, and the guiding-center description fails @escandeBreakdownAdiabaticInvariance2021. This is precisely the situation that arises when energetic particles interact with kinetic-scale current sheets in the solar wind, where the structure thickness is on the order of the ion inertial length $d_i$ or a few ion gyroradii.
+
+A different theoretical framework is needed to describe particle dynamics in this regime. Rather than averaging over the gyromotion (as in guiding-center theory), one must identify the appropriate fast periodic motion for the specific field geometry and construct the corresponding adiabatic invariant. This is the domain of the quasi-adiabatic theory @zelenyiQuasiadiabaticDynamicsCharged2013@whippleAdiabaticTheoryRegions1986, which we now describe.
+
+=== Adiabatic Invariants in Slow--Fast Hamiltonian Systems
+<adiabatic-invariants-in-slowfast-hamiltonian-systems>
+The mathematical foundation for understanding particle motion in current sheets lies in the general theory of slow--fast Hamiltonian systems and their adiabatic invariants. We follow the review by #cite(<neishtadtMechanismsDestructionAdiabatic2019>, form: "prose"), which provides a comprehensive treatment of the mechanisms by which adiabatic invariance can be destroyed.
+
+Consider a Hamiltonian system in which the variables naturally separate into fast and slow degrees of freedom. The fast variables $\( p \, q \)$ oscillate rapidly, while the slow variables $\( y \, x \)$ evolve on a much longer timescale, controlled by a small parameter $epsilon lt.double 1$. The equations of motion take the form
+
+$
+  dot(p) = - frac(partial E, partial q) \, quad dot(q) = frac(partial E, partial p) \, quad dot(y) = - epsilon frac(partial E, partial x) \, quad dot(x) = epsilon frac(partial E, partial y) .
+$
+
+For frozen values of the slow variables, the fast system describes periodic motion. One can then introduce #emph[action-angle variables] $\( I \, phi \)$ for this periodic motion, where the action
+
+$ I = frac(1, 2 pi) integral.cont p thin d q $
+
+is the area enclosed by the orbit in the fast phase plane, divided by $2 pi$. Averaging the equations of motion over the fast phase $phi$ yields the #emph[adiabatic approximation]:
+
+$
+  I = upright("const") \, quad dot(y) = - epsilon frac(partial H_0, partial x) \, quad dot(x) = epsilon frac(partial H_0, partial y) \,
+$
+
+where $H_0 \( I \, y \, x \)$ is the Hamiltonian expressed in terms of the action and slow variables. The action $I$ is an #emph[adiabatic invariant]: it is conserved with accuracy $O \( epsilon \)$ over time intervals of order $1 \/ epsilon$.
+
+Under favorable conditions, conservation can be much better than this. When the system has two degrees of freedom (one fast, one slow) and the phase portrait of the fast system is everywhere filled by closed trajectories (no separatrices), Arnold showed that invariant tori of the exact system fill the energy surface up to a residue of small measure, and the adiabatic invariant is conserved perpetually: $\| I \( t \) - I \( 0 \) \| = O \( epsilon \)$ for all time @arnoldSmallDenominatorsProblems1963. This result has direct physical consequences: it implies, for example, that charged particles can be confined indefinitely in axisymmetric magnetic traps.
+
+=== Separatrix Crossing and Destruction of Adiabatic Invariance
+<separatrix-crossing-and-destruction-of-adiabatic-invariance>
+The situation changes fundamentally when the phase portrait of the fast system contains a #emph[separatrix]---a trajectory that separates topologically distinct regions of phase space. #ref(<fig-neishtadt2019-fig3>, supplement: [Figure]) illustrates the generic structure: a saddle point $C$ in the fast phase plane generates separatrices $l_1$ and $l_2$ that divide the portrait into three domains $G_1$, $G_2$, and $G_3$, each corresponding to a different type of periodic motion. For example, $G_1$ and $G_2$ might correspond to oscillations in two separate potential wells, while $G_3$ corresponds to oscillations spanning both wells.
+
+#figure(
+  [
+    #box(image("figures/ref/neishtadtMechanismsDestructionAdiabatic2019-fig3.png"))
+  ],
+  caption: figure.caption(
+    position: bottom,
+    [
+      Phase portrait of the fast system @neishtadtMechanismsDestructionAdiabatic2019.
+    ],
+  ),
+  kind: "quarto-float-fig",
+  supplement: "Figure",
+)
+<fig-neishtadt2019-fig3>
+
+
+As the slow variables evolve, the phase portrait of the fast system changes shape, and a trajectory that was initially in one domain can be driven toward the separatrix and cross into another domain. This crossing has profound consequences for the adiabatic invariant @tennysonChangeAdiabaticInvariant1986. There are two distinct contributions to its change:
+
++ #strong[Geometrical jump.] When a trajectory crosses from, say, domain $G_3$ (the large outer domain) to $G_1$ (one of the inner domains), the area enclosed by the orbit changes discontinuously---from $S_3 = S_1 + S_2$ to $S_1$. This purely geometric change $Delta I^(upright("geom"))$ is independent of $epsilon$ and is determined entirely by the relative areas of the separatrix loops at the moment of crossing.
+
++ #strong[Dynamical jump.] In addition to the geometric change, the logarithmic divergence of the oscillation period $T$ near the separatrix produces a correction $Delta I^(upright("dyn")) tilde.op epsilon ln epsilon$. The precise value of this correction depends sensitively on the phase of the fast motion at the moment of crossing, parameterized by a variable $xi$. This quantity varies rapidly ($tilde.op 1 \/ kappa$ times faster than the slow evolution) and can be treated as a uniformly distributed random variable $xi in \( 0 \, 1 \)$.
+
+Because the dynamical jump depends sensitively on initial conditions ($O \( epsilon \)$ changes in initial data produce $O \( 1 \)$ relative changes in the jump), the outcome of separatrix crossing is effectively probabilistic. The probability of entering domain $G_i$ after crossing from $G_3$ is $P_i = Theta_i \/ Theta_3$, where $Theta_i = { S_i \, h_c }$ is the Poisson bracket of the area of domain $G_i$ with the value of the Hamiltonian $E$ (energy) at the saddle point $C$. The accumulation of geometrical and dynamical jumps over multiple separatrix crossings destroys the adiabatic invariance and leads to chaotic dynamics.
+
+=== Application to Current Sheets: the Quasi-Adiabatic Invariant
+<application-to-current-sheets-the-quasi-adiabatic-invariant>
+The motion of charged ions in a magnetic field reversal---the configuration of a current sheet---provides the most physically important application of this theory. Consider a current sheet with a reversing field $B_x \( z \) = B_0 \( z \/ L \)$ (where $L$ is the half-thickness), a small normal component $B_z$, and an optional guide field $B_y$. In normalized variables, the Hamiltonian for ion motion takes the form @artemyevIonMotionCurrent2013
+
+$ H = 1 / 2 p_z^2 + 1 / 2 \( p_x - s z \)^2 + 1 / 2 (kappa x - 1 / 2 z^2)^2 \, $
+
+where the two key dimensionless parameters are
+
+$ kappa = B_z / B_0 sqrt(L / rho_0) \, #h(2em) s = B_y / B_0 sqrt(L / rho_0) \, $
+
+with $rho_0 = sqrt(2 h m) c \/ \( q B_0 \)$ being the characteristic Larmor radius for a particle of energy $h$. The parameter $kappa$ controls the separation of timescales: $kappa lt.double 1$ means the coordinate $z$ (normal to the current sheet) oscillates rapidly while $kappa x$ (along the reversing field direction) evolves slowly. For typical ions in the Earth's magnetotail current sheet, $kappa in \[ 0.01 \, 0.1 \]$\; for energetic ions interacting with solar wind current sheets, $kappa$ can range from $tilde.op 0.01$ to $tilde.op 0.3$ depending on the particle energy and current sheet thickness.
+
+The structure of the fast motion in the $\( z \, p_z \)$ plane depends on the instantaneous values of the slow variables $\( kappa x \, p_x \)$. The effective potential energy is
+
+$ U \( z \) = 1 / 2 \( p_x - s z \)^2 + 1 / 2 (kappa x - 1 / 2 z^2)^2 . $
+
+This potential can have either two local minima separated by a maximum (forming two potential wells) or a single minimum (a single well), depending on $\( kappa x \, p_x \)$. The two-well structure corresponds physically to the particle oscillating about a magnetic field line on one side of the current sheet, while the single-well structure corresponds to the particle oscillating across the neutral plane $z = 0$, executing figure-eight-like orbits that span both sides of the sheet.
+
+Since the fast motion is periodic at any frozen value of the slow variables, one can define the quasi-adiabatic invariant
+
+$ I_z = frac(1, 2 pi) integral.cont p_z thin d z \, $
+
+which is the action variable of the fast oscillation. This quantity was first introduced in this context by Büchner and Zelenyi (1986, 1989) and plays a role analogous to the magnetic moment $mu$ of guiding-center theory, but is appropriate for the regime $lambda tilde.op rho$ where guiding-center theory fails. In the adiabatic approximation, $I_z = upright("const")$, and the equation $I_z \( kappa x \, p_x \) = upright("const")$ (at fixed energy $H = h$) determines closed trajectories in the slow-variable plane $\( kappa x \, p_x \)$. These trajectories describe the slow drift of the particle as it oscillates back and forth in $z$.
+
+The boundary between regions of the slow-variable plane corresponding to the two types of fast motion (two wells vs.~one well) is called the #emph[uncertainty curve]. When a particle's trajectory in the $\( kappa x \, p_x \)$ plane reaches the uncertainty curve, the corresponding trajectory in the $\( z \, p_z \)$ plane crosses the separatrix---the particle switches from oscillating on one side of the current sheet to oscillating across both sides, or vice versa. It is at these crossings that the quasi-adiabatic invariant $I_z$ undergoes jumps and the adiabatic approximation breaks down.
+
+=== Symmetric Current Sheets: Slow Diffusion
+<symmetric-current-sheets-slow-diffusion>
+In the simplest and most-studied case---a current sheet without a guide field ($s = 0$)---the phase portrait in the $\( z \, p_z \)$ plane is symmetric about $z = 0$. The two separatrix loops enclose equal areas, $S_l = S_r$, and they grow and shrink in synchrony as the slow variables evolve. As a consequence, the geometrical jumps at two successive separatrix crossings (one entering the single-well regime, one returning to a double-well regime) exactly cancel and do not contribute to stochastization (in other words, geometrical jumps can be absorbed into a factor-of-two renormalization of $I_z$). Only the dynamical jumps remain, and for the symmetric system these take the well-known form @caryAdiabaticinvariantChangeDue1986@buchnerRegularChaoticCharged1989
+
+$ Delta I_z^(upright("dyn")) = - 2 / pi kappa p_x ln \( 2 sin pi xi \) \, $
+
+where $xi in \( 0 \, 1 \)$ is the quasi-random phase variable. Since the average over $xi$ vanishes---$chevron.l Delta I_z^(upright("dyn")) chevron.r_xi = 0$---there is no directed drift in the invariant space. The destruction of $I_z$ proceeds as a diffusive random walk: each jump has amplitude $tilde.op kappa$, jumps occur at intervals $tilde.op 1 \/ kappa$ (one period of slow motion), and the variance accumulates as $chevron.l \( Delta I_z \)^2 chevron.r tilde.op kappa^2 dot.op \( kappa t \)$. A substantial (order-unity) change in $I_z$ therefore requires a time $tilde.op kappa^(- 3)$. For typical magnetotail parameters ($kappa tilde.op 0.05$--0.1), this corresponds to stochastization timescales of tens of minutes---slow, but physically relevant for the lifetime of thin current sheet configurations.
+
+An important phenomenon in the symmetric system is #emph[resonant interaction]. If the phase accumulated between two successive separatrix crossings satisfies a specific condition ($W = pi$, where $W$ is determined by the integral of the fast frequency $Omega_z$ along the adiabatic trajectory), then the two dynamical jumps can exactly compensate: $sum Delta I_z^(upright("dyn")) = 0$. This condition depends on $kappa$ but not on the random variable $xi$, so it can be simultaneously satisfied for an entire population of particles with the appropriate energy. The resulting coherent particle beams ("beamlets") have been observed in the Earth's magnetotail and studied extensively @buchnerRegularChaoticCharged1989.
+
+=== Guide Field Effects on the Quasi-Adiabatic Theory
+<guide-field-effects-on-the-quasi-adiabatic-theory>
+The introduction of a guide field ($B_y eq.not 0$, corresponding to $s eq.not 0$ in the Hamiltonian) breaks the symmetry of the system and profoundly alters the quasi-adiabatic dynamics. #cite(<artemyevIonMotionCurrent2013>, form: "prose") developed the complete quasi-adiabatic theory for arbitrary values of $s$, identifying new types of particle trajectories and new mechanisms of invariant destruction that have no counterpart in the symmetric ($s = 0$) case. We summarize the key results here; the reader is referred to that paper for full details.
+
+==== Modified phase-space structure
+<modified-phase-space-structure>
+In the symmetric system ($s = 0$), the slow-variable plane $\( kappa x \, p_x \)$ is divided into two domains by the uncertainty curve (a half-circle $\( kappa x \)^2 + p_x^2 = 1$, $kappa x > 0$): a domain (t1) where the particle oscillates in one of two symmetric potential wells (motion along field lines on one side of the sheet), and a domain (t2) where the particle oscillates in a single well spanning both sides of the sheet (motion across the neutral plane). The separatrix in the $\( z \, p_z \)$ plane demarcates these two types of motion, and the uncertainty curve is its projection onto the slow-variable plane.
+
+When $s eq.not 0$, the potential $U \( z \)$ loses its symmetry about $z = 0$: the saddle point shifts to $z = z_c eq.not 0$, and the two separatrix loops enclose unequal areas, $S_l eq.not S_r$ (see #ref(<fig-artemyev2013-fig3>, supplement: [Figure]), schematic). Correspondingly, the slow-variable plane acquires a richer structure. Two new domains appear in addition to (t1) and (t2): domain (t2r), where the particle oscillates in a single well #emph[above] the neutral plane ($z > 0$, both solutions of $U = H$ are positive), and domain (t2l), where it oscillates #emph[below] the neutral plane ($z < 0$). In neither of these new domains does the particle cross $z = 0$. Meanwhile, the (t1) domain---the region with two potential wells and a separatrix---shrinks, and the uncertainty curve contracts from a half-circle to a shorter arc. For $s gt.eq 1$, the uncertainty curve (and with it the separatrix) vanishes entirely.
+
+#figure(
+  [
+    #box(image("figures/ref/artemyevIonMotionCurrent2013-fig3.png"))
+  ],
+  caption: figure.caption(
+    position: bottom,
+    [
+      The phase plane of slow variables $\( kappa x \, p_x \)$ is shown for two values of the parameter $s$. Various colours are used for domains with different types of particle motion. Dotted grey lines show the position of energy level $U = 1 \/ 2$.
+    ],
+  ),
+  kind: "quarto-float-fig",
+  supplement: "Figure",
+)
+<fig-artemyev2013-fig3>
+
+
+==== Trajectory types in the current sheet with $B_y$
+<trajectory-types-in-the-current-sheet-with-b_y>
+The trajectories of trapped particles in the current sheet without a guide field are simple: the particle oscillates in one potential well, crosses the separatrix into the single well (performing a half-rotation around $B_z$ in the neutral plane), then crosses back into a potential well. In the $\( kappa x \, p_x \)$ plane this appears as a single closed curve, determined by $I_z = upright("const")$ with a factor-of-two renormalization at the separatrix to account for the doubling of enclosed area ($S_l = S_r$, so $S = 2 S_l$). The motion is simple because the equal areas and synchronous evolution of the two loops ensure that geometrical jumps cancel exactly.
+
+In the system with $B_y eq.not 0$, particle trajectories become qualitatively more complex because the areas $S_l$ and $S_r$ are no longer equal and their rates of change $Theta_l$ and $Theta_r$ are no longer identical. #cite(<artemyevIonMotionCurrent2013>, form: "prose") showed that, as a consequence, the trajectory in the $\( kappa x \, p_x \)$ plane is no longer a single closed curve but a composite object: within each domain, the particle follows a segment of an adiabatic trajectory $I_z \( kappa x \, p_x \) = upright("const")$, but the value of $I_z$ differs from one domain to the next because of the geometrical jumps $Delta I_z^(upright("geom"))$ that occur at each separatrix crossing. The full trajectory is constructed by matching these segments at the uncertainty curve.
+
+A further complication arises from the asynchronous evolution of $S_l$ and $S_r$. At certain points along the uncertainty curve, one loop area is increasing ($Theta_l > 0$) while the other is decreasing ($Theta_r < 0$). At such points, a particle arriving from the (t1) domain has #emph[two possible continuations]: it can cross into the single-well domain (t2), or it can remain in the (t1) domain but switch from the right potential well to the left one (or vice versa). This phenomenon---called #emph[trajectory splitting]---is unique to the asymmetric system. The choice between the two continuations depends on the precise phase of the fast motion at the separatrix crossing, which is effectively random. The probabilities of the two outcomes, $P_l$, $P_r$, and $P = 1 - P_l - P_r$ (capture into the left well, right well, or single well respectively), can be calculated analytically from the rates $Theta_l$ and $Theta_r$ at the crossing point @artemyevIonMotionCurrent2013.
+
+Additionally, when $s eq.not 0$, a new type of transition appears that has no counterpart in the symmetric system: the particle can switch between the left and right potential wells #emph[without crossing the separatrix at all]. This occurs when one well disappears as the slow variables evolve, the particle is carried smoothly to the position of the other well, and a new well reappears. In the $\( kappa x \, p_x \)$ plane, this corresponds to the trajectory going around the end of the uncertainty curve rather than crossing it.
+
+#figure(
+  [
+    #box(image(
+      "figures/ref/artemyevIonMotionCurrent2013-fig4.png",
+      alt: "Trajectory splitting in the (\\kappa x, p_x) plane for s=0.5, showing two possible continuations at the uncertainty curve. Schemes of particle trajectories in systems with s = 0 and with s = 0.5 are shown in the phase plane (\\kappa x, p_x). Fragment of (\\kappa x, p_x) plane with trajectory splitting is shown in separated panel. Bottom schemes (C1, C2, C3) show particle trajectories before (dotted curves) and after (solid curves) separatrix crossings in the plane (z, p_z).",
+    ))
+  ],
+  caption: figure.caption(
+    position: bottom,
+    [
+      Trajectory splitting in the $\( kappa x \, p_x \)$ plane for $s = 0.5$, showing two possible continuations at the uncertainty curve. Schemes of particle trajectories in systems with $s = 0$ and with $s = 0.5$ are shown in the phase plane $\( kappa x \, p_x \)$. Fragment of $\( kappa x \, p_x \)$ plane with trajectory splitting is shown in separated panel. Bottom schemes (C1, C2, C3) show particle trajectories before (dotted curves) and after (solid curves) separatrix crossings in the plane $\( z \, p_z \)$.
+    ],
+  ),
+  kind: "quarto-float-fig",
+  supplement: "Figure",
+)
+
+
+==== Four regimes of particle motion
+<four-regimes-of-particle-motion>
+#cite(<artemyevIonMotionCurrent2013>, form: "prose") identified four distinct regimes of particle dynamics, controlled by the value of $s$:
+
++ #strong[$0 < s < s_(upright("bif")) approx 0.25$]: Only one type of trajectory exists, analogous to (but more complex than) the trajectories of the symmetric system. Particles cross the uncertainty curve multiple times per period of slow motion, with the number of crossings increasing as $s arrow.r 0$. At each crossing, geometrical jumps modify $I_z$, and the trajectory splits into segments matched at the uncertainty curve. Despite this splitting, the total number of crossings is finite and well-prescribed for a given $s$.
+
++ #strong[$s_(upright("bif")) < s < macron(s) approx 0.35$]: A second type of trajectory appears in addition to the first. Trajectories of this new type cross the uncertainty curve only twice (once for $p_x > 0$ and once for $p_x < 0$), and the transition between wells occurs without separatrix crossing. Both trajectory types coexist in this range.
+
++ #strong[$macron(s) < s < 1$]: Only the second type of trajectory survives. The rate $Theta_r$ is negative everywhere along the uncertainty curve, meaning that capture into the right well at the separatrix is impossible. All well-switching occurs without separatrix crossing.
+
++ #strong[$s gt.eq 1$]: The separatrix vanishes entirely ($ell \( s \) = 0$), and with it all geometrical and dynamical jumps. The quasi-adiabatic invariant is exactly conserved in the adiabatic approximation, and the motion is regular. This critical value corresponds to $B_y > B_0 sqrt(L \/ rho_0)$, the same magnetization criterion derived independently by Galeev and Zelenyi (1978). For $s gt.double 1$, the quasi-adiabatic invariant $I_z$ reduces to the ordinary magnetic moment, and the guiding-center theory becomes applicable.
+
+These four regimes are summarized in Table 1 of #cite(<artemyevIonMotionCurrent2013>, form: "prose"). The threshold values $s_(upright("bif")) approx 0.25$ and $macron(s) approx 0.35$ are determined by the geometry of the separatrix loop areas and their evolution rates along the uncertainty curve, while $s = 1$ corresponds to the vanishing of the separatrix itself (the uncertainty curve length $ell \( s \) = 2 arctan sqrt(s^(- 4 \/ 3) - 1) - s^(1 \/ 3) sqrt(s^(2 \/ 3) - s^2)$ reaches zero).
+
+==== Importance of geometrical jumps
+<importance-of-geometrical-jumps>
+A key result of #cite(<artemyevIonMotionCurrent2013>, form: "prose") is the demonstration that, for $s > \( 2 \/ pi \) kappa ln 2$ (i.e., $B_y > 0.44 B_z$), the geometrical jumps dominate over the dynamical jumps in shaping particle trajectories. In this regime, the adiabatic trajectories in the $\( kappa x \, p_x \)$ plane are determined primarily by the geometrical jumps---which are of order unity and independent of $kappa$---rather than by the small dynamical jumps $tilde.op kappa ln kappa$. The dynamical jumps produce only a slow diffusion across these geometrically determined trajectories. For $s < \( 2 \/ pi \) kappa ln 2$, the geometrical jumps become smaller than the dynamical ones and the system behaves effectively like the $s = 0$ case. This separation is the gross features of particle dynamics in a current sheet, with geometrical jumps defining the trajectory structure and dynamical jumps providing the stochastic spreading.
+
+It is important to note that, however, the remaining $z arrow.r - z$, $p_x arrow.r - p_x$ symmetry constrains the possible values of $I_z$ to a finite set: the particle's invariant cycles through a finite number of discrete values, and the trajectories remain closed (though more complex than in the $s = 0$ case). The number of distinct $I_z$ values depends on $s$ and corresponds to the number of uncertainty curve crossings per period of slow motion (which can be counted using the graphical construction in Appendix C of #cite(<artemyevIonMotionCurrent2013>, form: "prose")).
+
+=== Non-adiabatic Effects: Destruction of the Quasi-adiabatic Invariant
+<non-adiabatic-effects-destruction-of-the-quasi-adiabatic-invariant>
+The quasi-adiabatic theory developed in the previous subsections treats the invariant $I_z$ as exactly conserved between separatrix crossings and accounts only for the geometrical jumps at crossings. In reality, $I_z$ is only an approximate invariant: it oscillates with amplitude $tilde.op kappa$ about its mean value even far from the separatrix, and it undergoes both geometrical and dynamical jumps at each separatrix crossing. #cite(<artemyevIonMotionCurrent2013a>, form: "prose") provided a comprehensive analysis of these non-adiabatic effects for the current sheet with sheared magnetic field, deriving analytical expressions for the jumps and quantifying their consequences for particle stochastization. We summarize the key results here.
+
+Understanding the nature, magnitude, and statistics of these jumps is essential for this thesis, because the destruction of $I_z$ is physically equivalent to pitch-angle scattering: $I_z$ determines the particle's oscillation amplitude in the current sheet, which in turn determines its pitch angle relative to the local magnetic field. A jump in $I_z$ therefore corresponds directly to a change in pitch angle, and the rate of $I_z$ destruction determines the pitch-angle diffusion rate.
+
+==== The improved quasi-adiabatic invariant and its jumps
+<the-improved-quasi-adiabatic-invariant-and-its-jumps>
+Far from the separatrix, one can construct an #emph[improved quasi-adiabatic invariant] $J = I_z + kappa u \( z \, p_z \, kappa x \, p_x \)$, where $u$ is a correction function defined at each point of the four-dimensional phase space (except on the separatrix itself). The improved invariant $J$ is conserved with accuracy $tilde.op kappa^2$, compared to the accuracy $tilde.op kappa$ of the original $I_z$. This improvement is important because it isolates the true non-adiabatic behavior---the jumps at separatrix crossings $Delta J = Delta J^(upright("geom")) + Delta J^(upright("dyn"))$---from the oscillatory variations that occur during regular motion. It is through the accumulation of these jumps over multiple separatrix crossings that the quasi-adiabatic invariant is destroyed and particle motion becomes chaotic.
+
+==== Nonzero mean dynamical jump and accelerated stochastization
+<nonzero-mean-dynamical-jump-and-accelerated-stochastization>
+For the symmetric system ($s = 0$), the well-known expression for the dynamical jump is $Delta J^(upright("dyn")) = - 2 / pi kappa p_x ln \( 2 sin pi xi \) .$ For the asymmetric system ($s eq.not 0$), the expressions for $Delta J^(upright("dyn"))$ are considerably more complex. #cite(<artemyevIonMotionCurrent2013a>, form: "prose") derived the full expressions for the dynamical jumps using the general formulas of #cite(<neishtadtChangeAdiabaticInvariant1987>, form: "prose") (the derivation is detailed in Appendix A of that paper). The key difference from the symmetric case is that the expressions involve the #emph[individual] rates of evolution $Theta_l$ and $Theta_r$ (rather than their sum) and the ratio $tilde(theta) = Theta_r \/ Theta_l$, which parameterizes the asymmetry. All these parameters are functions of the crossing point along the uncertainty curve, and their asymmetry produces a nonzero $chevron.l Delta J^(upright("dyn")) chevron.r_xi$ at each crossing.
+
+The physical consequence of $chevron.l Delta J^(upright("dyn")) chevron.r_xi eq.not 0$ is profound: it introduces a #emph[directed drift] in the invariant space, superimposed on the diffusive spreading from the random component. The stochastization timescale is then set by the drift rather than the diffusion. Each separatrix crossing changes $I_z$ by $tilde.op kappa$ on average (rather than zero on average), and crossings occur at intervals $tilde.op 1 \/ kappa$ (one period of slow motion in the $\( kappa x \, p_x \)$ plane). An order-unity change in $I_z$ therefore requires only $tilde.op 1 \/ kappa$ crossings, taking a total time $tilde.op kappa^(- 2)$---compared to $tilde.op kappa^(- 3)$ for the symmetric system where only diffusion operates. For the Earth's magnetotail with $kappa tilde.op 0.05$--0.1, this reduces the stochastization timescale from tens of minutes to a few minutes. It should be noted that the conservation of phase-space volume (Liouville's theorem) imposes a constraint: the double average $chevron.l chevron.l Delta J^(upright("dyn")) chevron.r chevron.r_(I_z)$ over the entire particle population must vanish. That is, while individual values of $I_z$ experience a nonzero mean drift, the net effect over the full distribution is a #emph[redistribution] of invariants without the appearance of net fluxes in phase space. The presence of current sheet boundaries at $\| z \| = lambda$ can, however, break this constraint and produce a net drift in the invariant space @zelenyiSplittingThinCurrent2003.
+
+==== Geometrical chaotization: rapid destruction independent of $kappa$
+<geometrical-chaotization-rapid-destruction-independent-of-kappa>
+While the nonzero mean dynamical jump accelerates stochastization from $kappa^(- 3)$ to $kappa^(- 2)$, an even faster mechanism exists when the system possesses a fully broken symmetry. As discussed in the quasi-adiabatic theory, the Hamiltonian with $s eq.not 0$ retains a residual symmetry: invariance under the combined transformation $z arrow.r - z$, $p_x arrow.r - p_x$. As a result, the net change in $I_z$ after one full period of slow motion is determined by the dynamical jumps alone.
+
+#cite(<artemyevRapidGeometricalChaotization2014>, form: "prose") showed that when this residual symmetry is also broken---for example, by a cross-sheet electric field $epsilon$ that adds a term $tilde.op - s z u_d$ to the Hamiltonian (where $u_d = epsilon \/ kappa$ is the drift velocity)---the trajectories in the $\( kappa x \, p_x \)$ plane become asymmetric about $p_x = 0$. The surfaces of constant energy in the four-dimensional phase space that correspond to the two separatrix loops now project onto #emph[different] (shifted) domains in the $\( kappa x \, p_x \)$ plane. Consequently, the two successive geometrical jumps no longer compensate: $sum Delta I_z^(upright("geom")) eq.not 0$.
+
+The critical feature of this mechanism is that each geometrical jump $Delta I_z^(upright("geom"))$ is of order unity---it equals the difference of the areas of the two separatrix loops, which is a geometric property of the phase portrait and does not depend on $kappa$. This means that even for arbitrarily small $kappa$ (arbitrarily thin current sheets or arbitrarily energetic particles), a #emph[single pair] of separatrix crossings produces an $O \( 1 \)$ change in $I_z$. The particle trajectory in the slow-variable plane jumps between widely separated adiabatic curves, and after only a few separatrix crossings the trajectory fills a large domain, with the adiabatic invariant completely destroyed.
+
+#cite(<artemyevRapidGeometricalChaotization2014>, form: "prose") termed this mechanism #emph[geometrical chaotization] (an immediate, large-scale redistribution of $I_z$ values) to distinguish it from the much slower #emph[diffusive chaotization] (a gradual Gaussian spreading of $I_z$ distributions with width growing as $sqrt(t)$) produced by dynamical jumps. Numerical integration of $10^5$ test particle trajectories confirmed that the width of the $I_z$ distribution after ten separatrix crossings is dramatically broader in the fully asymmetric system (3) than in either the symmetric case (1) or the partially symmetric case (2; $s eq.not 0$ but no electric field). As shown in #ref(<fig-Iz-distributions-comparison>, supplement: [Figure]), system (3) has a broad, nearly uniform distribution over a wide range of $I_z$ values (complete invariant destruction) while system (1) peaks narrowly at $I_z \/ I_(z \, upright("init")) = 1$ (slow diffusion) and system (2) splits into a few discrete peaks (the finite number of possible $I_z$ values due to geometrical jumps with compensating sums).
+
+#figure(
+  [
+    #box(image("figures/ref/artemyevRapidGeometricalChaotization2014-fig3.png"))
+  ],
+  caption: figure.caption(
+    position: bottom,
+    [
+      Distribution of $I_z$ values for an ensemble of $10^5$ trajectories after 10 separatrix crossings: (a) $s = 0$, $epsilon = 0$\; (b) $s = 0.15$, $epsilon = 0$\; (c) $s = 0.15$, $epsilon = 0.003$. All with $kappa = 0.01$. From #cite(<artemyevRapidGeometricalChaotization2014>, form: "prose").
+    ],
+  ),
+  kind: "quarto-float-fig",
+  supplement: "Figure",
+)
+<fig-Iz-distributions-comparison>
+
+
+==== Current sheet dynamics: particle reflection, transmission and resonance
+<current-sheet-dynamics-particle-reflection-transmission-and-resonance>
+These non-adiabatic effects also have several physically important consequences for current sheet dynamics. The guide field introduces an asymmetry in particle reflection and transmission at the current sheet boundaries. #cite(<artemyevIonMotionCurrent2013a>, form: "prose") showed that for $B_y > 0$, particles approaching from the Southern Hemisphere ($z > 0$) are increasingly likely to transit through the sheet rather than be reflected, with transition becoming certain for $s > 0.35$ (i.e., $B_y > 0.35 B_0 sqrt(L \/ rho_0)$). Particles from the Northern Hemisphere ($z < 0$), by contrast, cross the sheet without any scattering for $s > \( pi^(- 1) ln 2 \) kappa$, because the uncertainty curve shrinks and these particles never encounter the separatrix. This directional asymmetry of current sheet interaction has implications for asymmetric auroral precipitation and for the self-consistent equilibrium of current sheets with finite guide fields.
+
+The finite guide field also destroys the resonant condition under which two successive dynamical jumps can exactly compensate---a condition that, in the symmetric case, produces coherent beamlets of accelerated particles. For $s > \( pi^(- 1) ln 2 \) kappa$, the resonance condition, $sum Delta I_z^(upright("dyn")) = 0$, cannot be simultaneously satisfied for a large particle population. Moreover, the dependence of the integral $W$ on $I_z$ steepens with increasing $s$, so that even if the resonance condition is satisfied at one value of $I_z$, particles with slightly different invariants are far from resonance. The coherent beamlet structures predicted for the symmetric system are thus disrupted.
+
+=== Application to Force-Free Solar Wind Current Sheets: Superfast Scattering
+<application-to-force-free-solar-wind-current-sheets-superfast-scattering>
+The theoretical framework described above was applied to energetic ion scattering by solar wind discontinuities by #cite(<artemyevSuperfastIonScattering2020>, form: "prose"). The key observation motivating that work is that the internal magnetic field structure of observed solar wind current sheets differs in an important way from the idealized models previously considered. In observed compressionless (force-free) discontinuities, the reversal of the maximum-variance component $B_l$ is accompanied by a peak in the intermediate-variance component $B_m$, such that $\| B \| approx upright("const")$ across the structure (as shown earlier in #ref(<fig-ness1966-fig6>, supplement: [Figure]) and confirmed statistically by #cite(<vaskoKineticscaleCurrentSheets2022>, form: "prose")). This $B_m$ peak was absent from earlier Hamiltonian models of ion--current sheet interaction, which assumed either $B_m = 0$ (pure field reversal) or $B_m = upright("const")$ (uniform guide field).
+
+To account for this observed field configuration, #cite(<artemyevSuperfastIonScattering2020>, form: "prose") modeled the discontinuity magnetic field as $B_l approx B_0 \( r_n \/ L \)$, $B_n = upright("const")$, $B_m = sqrt(B_0^2 - B_l^2) approx B_0 \( 1 - r_n^2 \/ 2 L^2 \)$, which in the normalized Hamiltonian introduces a cubic term:
+
+$ H = 1 / 2 p_z^2 + 1 / 2 (p_x - z + z^3 / 6)^2 + 1 / 2 (kappa x - z^2 / 2)^2 . $
+
+The $z^3 \/ 6$ term, which encodes the $B_m$ peak, breaks the symmetry of the phase portrait in the $\( z \, p_z \)$ plane. This is the essential difference from the $p_x^2 \/ 2$ term (no $B_m$\; pure compressional discontinuity) or the $\( p_x - z \)^2 \/ 2$ term (constant $B_m$\; uniform guide field) used in previous studies. As demonstrated by the theory of geometrical chaotization @artemyevRapidGeometricalChaotization2014, this asymmetry generates large geometrical jumps $Delta I_z tilde.op 1$ at each separatrix crossing, producing very fast destruction of the adiabatic invariant.
+
+This result has several important implications for energetic particle transport in the solar wind:
+
+First, the scattering rate (measured in the slow time $kappa t$) is independent of $kappa = \( B_n \/ B_0 \) sqrt(L \/ rho)$. Since $kappa$ determines whether a discontinuity is classified as rotational (finite $B_n$) or tangential ($B_n arrow.r 0$), this means that the distinction between RDs and nearly-TDs is irrelevant for the efficiency of ion scattering, provided the $B_m$ peak is present. In a solar wind containing multiple discontinuities, the timescale between successive scattering events is determined by the occurrence rate of discontinuities rather than by $kappa$, further reducing the importance of $B_n$.
+
+Second, the condition for strong scattering is $L tilde.op rho$, which can be rewritten in terms of particle energy as $h \/ T_i tilde.op beta_i \( L \/ d_p \)^2$. For the most intense kinetic-scale discontinuities observed in the solar wind ($L \/ d_p in \[ 1 \, 10 \]$) and typical plasma conditions ($beta_i in \[ 0.1 \, 10 \]$), this condition is satisfied for essentially the entire suprathermal ion population. The mechanism is therefore expected to operate broadly.
+
+Third, test particle simulations confirmed that in the presence of the $B_m$ peak, initially narrow distributions in both $I_z$ and pitch angle broaden rapidly---within a few separatrix crossings---to fill a broad range. In contrast, when the $B_m$ peak is absent ($B_m = 0$), the distributions remain narrowly peaked around their initial values, consistent with the much slower diffusive destruction of $I_z$ in the symmetric system. The effect is robust for $B_m \/ B_0 > 0.75$, which encompasses the majority of observed force-free discontinuities.
+
+The identification of this "superfast" scattering mechanism establishes that kinetic-scale current sheets in the solar wind are not merely passive structures but active agents of energetic particle scattering. This mechanism is expected to shape the observed low-anisotropy ion distributions at 1 AU and to contribute significantly to cross-field transport of energetic particle populations. The quantitative characterization of this scattering---including the derivation of analytical pitch-angle diffusion coefficients informed by observed current sheet parameters---forms one of the central contributions of this thesis and is developed in the following chapters.
+
+== Summary and Open Questions
+<summary-and-open-questions-1>
+This chapter has established the theoretical and observational foundation for understanding energetic particle scattering by solar wind current sheets. We summarize the key points and identify the open questions that motivate the work presented in this thesis.
+
+Solar wind turbulence is highly intermittent, with magnetic energy concentrating into current sheets whose thickness overlaps with the gyroradii of suprathermal and energetic ions. When a particle's gyroradius is comparable to the sheet thickness, guiding-center theory fails and the quasi-adiabatic invariant $I_z$ governs the dynamics instead of the magnetic moment $mu$. This invariant is destroyed at separatrix crossings through two mechanisms: dynamical jumps, which drive slow diffusion on a timescale $tilde.op kappa^(- 3)$ (or $tilde.op kappa^(- 2)$ with a guide field), and geometrical jumps, which in asymmetric field configurations---including the force-free current sheets most commonly observed in the solar wind---produce order-unity changes in $I_z$ within a single gyration. This #emph[geometrical chaotization] constitutes a superfast scattering mechanism for energetic particles.
+
+Observationally, current sheets modulate SEP intensities at both large and small scales. The heliospheric current sheet acts as a barrier to cross-hemisphere transport and drives systematic flux dropouts whose energy dependence is consistent with gyroradius-scale interactions. At kinetic scales, coherent magnetic structures are statistically correlated with sharp variations in energetic particle intensity. Together, these observations confirm that current sheets are not passive features of the background medium but active agents of particle scattering and transport.
+
+Several important questions remain open and motivate the work in this thesis.
+
+#strong[Pitch-angle diffusion coefficients from current sheet parameters.] While the superfast scattering mechanism has been demonstrated theoretically and confirmed in test-particle simulations, a quantitative analytical expression for $D_(mu mu)$ as a function of particle energy and current sheet parameters has not yet been derived. Such an expression---informed by the observed statistical distributions of magnetic field configurations---is needed to incorporate current-sheet scattering into heliospheric transport models and constitutes a central goal of this thesis.
+
+#strong[Perpendicular transport and cross-field diffusion.] The role of current sheets in cross-field transport remains largely unexplored. Near current sheets, the magnetic field varies on scales comparable to or smaller than the gyroradius, enabling enhanced transfer of particles between field lines through a mechanism distinct from field-line random walk. The anti-correlation between large curvature and weak magnetic field strength @yangRoleMagneticField2019@kempskiCosmicRayTransport2023 further suggests that particles undergoing magnetic moment-violating interactions are simultaneously more likely to hop between field lines---a potentially important source of perpendicular transport that deserves systematic study in the solar wind context.

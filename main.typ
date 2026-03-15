@@ -1,22 +1,54 @@
+#import "@local/uclathesis:0.1.0": uclathesis
+#import "@preview/cmarker:0.1.8"
 
-== Thesis Organization
-<thesis-organization>
-The overall goal of this thesis is to quantify and model the impact of solar wind current sheets on energetic particle transport. This research is structured around two primary objectives:
+#let citet(..citation) = cite(..citation, form: "prose")
 
-- Observational characterization of solar wind current sheets across the heliosphere
+#show: uclathesis.with(
+  title: [Kinetic-scale solar wind current sheets: statistical characteristics and their role in energetic particle transport],
+  author: "Zijin Zhang",
+  degree: "Doctor of Philosophy",
+  major: "Your Major",
+  year: 2026,
+  doc-type: "dissertation", // or "thesis" for master's
+  committee-chair: "Vassilis Angelopoulos",
+  committee-members: (
+    "Anton Artemyev",
+    "Marco Velli",
+    "Hao Cao",
+  ),
+  abstract: [Your abstract text here.],
+  bibliography: bibliography("research.bib"),
+  acknowledgments: [
+    Acknowledgments must be included if any of the following apply; otherwise, they are optional.
+  ],
+  dedication: [],
+)
 
-- Development of data-driven theoretical models for current sheet-induced particle scattering and transport
+#include "_intro.typ"
 
-This thesis is organized into three main parts, progressing from observational characterization of solar wind current sheets, to their impact on energetic particle transport, and finally to methodological and modeling developments that support and extend the primary scientific results.
+#pagebreak()
 
-= Acknowledgments
-<acknowledgments>
-== Thesis Organization
-<thesis-organization>
-The overall goal of this thesis is to quantify and model the impact of solar wind current sheets on energetic particle transport. This research is structured around two primary objectives:
+#include "_review_current_sheet.typ"
 
-- Observational characterization of solar wind current sheets across the heliosphere
+#pagebreak()
 
-- Development of data-driven theoretical models for current sheet-induced particle scattering and transport
+#include "_review_energetic_particles.typ"
 
-This thesis is organized into three main parts, progressing from observational characterization of solar wind current sheets, to their impact on energetic particle transport, and finally to methodological and modeling developments that support and extend the primary scientific results.
+#pagebreak()
+
+#include "_juno.typ"
+
+#pagebreak()
+
+#include "_psp.typ"
+
+#pagebreak()
+
+#include "_scattering.typ"
+
+#pagebreak()
+
+#include "_summary.typ"
+
+#pagebreak()
+
