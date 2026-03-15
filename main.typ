@@ -1,4 +1,4 @@
-#import "@local/uclathesis:0.1.0": uclathesis
+#import "lib.typ": uclathesis
 #import "@preview/cmarker:0.1.8"
 
 #let citet(..citation) = cite(..citation, form: "prose")
