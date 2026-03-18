@@ -9,7 +9,7 @@ Historically, SWDs were thought to originate inside 1 AU, probably near or at th
 The annihilation mechanisms for these discontinuities are also uncertain. They may be unstable and some could rapidly wane or decay @neugebauerTangentialDiscontinuitiesSolar1986. Magnetic reconnection may be a a natural process that destroys them @goslingMagneticReconnectionSolar2012@wilsonParticleincellSimulationsCollisionless2016@phanParkerSolarProbe2020.
 Further complicating this picture is the presence of different types of discontinuities in interplanetary space - specifically tangential and rotational discontinuities @neugebauerCommentAbundancesRotational2006@artemyevKineticPropertiesSolar2019@wangSolarWindCurrent2024, which are classically regarded as static solutions to the MHD equations @hudsonDiscontinuitiesAnisotropicPlasma1970. These distinct types may arise from different sources and may undergo unique evolutionary paths. Investigating discontinuities across large radial distances has the potential to address these fundamental questions about their origin and evolution.
 
-Discontinuities have long been recognized as key signatures of intermittency in solar wind turbulence, where they contribute to the non-Gaussian character of magnetic field fluctuations @borovskyContributionStrongDiscontinuities2010@grecoPartialVarianceIncrements2017. Often localized at kinetic scales, these discontinuities are central to understanding solar wind heating and how energy cascades from larger MHD scales down to ion and electron scales @osmanIntermittencyLocalHeating2012@tesseinAssociationSuprathermalParticles2013. In particular, #cite(<tesseinAssociationSuprathermalParticles2013>, form: "prose") used ACE data to show that intense magnetic discontinuities are more strongly correlated with suprathermal particles than interplanetary shocks, indicating that multiple mechanisms, including localized coherent structures, can accelerate these suprathermals. Likewise, #cite(<osmanIntermittencyLocalHeating2012>, form: "prose") found that although coherent structures constitute only 19% of the data, they contribute around 50% of the total plasma internal energy, underscoring the importance of intermittent heating in current sheets. Numerical simulations further reinforce these observations: #cite(<dmitrukTestParticleEnergization2004>, form: "prose") demonstrated that electrons tend to be energized along discontinuities by parallel electric fields, whereas protons gain perpendicular energy from large-scale velocity shears, offering a multiscale picture of how discontinuities drive local heating. Observations also suggest that magnetic reconnection in discontinuities (effectively 1D current sheets) is associated with localized plasma heating @goslingMagneticReconnectionSolar2012. From a theoretical standpoint, numerous studies and MHD simulations have linked the formation and destruction of discontinuities to the nonlinear dynamics of Alfvén waves and Alfvénic turbulence @lerchePropagationMagneticDisturbances1975@medvedevDissipativeDynamicsCollisionless1997@grecoIntermittentMHDStructures2008@yangFormationRotationalDiscontinuities2015, producing strong departures from the otherwise adiabatic evolution of solar wind flow @matteiniIonKineticsSolar2012@tsurutaniReviewAlfvenicTurbulence2018. Indeed, spacecraft observations reveal that the solar wind's magnetic field follows the Parker model only on average @svirzhevskyHeliosphericMagneticField2021, whereas localized current sheets, often far more intense than Parker theory predicts, are ubiquitous @colburnDiscontinuitiesSolarWind1966@burlagaMicroscaleStructuresInterplanetary1968@turnerOrientationsRotationalTangential1971. Consequently, understanding how the thickness, current density, and other properties of SWDs evolve with radial distance from the Sun is crucial for revealing their role in solar wind thermodynamics and turbulence. Addressing whether these discontinuities maintain their kinetic-scale character (e.g., remain a few ion inertial lengths wide) and whether their current density weakens in tandem with the radial drop in magnetic field can help constrain theories of their local generation, annihilation, and their overall impact on energy dissipation throughout the heliosphere.
+Discontinuities have long been recognized as key signatures of intermittency in solar wind turbulence, where they contribute to the non-Gaussian character of magnetic field fluctuations @borovskyContributionStrongDiscontinuities2010@grecoPartialVarianceIncrements2017. Often localized at kinetic scales, these discontinuities are central to understanding solar wind heating and how energy cascades from larger MHD scales down to ion and electron scales @osmanIntermittencyLocalHeating2012@tesseinAssociationSuprathermalParticles2013. In particular, #cite(<tesseinAssociationSuprathermalParticles2013>, form: "prose") used ACE data to show that intense magnetic discontinuities are more strongly correlated with suprathermal particles than interplanetary shocks, indicating that multiple mechanisms, including localized coherent structures, can accelerate these suprathermals. Likewise, #cite(<osmanIntermittencyLocalHeating2012>, form: "prose") found that although coherent structures constitute only 19% of the data, they contribute around 50% of the total plasma internal energy, underscoring the importance of intermittent heating in current sheets. Numerical simulations further reinforce these observations: #cite(<dmitrukTestParticleEnergization2004>, form: "prose") demonstrated that electrons tend to be energized along discontinuities by parallel electric fields, whereas protons gain perpendicular energy from large-scale velocity shears, offering a multi-scale picture of how discontinuities drive local heating. Observations also suggest that magnetic reconnection in discontinuities (effectively 1D current sheets) is associated with localized plasma heating @goslingMagneticReconnectionSolar2012. From a theoretical standpoint, numerous studies and MHD simulations have linked the formation and destruction of discontinuities to the nonlinear dynamics of Alfvén waves and Alfvénic turbulence @lerchePropagationMagneticDisturbances1975@medvedevDissipativeDynamicsCollisionless1997@grecoIntermittentMHDStructures2008@yangFormationRotationalDiscontinuities2015, producing strong departures from the otherwise adiabatic evolution of solar wind flow @matteiniIonKineticsSolar2012@tsurutaniReviewAlfvenicTurbulence2018. Indeed, spacecraft observations reveal that the solar wind's magnetic field follows the Parker model only on average @svirzhevskyHeliosphericMagneticField2021, whereas localized current sheets, often far more intense than Parker theory predicts, are ubiquitous @colburnDiscontinuitiesSolarWind1966@burlagaMicroscaleStructuresInterplanetary1968@turnerOrientationsRotationalTangential1971. Consequently, understanding how the thickness, current density, and other properties of SWDs evolve with radial distance from the Sun is crucial for revealing their role in solar wind thermodynamics and turbulence. Addressing whether these discontinuities maintain their kinetic-scale character (e.g., remain a few ion inertial lengths wide) and whether their current density weakens in tandem with the radial drop in magnetic field can help constrain theories of their local generation, annihilation, and their overall impact on energy dissipation throughout the heliosphere.
 
 Investigation of the evolution of SWD properties with radial distance (or alternatively, investigation of properties of SWD generation at different radial distances) has mostly been limited to comparison of SWD statistics obtained from different missions during varying phases of solar activity @marianiVariationsOccurrenceRate1973@tsurutaniInterplanetaryDiscontinuitiesTemporal1979@sodingRadialLatitudinalDependencies2001. However, the data used in these studies were rarely compared with measurements at fixed radial distances, and the methods employed to identify discontinuities were not necessarily optimized for studying discontinuities with weak magnetic fields and long durations, such as those encountered at large radial distances. Furthermore, some measurements at different radial distances were significantly separated in time, with limited time ranges covered @sodingRadialLatitudinalDependencies2001. Consequently, there are still some ambiguities in interpreting the results of these studies. For example, it is unclear how much of the observed variation in SWD properties is caused by radial distance itself versus changing solar wind conditions.
 This study presents a statistical analysis of discontinuities observed from Earth's orbit ($tilde.op 1$ AU) to Jupiter's orbit ($tilde.op 5$ AU). We utilize data collected by the Juno spacecraft @boltonJunoMission2017 during its cruise phases (2011-2016), with its orbits shown in Panel (a) of #ref(<fig-overview>, supplement: [Figure]). Our primary goal is to investigate the radial dependence of the SWD occurrence rate and properties to gain insights into their evolution and origin. Continuous measurements of SWDs at 1 AU from missions such as Wind @acunaGlobalGeospaceScience1995, ARTEMIS @angelopoulosARTEMISMission2011, and STEREO @kaiserSTEREOMissionIntroduction2008 have been utilized to distinguish temporal effects from spatial variations by examining the characteristics of discontinuities at two radial distances ($1$ AU and at Juno location) simultaneously. This distinction is crucial because temporal variations could easily be misinterpreted as spatial variations @tsurutaniInterplanetaryDiscontinuitiesTemporal1979. Due to the potential misidentification of the SWD normal direction with single spacecraft @hausmanDeterminingNatureOrientation2004@liuFailuresMinimumVariance2023@wangSolarWindCurrent2024, we do not differentiate between shocks and different types of discontinuities, whether they are tangential, rotational, or either @neugebauerReexaminationRotationalTangential1984.
@@ -160,29 +160,19 @@ Panels (a,c) show that the thickness increases with radial distance. However, af
 #ref(<fig-windDistribution>, supplement: [Figure]) presents the thickness and current density distributions of the SWDs observed by 1-AU satellites (Wind, ARTEMIS, and STEREO-A) during the five-year Juno cruise phase. They are grouped by year of observation. Panels (a,c) show that the distributions of the thickness and normalized thickness of SWDs remain almost constant with the year of observation. Most discontinuities have thicknesses around 350-3500 km at $1$ AU, with the most probable value around 1000 km. Panel (b) shows that the current density increases slightly with the year of observation, with the most probable value remaining around $5 #h(0em) upright("nA") \/ upright("m")^2$, consistent with previous studies @vaskoKineticscaleCurrentSheets2022. However, the year-to-year variation is weak and lies well within the overall variance of the distribution. This modest trend may be associated with gradual changes in solar wind conditions over the solar cycle, as illustrated in #ref(<fig-swParameters>, supplement: [Figure]). Toward solar minimum, the average magnetic field strength and the fitted magnetic field associated with discontinuities tend to increase slightly, but these changes are not statistically significant. Consequently, a weak upward trend in current density is observed. This pattern suggests that the apparent increase in current density and Alfvénic current density may reflect broader solar cycle variations while the normalized current density remains statistically stable, as shown in #ref(<fig-windDistribution>, supplement: [Figure])\(d).
 
 #figure(
-  [
-    #box(image("figures/juno/juno_distribution_r_sw.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/juno/juno_distribution_r_sw.pdf"),
+  caption: [
       Distribution of various properties of SWDs observed by Juno, grouped by radial distance from the Sun (with color coding shown at the top). The label data indicates distributions calculated using solar wind properties from JADE observations rather than model predictions. Panels show: (a) discontinuity thickness, (b) current density, (c) normalized thickness, and (d) normalized current density.
-    ],
-  )
+    ]
 )
 <fig-junoDistribution>
 
 
 #figure(
-  [
-    #box(image("figures/juno/wind_distribution_time.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/juno/wind_distribution_time.pdf"),
+  caption: [
       Distribution of various properties of SWDs observed by 1-AU satellites (Wind, ARTEMIS and STEREO-A), grouped by the year of observation (with colors shown at the top). Panel (a) thickness, (b) current density, (c) normalized thickness, (d) normalized current density.
-    ],
-  )
+    ]
 )
 <fig-windDistribution>
 
@@ -229,32 +219,23 @@ These findings provide key observational constraints for future models of SWD ge
 
 == Appendix
 <appendix>
-This appendix includes #ref(<fig-juno_sw_comparison>, supplement: [Figure]), which compares solar wind properties between model predictions and JADE observations. It also contrasts discontinuity properties derived using normal directions obtained from the cross-product method and the minimum variance analysis (MVA). In addition, #ref(<fig-TEffect>, supplement: [Figure]) evaluates the sensitivity of our SWD detection method across a wide range of radial distances $r$, by analyzing newly identified discontinuities for various values of the temporal parameter $T$, ranging from $20$ to $60$ seconds. The figure highlights how the relative percentage of detected discontinuities varies with radial distance for each $T$.
+
+This appendix includes @fig-juno_sw_comparison, which compares solar wind properties between model predictions and JADE observations. It also contrasts discontinuity properties derived using normal directions obtained from the cross-product method and the minimum variance analysis (MVA). In addition, @fig-TEffect evaluates the sensitivity of our SWD detection method across a wide range of radial distances $r$, by analyzing newly identified discontinuities for various values of the temporal parameter $T$, ranging from $20$ to $60$ seconds. The figure highlights how the relative percentage of detected discontinuities varies with radial distance for each $T$.
 
 #figure(
-  [
-    #box(image("figures/juno/fig_juno_sw_comparision.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/juno/fig_juno_sw_comparision.pdf"),
+  caption: [
       \(a-d) Comparison of solar wind properties between the model (x-axis) and JADE observations (y-axis): velocity (a), density (b), temperature (c), and plasma beta (d). (e-h) Comparison of discontinuity properties between the model and JADE observations: thickness (e), current density (f), normalized thickness (g), and normalized current density (h). The blue dots represent values derived using the cross-product normal method, while the yellow dots correspond to those obtained using the minimum variance analysis (MVA). (i-j) Scatter plots directly comparing discontinuity thickness (i) and current density (j), with values from the cross-product method on the y-axis and those from MVA on the x-axis.
-    ],
-  )
+    ]
 )
 <fig-juno_sw_comparison>
 
 
 #figure(
-  [
-    #box(image("figures/juno/juno_T_r.pdf"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/juno/juno_T_r.pdf"),
+  caption: [
       The relative percentage of events as a function of radial distance (in AU) for different values of the parameter $T$ (20s, 30s, 40s, 50s, and 60s). At a given radial distance, we remove duplicate discontinuities identified across multiple datasets with different values of the parameter $T$. Specifically, discontinuities identified at lower $T$ values are excluded from datasets with higher $T$ values. Subsequently, we calculate the relative percentage of discontinuities, normalized to the total number of discontinuities identified across all $T$ values.
-    ],
-  )
+    ]
 )
 <fig-TEffect>
 

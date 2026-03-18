@@ -1,3 +1,4 @@
+#import "utils.typ": citet
 
 = Observations of Solar Wind Current Sheets
 <observations-of-solar-wind-current-sheets>
@@ -5,21 +6,15 @@ This chapter reviews the observational landscape of solar wind current sheets @t
 
 == From MHD Discontinuities to Kinetic-Scale Current Sheets
 <from-mhd-discontinuities-to-kinetic-scale-current-sheets>
-Early observations from the Pioneer 6 mission revealed that the direction of the IMF is highly variable, an unexpected finding at the time @nessPreliminaryResultsPioneer1966. As shown in #ref(<fig-ness1966-fig6>, supplement: [Figure]), on hour-long timescales, these abrupt directional changes are clearly distinguishable from the comparatively quiet background in which the magnetic field evolves slowly. Such rapid variations in the magneto-plasma parameters were recognized as fundamental solar wind features @colburnDiscontinuitiesSolarWind1966 and were identified as magnetohydrodynamic discontinuities---spatial boundaries separating two distinct plasma regions.
+Early observations from the Pioneer 6 mission revealed that the direction of the IMF is highly variable, an unexpected finding at the time @nessPreliminaryResultsPioneer1966. As shown in @fig-ness1966-fig6, on hour-long timescales, these abrupt directional changes are clearly distinguishable from the comparatively quiet background in which the magnetic field evolves slowly. Such rapid variations in the magneto-plasma parameters were recognized as fundamental solar wind features @colburnDiscontinuitiesSolarWind1966 and were identified as magnetohydrodynamic discontinuities---spatial boundaries separating two distinct plasma regions.
 
 MHD theory permits such discontinuities but constrains the changes allowed across them through the Rankine--Hugoniot jump conditions. The early solar wind measurements spurred the development of theory for anisotropic plasmas @hudsonDiscontinuitiesAnisotropicPlasma1970. Five distinct types are possible, the most relevant here being tangential discontinuities (TDs), rotational discontinuities (RDs), and shocks (relatively rare in the solar wind). Classifying observed discontinuities as RDs or TDs attracted considerable early research interest because the distinction carries physical implications for the topology of the IMFs @knetterNewPerspectiveSolar2005. A TD separates two topologically distinct plasma regions with no field-normal component, whereas an RD is a propagating structure that connects magnetically linked regions. This distinction has consequences for energetic particle diffusion coefficients and bears on possible generation mechanisms operating in the solar corona. The relative abundance of RDs and TDs in the solar wind has been the subject of longstanding debate @smithIdentificationInterplanetaryTangential1973@neugebauerReexaminationRotationalTangential1984@neugebauerCommentAbundancesRotational2006.
 
 #figure(
-  [
-    #box(image("figures/ref/nessPreliminaryResultsPioneer1966-fig6.png"))
-  ],
-  caption: figure.caption(
-    position: bottom,
-    [
+  image("figures/ref/nessPreliminaryResultsPioneer1966-fig6.png"),
+  caption: [
       Two-hour example of 1-minute averages of the interplanetary magnetic field for which the magnitude is average, but the direction is highly variable and principally inclined at large angles ($theta approx 90^compose$) to the ecliptic plane @nessPreliminaryResultsPioneer1966
-    ],
-  ),
-  supplement: "Figure",
+    ]
 )
 <fig-ness1966-fig6>
 
@@ -77,44 +72,39 @@ A key point that must be emphasized at the outset is that statistical properties
 To process the vast amounts of spacecraft data, various automated identification algorithms have been developed. #ref(<tbl-identification-methods>, supplement: [Table]) summarizes the primary quantitative criteria utilized in the literature.
 
 #figure(
-  [
-    #table(
+ table(
       columns: (15.69%, 23.53%, 33.33%, 27.45%),
       align: (auto, auto, auto, auto),
       table.header([Method], [Description], [Method Reference], [Applications]),
       table.hline(),
       [Directional change],
       [Change in the direction of #strong[B]],
-      [#cite(<burlagaDirectionalDiscontinuitiesInterplanetary1969>, form: "prose")],
-      [#cite(<sodingRadialLatitudinalDependencies2001>, form: "prose")],
+      [#citet(<burlagaDirectionalDiscontinuitiesInterplanetary1969>)],
+      [#citet(<sodingRadialLatitudinalDependencies2001>)],
       [Relative field change],
       [Relative change in magnetic field #strong[B]],
-      [#cite(<tsurutaniInterplanetaryDiscontinuitiesTemporal1979>, form: "prose")],
-      [#cite(<sodingRadialLatitudinalDependencies2001>, form: "prose")],
+      [#citet(<tsurutaniInterplanetaryDiscontinuitiesTemporal1979>)],
+      [#citet(<sodingRadialLatitudinalDependencies2001>)],
       [Correlation / angle distribution],
       [Two-time correlation functions and distribution of angle change over a time lag],
-      [#cite(<liIdentifyingCurrentSheetlikeStructures2007>, form: "prose")],
-      [#cite(<liAreThereCurrentsheetlike2008>, form: "prose")],
+      [#citet(<liIdentifyingCurrentSheetlikeStructures2007>)],
+      [#citet(<liAreThereCurrentsheetlike2008>)],
       [PVI],
       [Partial Variance of Increments],
-      [#cite(<grecoPartialVarianceIncrements2017>, form: "prose")],
-      [#cite(<vaskoKineticscaleCurrentSheets2021>, form: "prose")\; #cite(
-          <vaskoKineticscaleCurrentSheets2022>,
-          form: "prose",
-        )\; #cite(<vaskoKineticScaleCurrentSheets2024>, form: "prose")],
+      [#citet(<grecoPartialVarianceIncrements2017>)],
+      [#citet(<vaskoKineticscaleCurrentSheets2021>); #citet(<vaskoKineticscaleCurrentSheets2022>,); #citet(<vaskoKineticScaleCurrentSheets2024>)],
       [Relative standard deviation],
       [Relative standard deviation of #strong[B]],
-      [#cite(<liuMagneticDiscontinuitiesSolar2022>, form: "prose")],
-      [#cite(<zhangSolarWindDiscontinuities2025a>, form: "prose")],
+      [#citet(<liuMagneticDiscontinuitiesSolar2022>)],
+      [#citet(<zhangSolarWindDiscontinuities2025a>)],
     )
-  ],
+  ,
   caption: figure.caption(
     position: top,
     [
       Summary of current sheet identification methods used in the literature.
     ],
   ),
-  kind: "quarto-float-tbl",
   supplement: "Table",
 )
 <tbl-identification-methods>
@@ -134,8 +124,7 @@ This conclusion is further reinforced by #cite(<lotekarKineticscaleCurrentSheets
   image("figures/ref/vaskoKineticScaleCurrentSheets2024-fig4.png"),
   caption: [
       Probability and cumulative distributions of parameters $Delta B \/ 〈 B 〉$, $Delta B_max \/ 〈 B 〉$ and $Delta B \/ 〈 B 〉 Delta theta$ for subsets of the current sheets (CSs) observed at different plasma betas, $β < 1$ and $β > 3$. The bottom panels also present the cumulative distributions corresponding to all the CSs in our data set. Note that parameter $Delta B \/ 〈 B 〉 Delta theta$ quantifies the ratio between average perpendicular and parallel current densities within CS.
-    ],
-  supplement: "Figure",
+    ]
 )
 <fig-vasko2024-fig4>
 
@@ -308,6 +297,6 @@ Despite this progress, several important questions remain open and motivate the 
 
 #strong[Multi-scale nature, distinct sub-populations, and their origins.] Current sheets span a vast range of spatial scales, and it is plausible that structures at different scales originate from different physical mechanisms --- for example, coronal flux-tube boundaries, nonlinear Alfvén wave steepening, or turbulence-driven intermittency. Furthermore, these distinct populations may follow different evolutionary paths as they propagate outward with the solar wind. Observational evidence already hints at such differentiation: the RD-to-TD ratio declines steeply inside 0.5 AU, pointing to fundamentally different generation mechanisms and lifetimes for the two classes. Yet at kinetic scales, the classical TD/RD distinction becomes blurred, as individual structures frequently exhibit signatures of both types simultaneously. Identifying physically meaningful sub-populations within the current sheet ensemble, characterizing their properties, and tracking their evolution with heliocentric distance remains an important challenge.
 
-#strong[Interaction with energetic particles.] The spatial scales of kinetic-scale current sheets --- comparable to the gyroradii of energetic particles in the keV to MeV range --- place them in a regime where adiabatic particle motion breaks down. The cumulative effect of encounters with such structures on pitch-angle scattering, cross-field transport, and particle energization is not yet quantitatively understood from an observational standpoint. Establishing the statistical framework of current sheet properties is a necessary prerequisite for addressing these transport questions, which will be taken up in later chapters.
+#strong[Interaction with energetic particles.] The spatial scales of kinetic-scale current sheets --- comparable to the gyro-radii of energetic particles in the keV to MeV range --- place them in a regime where adiabatic particle motion breaks down. The cumulative effect of encounters with such structures on pitch-angle scattering, cross-field transport, and particle energization is not yet quantitatively understood from an observational standpoint. Establishing the statistical framework of current sheet properties is a necessary prerequisite for addressing these transport questions, which will be taken up in later chapters.
 
 These questions collectively define the motivation for the analyses presented in the following chapters, where we develop and apply a consistent methodology for identifying and characterizing current sheets across heliocentric distances, and examine their implications for both solar wind turbulence and energetic particle dynamics.

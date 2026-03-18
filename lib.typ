@@ -429,7 +429,7 @@
 
   // List of Tables (if any tables exist)
   context {
-    let tbls = query(figure.where(kind: table))
+    let tbls = query(figure.where(kind: table)) + query(figure.where(kind: "quarto-float-table"))
     if tbls.len() > 0 {
       outline(
         title: [List of Tables],
