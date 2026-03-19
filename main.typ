@@ -33,4 +33,10 @@
 
 #include "_scattering.typ"
 
+#include "_transport.typ"
+
+#include "_multifluid.typ"
+
+#include "_spedas.typ"
+
 #include "_summary.typ"
