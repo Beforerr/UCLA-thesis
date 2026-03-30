@@ -27,8 +27,7 @@ Likewise, Speasy.jl provides access to the AMDA database and other supported ser
 Complementing archive-specific interfaces, the ecosystem also supports the Heliophysics Application Programming Interface (HAPI), a modern, standardized protocol for dataset discovery and access. HAPI enables browsing of distributed data catalogs, retrieval of parameter metadata, and streaming of time series data from heterogeneous web services, independent of the underlying archive implementation. #ref(<tbl-data-access>, supplement: [Table]) summarizes the data access interfaces supported by the ecosystem.
 
 #figure(
-  [
-    #table(
+  table(
       columns: (31.51%, 26.03%, 23.97%, 18.49%),
       align: (auto, auto, auto, auto),
       table.header([Data source / service], [Scope], [Julia package], [Data delivery]),
@@ -44,16 +43,13 @@ Complementing archive-specific interfaces, the ecosystem also supports the Helio
       [#NormalTok("HAPIClient.jl");],
       [Streamed arrays],
       [SunPy], [Solar observatories & VO services], [#NormalTok("SunPy.jl");], [FITS / mission formats],
-    )
-  ],
+    ),
   caption: figure.caption(
     position: top,
     [
       Data Access Interfaces in the JuliaSpacePhysics Ecosystem. All retrieved data files are cached locally to support efficient reuse and reproducible workflows.
     ],
-  ),
-  kind: "quarto-float-tbl",
-  supplement: "Table",
+  )
 )
 <tbl-data-access>
 
@@ -110,7 +106,7 @@ Building on this strategy, a core design principle of the JuliaSpacePhysics ecos
 
 The development of this interoperability layer initially focused on enabling access to existing analysis workflows provided by the Python-based SPEDAS framework @grimesSpacePhysicsEnvironment2022. Early implementations emphasized lightweight wrappers that allowed Julia users to invoke SPEDAS functionality directly. As these hybrid workflows were applied in active research, however, performance bottlenecks and architectural constraints became apparent---particularly for large-scale, iterative analyses. (For example, although PySPEDAS heavily depends on the numpy arrays or xarray objects, the interface it exposed to users is a string where corresponding data is stored in global objects). These limitations, together with evolving requirements for extensibility, motivated a gradual expansion beyond a pure wrapper model. Over time, Julia-native components were introduced to complement existing tools, leading to a system that selectively diverges from, rather than mirrors, its Python counterparts.
 
-Within the ecosystem, several packages provide thin, idiomatic Julia interfaces to widely used external libraries. For Python-based tools, packages such as Speasy.jl and SunPy.jl expose core functionality directly to Julia users, enabling access to established virtual observatories and data services. In these workflows, Python is typically used for data discovery and retrieval, while the resulting data arrays are transferred into Julia for subsequent processing. Utilizing the fast non-copying conversion of numeric arrays from Python to Julia in PythonCall.jl, the overhead of data transfer is neglible. This approach avoids unnecessary reimplementation of complex access logic while enabling integration with fast Julia libraries. The conceptual similarity between Julia and Python further reduces friction, allowing users to adopt these tools with minimal syntactic adaptation.
+Within the ecosystem, several packages provide thin, idiomatic Julia interfaces to widely used external libraries. For Python-based tools, packages such as Speasy.jl and SunPy.jl expose core functionality directly to Julia users, enabling access to established virtual observatories and data services. In these workflows, Python is typically used for data discovery and retrieval, while the resulting data arrays are transferred into Julia for subsequent processing. Utilizing the fast non-copying conversion of numeric arrays from Python to Julia in PythonCall.jl, the overhead of data transfer is negligible. This approach avoids unnecessary re-implementation of complex access logic while enabling integration with fast Julia libraries. The conceptual similarity between Julia and Python further reduces friction, allowing users to adopt these tools with minimal syntactic adaptation.
 Besides python-based tools, #link("https://github.com/JuliaSpacePhysics/IRBEM.jl")[#NormalTok("IRBEM.jl");] packages provide native bindings to established Fortran libraries while simplifying installation and cross-platform distribution through Julia's package and binary management infrastructure. These interfaces expose both low-level library calls and higher-level abstractions suitable for interactive data analysis, enabling magnetic field models and coordinate transformations to be incorporated naturally into Julia workflows.
 
 #ref(<fig-sunpy>, supplement: [Figure]) presents a sample use case of contour detection of 2D images map for AIA data using SunPy.jl. In this workflow,
@@ -133,56 +129,46 @@ A representative and nontrivial example is the Julia implementation of moment ca
 
 Similarly, a matrix-based plasma wave dispersion solver---originally developed in MATLAB---has been fully translated into open-source Julia implementations @zhangJuliaSpacePhysicsGeoCotransjl2026@baiBOKMComprehensiveSolver2025@xieEfficientFrameworkSolving2025@xiePDRFGeneralDispersion2014. In addition to achieving performance improvements of approximately a factor of two, the Julia version introduces a unified interface supporting multiple solver formulations, including multi-fluid models, arbitrary or analytic kinetic distributions, and analytic Product-Bi-Kappa distributions. This unified design simplifies switching between physical models and significantly reduces code duplication, improving both usability and long-term maintainability.
 
-Comparable improvements are observed across a broad range of commonly used analysis tasks (see #ref(<tbl-speedup>, supplement: [Table]) for a summary of representative benchmarks). Coordinate transformations are approximately an order of magnitude faster than Fortran-based IRBEM routines @boscherPRBEMIRBEM2022 and up to twenty times faster than their PySPEDAS counterparts. Minimum variance analysis achieves speedups of up to three orders of magnitude relative to Python implementations while also generalizing naturally to arbitrary dimensionality. Wave polarization analysis is accelerated by approximately 250× compared to PySPEDAS @santolikSingularValueDecomposition2003 benefiting from parallelization and optimized memory management that reduce repeated allocations and redundant computations. Magnetic field model evaluations for Tsyganenko models are 100--250× faster than geopack @tsyganenkoMagnetosphericMagneticField1989, in part through lazy interpolation strategies. ulti-spacecraft analysis workflows, including spatial gradient estimation @paschmannMultispacecraftAnalysisMethods2008, similarly exhibit speedups of roughly two orders of magnitude by minimizing heap allocations and leveraging fused linear algebra operations. Across the JuliaSpacePhysics ecosystem, performance improvements of one to two orders of magnitude are typical for core computational routines, reflecting a combination of just-in-time compilation, algorithmic refactoring, reduced memory allocation, and effective parallel execution.
+Comparable improvements are observed across a broad range of commonly used analysis tasks (see #ref(<tbl-speedup>, supplement: [Table]) for a summary of representative benchmarks). Coordinate transformations are approximately an order of magnitude faster than Fortran-based IRBEM routines @boscherPRBEMIRBEM2022 and up to twenty times faster than their PySPEDAS counterparts. Minimum variance analysis achieves speedups of up to three orders of magnitude relative to Python implementations while also generalizing naturally to arbitrary dimensionality. Wave polarization analysis is accelerated by approximately 250× compared to PySPEDAS @santolikSingularValueDecomposition2003 benefiting from parallelization and optimized memory management that reduce repeated allocations and redundant computations. Magnetic field model evaluations for Tsyganenko models are 100--250× faster than geopack @tsyganenkoMagnetosphericMagneticField1989, in part through lazy interpolation strategies. Multi-spacecraft analysis workflows, including spatial gradient estimation @paschmannMultispacecraftAnalysisMethods2008, similarly exhibit speedups of roughly two orders of magnitude by minimizing heap allocations and leveraging fused linear algebra operations. Across the JuliaSpacePhysics ecosystem, performance improvements of one to two orders of magnitude are typical for core computational routines, reflecting a combination of just-in-time compilation, algorithmic refactoring, reduced memory allocation, and effective parallel execution.
 
 #figure(
-  [
-    #table(
-      columns: (35.71%, 23.38%, 16.23%, 17.53%, 7.14%),
+  table(
+      columns: (35.71%, 43.38%, 16.23%, 10%),
       align: (auto, auto, auto, auto, auto),
-      table.header([Analysis Task], [Julia Package], [Reference Implementation], [Typical Data Size], [Speedup (×)]),
+      table.header([Analysis Task], [Julia Package], [Reference Implementation], [Speedup (×)]),
       table.hline(),
       [Moment calculation (density, velocity, pressure tensor)],
       [#NormalTok("VelocityDistributionFunctions.jl");],
       [PySPEDAS (NumPy-based)],
-      [3D VDF, time series],
       [\~100×],
       [Minimum variance analysis (MVA)],
       [#NormalTok("MinimumVarianceAnalysis.jl");],
       [PySPEDAS],
-      [Multi-component time series],
       [\~1000×],
       [Coordinate transformations],
       [#NormalTok("GeoCotrans.jl"); / #NormalTok("IRBEM.jl");],
       [IRBEM (Fortran), PySPEDAS],
-      [Large time series],
       [10--20×],
       [Wave polarization analysis],
       [#NormalTok("WaveAnalysis.jl");],
       [PySPEDAS],
-      [High-cadence waveform data],
       [\~250×],
       [Tsyganenko magnetic field models],
       [#NormalTok("Tsyganenko.jl"); (via IRBEM bindings)],
       [geopack],
-      [Large trajectory arrays],
       [100--250×],
-      [Plasma wave dispersion solver], [Julia dispersion solver], [MATLAB version], [k--ω grid sweep], [\~2×],
+      [Plasma wave dispersion solver], [Julia dispersion solver], [MATLAB version], [\~2×],
       [Multi-spacecraft gradient estimation],
       [#NormalTok("MultiSpacecraftAnalysis.jl");],
       [PySPEDAS],
-      [4-spacecraft time series],
       [\~100×],
-    )
-  ],
+    ),
   caption: figure.caption(
     position: top,
     [
       Performance comparison between Julia-native implementations in the JuliaSpacePhysics ecosystem and commonly used reference implementations. Benchmarks were performed on identical datasets and hardware. Reported speedups represent median wall-clock runtime ratios (reference / Julia) over multiple runs.
     ],
-  ),
-  kind: "quarto-float-tbl",
-  supplement: "Table",
+  )
 )
 <tbl-speedup>
 
