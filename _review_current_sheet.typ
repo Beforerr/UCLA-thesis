@@ -1,7 +1,7 @@
 #import "utils.typ": citet
 
-= Observations of Solar Wind Current Sheets
-<observations-of-solar-wind-current-sheets>
+= Introduction: Observations of Solar Wind Current Sheets
+
 This chapter reviews the observational landscape of solar wind current sheets @tsurutaniReviewDiscontinuitiesAlfven1999@neugebauerProgressStudyInterplanetary2010@khabarovaCurrentSheetsPlasmoids2021, tracing their study from the earliest spacecraft measurements to the high-cadence, multi-point observations available today. The review is organized as follows. We begin by recounting how abrupt magnetic field rotations were first recognized as magnetohydrodynamic discontinuities and how subsequent high-resolution measurements revealed their fundamentally kinetic character. We then discuss the analysis methods used to determine current sheet orientation and thickness, with particular attention to the strengths and limitations of single-spacecraft and multi-spacecraft techniques. The bulk of the chapter is devoted to the statistical properties of current sheets --- their identification, magnetic field configuration, spatial scales, current densities, occurrence rates, Alfvénicity, and orientation --- as established by surveys spanning from the inner heliosphere to beyond 5 AU. Throughout, we emphasize the extent to which reported statistics depend on the identification method employed, a recurring theme that must be kept in mind when comparing results across studies. The chapter concludes by identifying several open questions that motivate the work presented in subsequent chapters.
 
 == From MHD Discontinuities to Kinetic-Scale Current Sheets

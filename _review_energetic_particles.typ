@@ -1,8 +1,7 @@
 #import "utils.typ": citet
 #let equation-numbering = "(1)"
 
-= Energetic Particle Interaction with Solar Wind Current Sheets
-<energetic-particle-interaction-with-solar-wind-current-sheets>
+= Introduction: Energetic Particle Interaction with Solar Wind Current Sheets
 
 The transport of energetic particles through the heliosphere is governed not only by the large-scale structure of the interplanetary magnetic field, but also by the small-scale, intermittent structures embedded within it @ewartCosmicrayTransportInhomogeneous2025@engelbrechtTheoryCosmicRay2022@oughtonSolarWindTurbulence2021@vandenbergPrimerFocusedSolar2020. Chief among these are current sheets---thin layers of intense current and rapid magnetic field rotation that occupy a small fraction of the heliospheric volume yet exert a disproportionate influence on particle dynamics. This chapter reviews the theoretical and observational foundations necessary to understand how energetic particles interact with these structures, with particular focus on the mechanisms by which current sheets scatter particles in pitch angle and modulate their transport through the heliosphere.
 
