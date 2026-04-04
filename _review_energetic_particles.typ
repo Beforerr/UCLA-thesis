@@ -368,7 +368,7 @@ Solar wind turbulence is highly intermittent, with magnetic energy concentrating
 
 Observationally, current sheets modulate SEP intensities at both large and small scales. The heliospheric current sheet acts as a barrier to cross-hemisphere transport and drives systematic flux dropouts whose energy dependence is consistent with gyroradius-scale interactions. At kinetic scales, coherent magnetic structures are statistically correlated with sharp variations in energetic particle intensity. Together, these observations confirm that current sheets are not passive features of the background medium but active agents of particle scattering and transport.
 
-Several important questions remain open and motivate the work in this thesis.
+Several important questions remain open and motivate the work in @quantification-of-particle-scattering-by-solar-wind-current-sheets-pitch-angle-diffusion-rates and @energetic-particle-transport-driven-by-solar-wind-current-sheets.
 
 *Pitch-angle diffusion coefficients from current sheet parameters.* While the superfast scattering mechanism has been demonstrated theoretically and confirmed in test-particle simulations, a quantitative analytical expression for $D_(mu mu)$ as a function of particle energy and current sheet parameters has not yet been derived. Such an expression---informed by the observed statistical distributions of magnetic field configurations---is needed to incorporate current-sheet scattering into heliospheric transport models and constitutes a central goal of this thesis.
 
