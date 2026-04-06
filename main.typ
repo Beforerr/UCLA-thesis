@@ -28,11 +28,14 @@
   dedication: [],
 )
 
+// Chapter 1: Introduction (general intro + review subsections + thesis organization)
 #include "_intro.typ"
-
-#include "_review_current_sheet.typ"
-
-#include "_review_energetic_particles.typ"
+#include "_thesis_org.typ"
+#[
+  #set heading(offset: 1)
+  #include "_review_current_sheet.typ"
+  #include "_review_energetic_particles.typ"
+]
 
 #include "_juno.typ"
 

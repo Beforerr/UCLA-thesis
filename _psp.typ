@@ -2,8 +2,6 @@
 #pagebreak()
 = Comparison of Solar Wind Current Sheets in the Inner Heliosphere
 <comparison-of-solar-wind-current-sheets-in-the-inner-heliosphere>
-== Introduction
-<introduction-1>
 Current sheets are ubiquitous mesoscale structures in the solar wind, where the magnetic field changes direction abruptly over ion-scale thicknesses; whereas their lateral extents can exceed typical magnetohydrodynamic (MHD) scales @zhdankinStatisticalAnalysisCurrent2013. They are most readily identified by sharp magnetic-field rotations, but can also be evident in simultaneous changes of plasma density, bulk velocity, and temperature @colburnDiscontinuitiesSolarWind1966@sodingRadialLatitudinalDependencies2001@shenComparingPlasmaAnisotropy2024a.
 
 In turbulent solar wind plasmas, current sheets are widely recognized as signatures of intermittency, contributing to the non-Gaussian nature of magnetic field fluctuations and localized energy dissipation @borovskyContributionStrongDiscontinuities2010@grecoPartialVarianceIncrements2017. They play a crucial role in mediating the transfer of energy across scales, from large-scale MHD fluctuations down to ion and electron kinetic scales, and are believed to be important sites of plasma heating and particle acceleration @osmanIntermittencyLocalHeating2012@tesseinAssociationSuprathermalParticles2013.
