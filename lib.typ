@@ -296,6 +296,9 @@
   // Heading styles
   set heading(numbering: "1.1")
   set heading(supplement: [Chapter])
+  show heading.where(level: 2): set heading(supplement: [Section])
+  show heading.where(level: 3): set heading(supplement: [Subsection])
+  show heading.where(level: 4): set heading(supplement: [Subsection])
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
     v(0.5in)
@@ -311,6 +314,7 @@
   }
   show heading.where(level: 2): it => {
     v(1.5em)
+    set heading(supplement: [Section])
     set text(size: 12pt, weight: "bold")
     if it.numbering != none {
       counter(heading).display()

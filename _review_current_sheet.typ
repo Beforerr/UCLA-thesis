@@ -11,10 +11,10 @@ Early observations from the Pioneer 6 mission revealed that the direction of the
 MHD theory permits such discontinuities but constrains the changes allowed across them through the Rankine--Hugoniot jump conditions. The early solar wind measurements spurred the development of theory for anisotropic plasmas @hudsonDiscontinuitiesAnisotropicPlasma1970. Five distinct types are possible, the most relevant here being tangential discontinuities (TDs), rotational discontinuities (RDs), and shocks (relatively rare in the solar wind). Classifying observed discontinuities as RDs or TDs attracted considerable early research interest because the distinction carries physical implications for the topology of the IMFs @knetterNewPerspectiveSolar2005. A TD separates two topologically distinct plasma regions with no field-normal component, whereas an RD is a propagating structure that connects magnetically linked regions. This distinction has consequences for energetic particle diffusion coefficients and bears on possible generation mechanisms operating in the solar corona. The relative abundance of RDs and TDs in the solar wind has been the subject of longstanding debate @smithIdentificationInterplanetaryTangential1973@neugebauerReexaminationRotationalTangential1984@neugebauerCommentAbundancesRotational2006.
 
 #figure(
-  image("figures/ref/nessPreliminaryResultsPioneer1966-fig6.png"),
+  image("figures/ref/nessPreliminaryResultsPioneer1966-fig6.png", height: 70%),
   caption: [
-      Two-hour example of 1-minute averages of the interplanetary magnetic field for which the magnitude is average, but the direction is highly variable and principally inclined at large angles ($theta approx 90^compose$) to the ecliptic plane @nessPreliminaryResultsPioneer1966
-    ]
+    Two-hour example of 1-minute averages of the interplanetary magnetic field for which the magnitude is average, but the direction is highly variable and principally inclined at large angles ($theta approx 90^compose$) to the ecliptic plane @nessPreliminaryResultsPioneer1966
+  ],
 )
 <fig-ness1966-fig6>
 
@@ -26,8 +26,8 @@ Recent observations from multiple missions have confirmed that many solar wind c
 #figure(
   image("figures/ref/artemyevKineticNatureSolar2019-fig3.jpg"),
   caption: [
-      Discontinuity observations by two ARTEMIS (at ∼ 07:38:00 and ∼ 07:38:30) and the MMS 1 (at ∼ 07:53:00) spacecraft. (a) The magnetic field $B_l$ (left axis) and plasma velocity $v_l$ (right axis). (b1 and b2) The electron density $n_e$ (left axis) and temperature $T_e$ (right axis). (c1, c2, d1, and d2) The electron pitch angle distributions for two energy ranges. (e1 and e2) The electron flux anisotropy.
-    ]
+    Discontinuity observations by two ARTEMIS (at ∼ 07:38:00 and ∼ 07:38:30) and the MMS 1 (at ∼ 07:53:00) spacecraft. (a) The magnetic field $B_l$ (left axis) and plasma velocity $v_l$ (right axis). (b1 and b2) The electron density $n_e$ (left axis) and temperature $T_e$ (right axis). (c1, c2, d1, and d2) The electron pitch angle distributions for two energy ranges. (e1 and e2) The electron flux anisotropy.
+  ],
 )
 <fig-artemyevKineticNatureSolar2019-fig3>
 
@@ -63,7 +63,7 @@ Beyond providing more accurate normals, multi-spacecraft observations have revea
 
 #cite(<sodingMinimumVarianceAnalysis1999>, form: "prose") proposed a method to determine the orientation and propagation velocity of two-dimensional structures using two-spacecraft data under the assumption of a steady-state, divergence-free magnetic field. While no clear 2D structures were identified on the \~10-hour scales examined with Wind and IMP-8, the method established a framework for probing departures from planarity at smaller scales. #cite(<tehLocalStructureDirectional2011>, form: "prose") subsequently demonstrated with Grad--Shafranov reconstruction that directional discontinuities can contain internal magnetic islands, making them irreducible to simple TD or RD classifications and underscoring the importance of accounting for multidimensional geometry when interpreting spacecraft crossings.
 
-== Statistical surveys and identification methods
+== Statistical Surveys and Identification Methods
 <statistical-surveys-and-identification-methods>
 Following the initial discovery of solar wind current sheets, research shifted toward systematic statistical surveys @tsurutaniReviewDiscontinuitiesAlfven1999@neugebauerProgressStudyInterplanetary2010. This section reviews general statistical properties and the methods used to identify current sheets. Parameters central to understanding both their physical nature and their dynamical influence on energetic particles --- magnetic field configuration, spatial scale #ref(<sec-scale_density>, supplement: [Section]), and occurrence rate #ref(<sec-occurrence-rate>, supplement: [Section]) --- are discussed in the subsequent sections.
 
@@ -72,33 +72,34 @@ A key point that must be emphasized at the outset is that statistical properties
 To process the vast amounts of spacecraft data, various automated identification algorithms have been developed. #ref(<tbl-identification-methods>, supplement: [Table]) summarizes the primary quantitative criteria utilized in the literature.
 
 #figure(
- table(
-      columns: (15.69%, 23.53%, 33.33%, 27.45%),
-      align: (auto, auto, auto, auto),
-      table.header([Method], [Description], [Method Reference], [Applications]),
-      table.hline(),
-      [Directional change],
-      [Change in the direction of #strong[B]],
-      [#citet(<burlagaDirectionalDiscontinuitiesInterplanetary1969>)],
-      [#citet(<sodingRadialLatitudinalDependencies2001>)],
-      [Relative field change],
-      [Relative change in magnetic field #strong[B]],
-      [#citet(<tsurutaniInterplanetaryDiscontinuitiesTemporal1979>)],
-      [#citet(<sodingRadialLatitudinalDependencies2001>)],
-      [Correlation / angle distribution],
-      [Two-time correlation functions and distribution of angle change over a time lag],
-      [#citet(<liIdentifyingCurrentSheetlikeStructures2007>)],
-      [#citet(<liAreThereCurrentsheetlike2008>)],
-      [PVI],
-      [Partial Variance of Increments],
-      [#citet(<grecoPartialVarianceIncrements2017>)],
-      [#citet(<vaskoKineticscaleCurrentSheets2021>); #citet(<vaskoKineticscaleCurrentSheets2022>,); #citet(<vaskoKineticScaleCurrentSheets2024>)],
-      [Relative standard deviation],
-      [Relative standard deviation of #strong[B]],
-      [#citet(<liuMagneticDiscontinuitiesSolar2022>)],
-      [#citet(<zhangSolarWindDiscontinuities2025a>)],
-    )
-  ,
+  table(
+    columns: (15.69%, 23.53%, 33.33%, 27.45%),
+    align: (auto, auto, auto, auto),
+    table.header([Method], [Description], [Method Reference], [Applications]),
+    table.hline(),
+    [Directional change],
+    [Change in the direction of #strong[B]],
+    [#citet(<burlagaDirectionalDiscontinuitiesInterplanetary1969>)],
+    [#citet(<sodingRadialLatitudinalDependencies2001>)],
+    [Relative field change],
+    [Relative change in magnetic field #strong[B]],
+    [#citet(<tsurutaniInterplanetaryDiscontinuitiesTemporal1979>)],
+    [#citet(<sodingRadialLatitudinalDependencies2001>)],
+    [Correlation / angle distribution],
+    [Two-time correlation functions and distribution of angle change over a time lag],
+    [#citet(<liIdentifyingCurrentSheetlikeStructures2007>)],
+    [#citet(<liAreThereCurrentsheetlike2008>)],
+    [PVI],
+    [Partial Variance of Increments],
+    [#citet(<grecoPartialVarianceIncrements2017>)],
+    [#citet(<vaskoKineticscaleCurrentSheets2021>); #citet(<vaskoKineticscaleCurrentSheets2022>); #citet(
+        <vaskoKineticScaleCurrentSheets2024>,
+      )],
+    [Relative standard deviation],
+    [Relative standard deviation of #strong[B]],
+    [#citet(<liuMagneticDiscontinuitiesSolar2022>)],
+    [#citet(<zhangSolarWindDiscontinuities2025>)],
+  ),
   caption: figure.caption(
     position: top,
     [
@@ -123,8 +124,8 @@ This conclusion is further reinforced by #cite(<lotekarKineticscaleCurrentSheets
 #figure(
   image("figures/ref/vaskoKineticScaleCurrentSheets2024-fig4.png"),
   caption: [
-      Probability and cumulative distributions of parameters $Delta B \/ 〈 B 〉$, $Delta B_max \/ 〈 B 〉$ and $Delta B \/ 〈 B 〉 Delta theta$ for subsets of the current sheets (CSs) observed at different plasma betas, $β < 1$ and $β > 3$. The bottom panels also present the cumulative distributions corresponding to all the CSs in our data set. Note that parameter $Delta B \/ 〈 B 〉 Delta theta$ quantifies the ratio between average perpendicular and parallel current densities within CS.
-    ]
+    Probability and cumulative distributions of parameters $Delta B \/ 〈 B 〉$, $Delta B_max \/ 〈 B 〉$ and $Delta B \/ 〈 B 〉 Delta theta$ for subsets of the current sheets (CSs) observed at different plasma betas, $β < 1$ and $β > 3$. The bottom panels also present the cumulative distributions corresponding to all the CSs in our data set. Note that parameter $Delta B \/ 〈 B 〉 Delta theta$ quantifies the ratio between average perpendicular and parallel current densities within CS.
+  ],
 )
 <fig-vasko2024-fig4>
 
@@ -142,8 +143,8 @@ A radial dependence of $omega_s$ was established by #cite(<sodingRadialLatitudin
 #figure(
   image("figures/ref/sodingRadialLatitudinalDependencies2001-fig11.png"),
   caption: [
-      Relative frequency of $omega$ for Helios 2 (top) and Voyager 2 (bottom) as a histogram; thin solid line is a fit to the distribution proportional to $exp [- (omega \/ omega_s)^2]$
-    ]
+    Relative frequency of $omega$ for Helios 2 (top) and Voyager 2 (bottom) as a histogram; thin solid line is a fit to the distribution proportional to $exp [- (omega \/ omega_s)^2]$
+  ],
 )
 <fig-soding2001-fig11>
 
@@ -167,10 +168,10 @@ The picture was enriched by Ulysses observations at high heliographic latitudes.
 A methodological subtlety that pervades all occurrence rate studies was highlighted by #cite(<erdosDensityDiscontinuitiesHeliosphere2008>, form: "prose"), who used the extensive Ulysses magnetometer dataset to critically examine the role of the identification method. They showed in #ref(<fig-erdos2008-fig4>, supplement: [Figure]) that occurrence rates differ dramatically depending on whether events are selected by their temporal rate of change (in the spacecraft frame) or by their spatial gradient (transformed into the solar wind frame): the temporal criterion systematically overestimates the number of discontinuities in fast solar wind, because structures convect more rapidly past the observer. After correcting for this bias, they confirmed the radial decrease in spatial density with increasing distance from the Sun. And surprisingly, they found that at a given radial distance, periods with slower solar wind tended to contain more discontinuities.
 
 #figure(
-  image("figures/ref/erdosDensityDiscontinuitiesHeliosphere2008-fig4.png"),
+  image("figures/ref/erdosDensityDiscontinuitiesHeliosphere2008-fig4.png", height: 70%),
   caption: [
-      The number of discontinuities as a function of the distance from the Sun (horizontal scale) and the velocity of solar wind (color coded). Upper panel: selection of events by time rate of change. Lower panel: selection of events by spatial gradients.
-    ]
+    The number of discontinuities as a function of the distance from the Sun (horizontal scale) and the velocity of solar wind (color coded). Upper panel: selection of events by time rate of change. Lower panel: selection of events by spatial gradients.
+  ],
 )
 <fig-erdos2008-fig4>
 
@@ -229,10 +230,9 @@ Quantitative assessment of Alfvénicity relies on the Walén relation, which sta
 
 #figure(
   image("figures/ref/paschmannDiscontinuitiesAlfvenicFluctuations2013-fig2case1.png"),
-  caption: 
-    [
-      Overview plots for DD crossings. For each case, the five panels at the top show the magnetic field magnitude, the plasma density, followed by a comparison between the three components of $upright(bold(v))' = \( upright(bold(v)) - upright(bold(V))_(upright(H T)) \)$ (in black) and (in red) the three components of $- upright(bold(V))_A$ or $upright(bold(V))_A$ (depending on the sign of the Walén slope), all from Cluster C1, with the DD at the center of the time series. The panels along the bottom show the HT scatterplot for the 10 min interval, and the Walén scatterplots for the full 10 min and for the 1 min interval centered on the DD. In these scatterplots the vector components are distinguished by their color (black for x, red for y, and green for z).
-    ]
+  caption: [
+    Overview plots for DD crossings. For each case, the five panels at the top show the magnetic field magnitude, the plasma density, followed by a comparison between the three components of $upright(bold(v))' = \( upright(bold(v)) - upright(bold(V))_(upright(H T)) \)$ (in black) and (in red) the three components of $- upright(bold(V))_A$ or $upright(bold(V))_A$ (depending on the sign of the Walén slope), all from Cluster C1, with the DD at the center of the time series. The panels along the bottom show the HT scatterplot for the 10 min interval, and the Walén scatterplots for the full 10 min and for the 1 min interval centered on the DD. In these scatterplots the vector components are distinguished by their color (black for x, red for y, and green for z).
+  ],
 )
 <fig-paschmann2013-fig2>
 

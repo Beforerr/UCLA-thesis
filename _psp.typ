@@ -28,7 +28,7 @@ Encounter 7 features a favorable alignment between PSP and Earth, enabling nearl
 The fifth and sixth panels present, respectively, the median Alfvén ratio and the total number of current sheets identified within each four-hour interval. The Alfvén ratio is defined as $R_(V B) = \| Delta upright(bold(V)) \| \/ \| Delta upright(bold(V))_A \|$,
 where $upright(bold(V))$ is the plasma velocity and $upright(bold(V))_A = upright(bold(B)) \/ sqrt(mu_0 rho)$ is the Alfvén velocity, with $rho$ the mass density and $mu_0$ the vacuum permeability.
 Including the anisotropy factor $Lambda = mu_0 \( p_(parallel \, e) - p_(perp \, e) + p_(parallel \, i) - p_(perp \, i) \) \/ B^2$ does not significantly affect the Alfvén ratio $R_(V B)^(*) = R_(V B) \/ sqrt(1 - Lambda)$, where $p_parallel$ and $p_perp$ denote the pressures parallel and perpendicular to the magnetic field for electrons $\( e \)$ and ions $\( i \)$\; its average value is approximately 0.5 for PSP and 0.4 for WIND over the entire time interval. The number of current sheets varies from roughly 100 to 300 per four-hour window, corresponding to an average of about 1,000 and 800 current sheets per day for PSP and WIND, respectively. The PSP occurrence rates are broadly consistent with those of previous studies at similar heliocentric distances @lotekarKineticscaleCurrentSheets2022@liuCharacteristicsInterplanetaryDiscontinuities2021.
-Compared with the occurrence rate of about 150 events per day identified at 1 AU by #cite(<vaskoKineticscaleCurrentSheets2022>, form: "prose")\; #cite(<zhangSolarWindDiscontinuities2025b>, form: "prose"), our analysis detects substantially more current sheets, mainly because we do not limit our survey to only the most intense kinetic-scale current sheets (see Methodology below).
+Compared with the occurrence rate of about 150 events per day identified at 1 AU by #cite(<vaskoKineticscaleCurrentSheets2022>, form: "prose")\; #cite(<zhangSolarWindDiscontinuities2025>, form: "prose"), our analysis detects substantially more current sheets, mainly because we do not limit our survey to only the most intense kinetic-scale current sheets (see Methodology below).
 
 Panels (a.7) and (b.7) present the time series of cross helicity and residual energy, calculated every 8 minutes for PSP and WIND, respectively. These quantities characterize the Alfvénic nature of and energy balance between the ambient plasma flow and magnetic fluctuations, and are computed in the standard form @wicksCorrelationsLargeScales2013@huangTemperatureAnisotropyHelium2025: $sigma_c = frac(2 chevron.l delta upright(bold(V)) dot.op delta upright(bold(V))_A chevron.r, chevron.l delta upright(bold(V))^2 chevron.r + chevron.l delta upright(bold(V))_A^2 chevron.r) \, quad sigma_r = frac(chevron.l delta upright(bold(V))^2 chevron.r - chevron.l delta upright(bold(V))_A^2 chevron.r, chevron.l delta upright(bold(V))^2 chevron.r + chevron.l delta upright(bold(V))_A^2 chevron.r) \,$ where $delta upright(bold(V))$ and $delta upright(bold(V))_A$ are the fluctuating velocity and Alfvén velocity, respectively.
 Alfvénic fluctuations are typically characterized by $\| sigma_C \| approx 1$ and $\| sigma_R \| approx 0$. A large magnitude of the normalized cross-helicity, $sigma_C$, indicates that the fluctuations are dominated by either outward- or inward-propagating Alfvénic modes, while a small magnitude of the normalized residual energy, $sigma_R$, implies near-equipartition between kinetic and magnetic fluctuation energies.
@@ -38,15 +38,15 @@ The final two panels display 8-minute averages of helium abundance and plasma be
 #figure(
   image("figures/psp/overview-7-all.pdf"),
   caption: [
-      Overview of Encounter 7 comparing PSP (left) and WIND (right) observations. Panels show 8-minute averages of (a.1, b.1) magnetic field magnitude, (a.2, b.2) proton density, (a.3, b.3) flow speed, (a.4, b.4) ion and electron temperatures, (a.5, b.5) Alfvén ratio, (a.6, b.6) current-sheet counts, (a.7, b.7) cross helicity and residual energy, (a.8, b.8) helium abundance, and (a.9, b.9) plasma beta. WIND measurements are radially scaled to $20 R_dot.o$ for comparison.
-    ]
+    Overview of Encounter 7 comparing PSP (left) and WIND (right) observations. Panels show 8-minute averages of (a.1, b.1) magnetic field magnitude, (a.2, b.2) proton density, (a.3, b.3) flow speed, (a.4, b.4) ion and electron temperatures, (a.5, b.5) Alfvén ratio, (a.6, b.6) current-sheet counts, (a.7, b.7) cross helicity and residual energy, (a.8, b.8) helium abundance, and (a.9, b.9) plasma beta. WIND measurements are radially scaled to $20 R_dot.o$ for comparison.
+  ],
 )
 <fig-psp-overview>
 
 
 === Methodology
 <methodology>
-To identify current sheets, we employ an improved automated detection algorithm adapted from previous studies @zhangSolarWindDiscontinuities2025b@liuMagneticDiscontinuitiesSolar2022. The magnetic field data are divided into consecutive time intervals, each lagged by a time $T$. For each interval, we compute the standard deviation of the vector magnetic field, $sigma \( upright(bold(B)) \)$, and compare it with those of the adjacent intervals, $sigma \( upright(bold(B))_(-) \)$ and $sigma \( upright(bold(B))_(+) \)$. An interval is flagged as a potential current sheet when its standard deviation significantly exceeds those of its neighbors, indicating a sharp magnetic field variation: $sigma \( upright(bold(B)) \) > 2 max \( sigma \( upright(bold(B))_(-) \) \, sigma \( upright(bold(B))_(+) \) \)$.
+To identify current sheets, we employ an improved automated detection algorithm adapted from previous studies @zhangSolarWindDiscontinuities2025@liuMagneticDiscontinuitiesSolar2022. The magnetic field data are divided into consecutive time intervals, each lagged by a time $T$. For each interval, we compute the standard deviation of the vector magnetic field, $sigma \( upright(bold(B)) \)$, and compare it with those of the adjacent intervals, $sigma \( upright(bold(B))_(-) \)$ and $sigma \( upright(bold(B))_(+) \)$. An interval is flagged as a potential current sheet when its standard deviation significantly exceeds those of its neighbors, indicating a sharp magnetic field variation: $sigma \( upright(bold(B)) \) > 2 max \( sigma \( upright(bold(B))_(-) \) \, sigma \( upright(bold(B))_(+) \) \)$.
 For each candidate interval, we refine the boundaries of the potential current sheet by using the distance between two magnetic field vectors, $d \( t_a \, t_b \) = parallel upright(bold(B)) \( t_a \) - upright(bold(B)) \( t_b \) parallel$. The leading and trailing edges, $t_a$ and $t_b$ ($t_a < t_b$), are defined such that $d \( t_a \, t_b \)$ attains its maximum value within the interval. To minimize false detections---particularly those caused by wave-like or hole-like structures @karlssonMagneticHolesSolar2021 that may mimic current sheet signatures---we impose the additional requirement $\| Delta upright(bold(B)) \| \/ chevron.l \| upright(bold(B)) \| chevron.r gt.eq 1 \/ 10$, where $chevron.l \| upright(bold(B)) \| chevron.r$ is the mean magnetic-field magnitude averaged over the duration of the current sheet crossing. We also evaluate the magnetic field orientation across each candidate structure by computing the angles between magnetic field vectors at the leading and trailing edges and comparing them with the angles between each edge and the midpoint of the interval. Only intervals where the edge-to-edge angle exceeds all interior angles are retained as valid current sheet candidates. Because current sheets span a range of spatial and temporal scales, we performed the identification procedure using multiple time lags ($T = 2 \, 4 \, 8 \, 16 \, 32 \, 64$ s). The resulting event lists from each search were merged into a comprehensive catalog after duplicates were removed. A subset of automatically detected intervals was visually inspected. All visually inspected events show clear current sheet signatures, such as (1) well-bounded regions with localized rotations of the magnetic field vector and (2) magnetic reversals in the maximum-variance direction. These features confirm the robustness and reliability of the automated detection procedure.
 
 We also compared our approach to the Partial Variance of Increments (PVI) method for current sheet identification @grecoPartialVarianceIncrements2017. Although the PVI technique is effective for detecting short-duration, kinetic-scale current sheets characterized by sharp gradients, it often fails to capture larger-scale structures that exhibit smoother yet coherent magnetic field variations. Moreover, the PVI method is highly sensitive to data resolution, complicating comparisons across missions with instruments of different temporal cadences. When the analysis is restricted to the smallest lag available in all datasets (e.g., $T = 2$ s), the PVI method identifies a comparable number of current sheets and produces similar statistical properties to our standard detection approach. However, because PVI does not reliably capture the full range of larger-scale events and is difficult to apply uniformly across missions, we do not proceed to utilize PVI-derived detections.
@@ -66,8 +66,8 @@ Finally, the cross helicity, $sigma_c$, and residual energy, $sigma_r$, are comp
 #figure(
   image("figures/psp/event-example.pdf"),
   caption: [
-      Representative examples of current sheets observed by the Parker Solar Probe (PSP; panels a.1--a.3) and ARTEMIS (panels b.1--b.3) in the local LMN coordinate system. Panels (a.1) and (b.1) show the magnetic field components $B_L$, $B_M$, and $B_N$, together with the magnetic field magnitude $B$. The red dashed lines indicate the hyperbolic tangent fits used to derive current sheet parameters. Panels (a.2) and (b.2) display the proton bulk velocity components $V_L$, $V_M$, and $V_N$. Panels (a.3) and (b.3) show the shifted Alfvén velocity components $V_(A \, L)$, $V_(A \, M)$, and $V_(A \, N)$. The vertical gray dashed lines mark the leading and trailing edges of each identified current sheet.
-    ]
+    Representative examples of current sheets observed by the Parker Solar Probe (PSP; panels a.1--a.3) and ARTEMIS (panels b.1--b.3) in the local LMN coordinate system. Panels (a.1) and (b.1) show the magnetic field components $B_L$, $B_M$, and $B_N$, together with the magnetic field magnitude $B$. The red dashed lines indicate the hyperbolic tangent fits used to derive current sheet parameters. Panels (a.2) and (b.2) display the proton bulk velocity components $V_L$, $V_M$, and $V_N$. Panels (a.3) and (b.3) show the shifted Alfvén velocity components $V_(A \, L)$, $V_(A \, M)$, and $V_(A \, N)$. The vertical gray dashed lines mark the leading and trailing edges of each identified current sheet.
+  ],
 )
 <fig-event-example>
 
@@ -76,19 +76,19 @@ Finally, the cross helicity, $sigma_c$, and residual energy, $sigma_r$, are comp
 <results-and-discussion>
 #ref(<fig-properties-hist>, supplement: [Figure]) presents the probability density functions (PDFs) of current sheet thickness, $delta$, current density, $J$, and magnetic field jump magnitude, $\| Delta upright(bold(B)) \|$, derived from different missions and time intervals.
 For thickness and current density, we display here a subset of the dataset where MVA normals are trustworthy. The results using the cross product method for the current sheet normals are displayed in Appendix #strong[?\@fig-properties-hist-cross] and do not show any significant difference. Note, we do not restrict the dataset for the statistics of magnetic field jump magnitude since the jump magnitude does not depend on the normal direction.
-To better understand how these properties relate to the local plasma environment @vaskoKineticscaleCurrentSheets2022@vaskoKineticScaleCurrentSheets2024@zhangSolarWindDiscontinuities2025b, we normalize the current sheet thickness by the ion (proton) inertial length, $d_i = c \/ omega_(p i)$, and the current density by the Alfvén current density, $J_A = e N V_A = B \/ mu_0 d_i$. Both parameters represent natural plasma scales: the ion inertial length characterizes the spatial scale where ions decouple from the magnetic field, while the Alfvén current density corresponds to the characteristic current generated by the drift of electrons and ions relative to each other at the local Alfvén speed, $V_A$. These quantities are particularly relevant in studies of MHD turbulence and magnetic reconnection @zhdankinStatisticalAnalysisCurrent2013@franciMagneticReconnectionDriver2017.
+To better understand how these properties relate to the local plasma environment @vaskoKineticscaleCurrentSheets2022@vaskoKineticScaleCurrentSheets2024@zhangSolarWindDiscontinuities2025, we normalize the current sheet thickness by the ion (proton) inertial length, $d_i = c \/ omega_(p i)$, and the current density by the Alfvén current density, $J_A = e N V_A = B \/ mu_0 d_i$. Both parameters represent natural plasma scales: the ion inertial length characterizes the spatial scale where ions decouple from the magnetic field, while the Alfvén current density corresponds to the characteristic current generated by the drift of electrons and ions relative to each other at the local Alfvén speed, $V_A$. These quantities are particularly relevant in studies of MHD turbulence and magnetic reconnection @zhdankinStatisticalAnalysisCurrent2013@franciMagneticReconnectionDriver2017.
 
 The absolute thickness, $delta$, increases from PSP to ARTEMIS and WIND, indicating a broadening of current sheets with solar wind expansion. After normalization by the ion inertial length, however, the characteristic scale $delta \/ d_i$ decreases slightly with increasing distance. Similar behavior has been reported by #cite(<madarDirectionalDiscontinuitiesInner2024>, form: "prose") using Parker Solar Probe and Solar Orbiter data, where the thickness of rotational discontinuities in ion inertial length units decreases rapidly until approximately 0.3 AU. We additionally examined the scaling proposed by #cite(<shaikhBetadependentPropertiesSolar2026>, form: "prose"), which accounts for the dependence of current sheet thickness on plasma beta. Applying the proton-beta-dependent normalization, $delta \/ d_i beta^0.23$, does not appreciably modify the distributions of normalized thicknesses shown in #ref(<fig-properties-hist>, supplement: [Figure]), indicating that proton beta effects do not play a dominant role in shaping the observed radial trends in our dataset.
 
-The normalized current density, $J_m \/ J_A$, shows remarkably similar distributions across the PSP, WIND, and ARTEMIS datasets. This suggests that the relative strength of current sheets, when expressed in local plasma units, is largely independent of radial distance from the Sun. This trend is consistent with previous studies based on joint WIND--Ulysses measurements between 1 and 5 AU @vaskoKineticscaleCurrentSheets2022@vaskoKineticScaleCurrentSheets2024 and Juno observations from 1--5 AU @zhangSolarWindDiscontinuities2025b. All of which similarly found that the normalized current density remains nearly constant while the normalized thickness gradually decreases with increasing heliocentric distance.
+The normalized current density, $J_m \/ J_A$, shows remarkably similar distributions across the PSP, WIND, and ARTEMIS datasets. This suggests that the relative strength of current sheets, when expressed in local plasma units, is largely independent of radial distance from the Sun. This trend is consistent with previous studies based on joint WIND--Ulysses measurements between 1 and 5 AU @vaskoKineticscaleCurrentSheets2022@vaskoKineticScaleCurrentSheets2024 and Juno observations from 1--5 AU @zhangSolarWindDiscontinuities2025. All of which similarly found that the normalized current density remains nearly constant while the normalized thickness gradually decreases with increasing heliocentric distance.
 
 The distributions of magnetic field jumps ($\| Delta upright(bold(B)) \|$ and $\| Delta upright(bold(B)) \| \/ chevron.l \| upright(bold(B)) \| chevron.r$) exhibit pronounced differences across the missions. In particular, PSP observations display a markedly distinct distribution compared with WIND and ARTEMIS, characterized by substantially larger magnetic field jumps, even after normalization. These enhanced jumps indicate stronger magnetic field reversals in the near-Sun environment and are likely associated with the frequent occurrence of switchbacks @baleHighlyStructuredSlow2019@witSwitchbacksNearsunMagnetic2020. Previous studies have shown that switchbacks progressively dissipate with increasing heliocentric distance, as their amplitudes decrease more rapidly than the background turbulent fluctuations @teneraniEvolutionSwitchbacksInner2021@soniSwitchbackPatchesEvolve2024@shiPatchesMagneticSwitchbacks2022. The discrepancy between ARTEMIS and WIND is more plausibly related to the ARTEMIS spacecraft's proximity to the bow shock. The foreshock region hosts strong compressional fluctuations and reflected hot ions, favoring a higher occurrence of compressional current sheets compared to the pristine solar wind. This environmental effect likely contributes to the larger (normalized) magnetic-field jumps observed by ARTEMIS @kropotinaSolarWindDiscontinuity2021.
 
 #figure(
   image("figures/psp/properties_hist-mva.pdf"),
   caption: [
-      Probability density functions of current sheet properties obtained from different missions (color-coded) and encounters (distinguished by line styles). The left column shows unnormalized quantities, while the right column presents values normalized by characteristic plasma scales. From top to bottom, panels display the distributions of (a-b) current sheet thickness $delta$ and its normalized form $delta \/ d_i$\; (c-d) current density $J_m$ and normalized current density $J_m \/ J_A$\; and (e-f) magnetic field jump magnitude $\| Delta upright(bold(B)) \|$ and its normalized value $\| Delta upright(bold(B)) \| \/ chevron.l \| upright(bold(B)) \| chevron.r$. The ion inertial length is $d_i = c \/ omega_(p i)$, and the Alfvén current density is
-    ]
+    Probability density functions of current sheet properties obtained from different missions (color-coded) and encounters (distinguished by line styles). The left column shows unnormalized quantities, while the right column presents values normalized by characteristic plasma scales. From top to bottom, panels display the distributions of (a-b) current sheet thickness $delta$ and its normalized form $delta \/ d_i$\; (c-d) current density $J_m$ and normalized current density $J_m \/ J_A$\; and (e-f) magnetic field jump magnitude $\| Delta upright(bold(B)) \|$ and its normalized value $\| Delta upright(bold(B)) \| \/ chevron.l \| upright(bold(B)) \| chevron.r$. The ion inertial length is $d_i = c \/ omega_(p i)$, and the Alfvén current density is
+  ],
 )
 <fig-properties-hist>
 
@@ -103,9 +103,9 @@ Results shown in #ref(<fig-joint-properties>, supplement: [Figure]) remain large
 
 #figure(
   image("figures/psp/joint_properties-mva.pdf"),
-  caption:[
-      Scatter plots of (a) current density versus current sheet thickness, (b) normalized current density versus normalized current sheet thickness, (c) magnetic field jump magnitude versus normalized current sheet thickness, and (d) normalized magnetic field jump magnitude versus normalized current density.
-    ]
+  caption: [
+    Scatter plots of (a) current density versus current sheet thickness, (b) normalized current density versus normalized current sheet thickness, (c) magnetic field jump magnitude versus normalized current sheet thickness, and (d) normalized magnetic field jump magnitude versus normalized current density.
+  ],
 )
 <fig-joint-properties>
 
@@ -122,8 +122,8 @@ We also calculate the Alfvén velocity, including the anisotropy factor $Lambda 
 #figure(
   image("figures/psp/Alfvenicities.pdf"),
   caption: [
-      Probability density functions of parameters used to characterize the Alfvénicity of current sheets: (a) ratio of velocity-jump magnitude to Alfvén velocity-jump magnitude, (b) cosine of the angle between the two vectors, (c) the variation in magnetic field magnitude between the leading and trailing edges of each current sheet; and (d) the maximum variation in magnetic field magnitude observed within each current sheet.
-    ]
+    Probability density functions of parameters used to characterize the Alfvénicity of current sheets: (a) ratio of velocity-jump magnitude to Alfvén velocity-jump magnitude, (b) cosine of the angle between the two vectors, (c) the variation in magnetic field magnitude between the leading and trailing edges of each current sheet; and (d) the maximum variation in magnetic field magnitude observed within each current sheet.
+  ],
 )
 <fig-Alfvenicities>
 
@@ -135,8 +135,8 @@ The parameter $Q^plus.minus$ is defined as $Q^plus.minus = plus.minus (1 - frac(
 #figure(
   image("figures/psp/Q_sonnerup_joint_dist_den.pdf"),
   caption: [
-      (a) Joint distribution of the velocity-jump ratio ($\| Delta upright(bold(V)) \| \/ \| Delta upright(bold(V))_A \|$) and the cosine of the alignment angle ($cos theta$), used in computing the Sonnerup ($Q^plus.minus$) parameter. (b) Joint distribution of cross helicity $sigma_c$ and $Q^plus.minus$. (c) Joint distribution of residual energy $sigma_r$ and $Q^plus.minus$. (d) Joint distribution of temporal duration and $Q^plus.minus$.
-    ]
+    (a) Joint distribution of the velocity-jump ratio ($\| Delta upright(bold(V)) \| \/ \| Delta upright(bold(V))_A \|$) and the cosine of the alignment angle ($cos theta$), used in computing the Sonnerup ($Q^plus.minus$) parameter. (b) Joint distribution of cross helicity $sigma_c$ and $Q^plus.minus$. (c) Joint distribution of residual energy $sigma_r$ and $Q^plus.minus$. (d) Joint distribution of temporal duration and $Q^plus.minus$.
+  ],
 )
 <fig-Q_sonnerup_joint_dist_den>
 
@@ -161,7 +161,7 @@ Panel (c) shows the joint distribution of the in-plane rotation angle and $B_N \
   image("figures/psp/B_n_w_-mva-subset=true.pdf"),
   caption: [
     (a) Probability density functions of the in-plane rotation angle ($omega_(upright("in"))$) for PSP and ARTEMIS + WIND. (b) Probability density functions of the normalized normal magnetic field component ($B_N \/ B$). (c) Joint distributions of $omega_(upright("in"))$ and $B_N \/ B$ for PSP (left) and ARTEMIS + WIND (right).
-  ]
+  ],
 )
 <fig-B_n_ω>
 
@@ -174,8 +174,8 @@ Assuming that current sheets propagate radially without significant distortion o
 #figure(
   image("figures/psp/duration_dist.pdf"),
   caption: [
-      Probability density functions of current sheet durations (in seconds) observed by different missions. Grey vertical dashed lines indicate durations of 1, 2, 4, 8, 16, and 32 s (from left to right).
-    ]
+    Probability density functions of current sheet durations (in seconds) observed by different missions. Grey vertical dashed lines indicate durations of 1, 2, 4, 8, 16, and 32 s (from left to right).
+  ],
 )
 <fig-duration>
 
