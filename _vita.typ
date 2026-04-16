@@ -14,9 +14,9 @@
 
 #text(size: 13pt)[*Publications*]
 
++ #cite(<zhangPeculiaritiesPrecipitatingElectron2026>, form: "full")
++ #cite(<zhangMultifluidEquilibriumModel2026>, form: "full")
 + #cite(<zhangComparisonSolarWind2026>, form: "full")
 + #cite(<zhangQuantificationIonScattering2025>, form: "full")
 + #cite(<zhangSolarWindDiscontinuities2025>, form: "full")
 + #cite(<zhangRelativisticElectronFlux2024a>, form: "full")
-+ #cite(<zhangPeculiaritiesPrecipitatingElectron2026>, form: "full")
-+ #cite(<zhangMultifluidEquilibriumModel2026>, form: "full")

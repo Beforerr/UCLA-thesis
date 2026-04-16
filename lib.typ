@@ -4,6 +4,8 @@
 
 #let _builtin_bibliography = bibliography
 
+#import "@preview/titleize:0.1.1": titlecase
+
 /// Create the UCLA thesis title page.
 ///
 /// - title (content): The thesis/dissertation title.
@@ -202,6 +204,30 @@
   ]
 }
 
+/// Begin the appendix section. Call this before including appendix files.
+/// Resets heading counter, switches to "A.1" numbering, and restykes level-1 headings.
+///
+/// - body (content): The appendix content.
+#let appendices(body) = {
+  counter(heading).update(0)
+  set heading(numbering: "A.1", supplement: [Appendix])
+  set figure(numbering: (..num) => numbering("A.1", counter(heading).get().first(), num.pos().first()))
+  show heading.where(level: 1): it => {
+    pagebreak(weak: true)
+    v(0.5in)
+    counter(figure.where(kind: image)).update(0)
+    set text(size: 14pt, weight: "bold")
+    if it.numbering != none {
+      [Appendix ]
+      counter(heading).display("A")
+      linebreak()
+    }
+    titlecase(it.body)
+    v(0.3in)
+  }
+  body
+}
+
 /// The main UCLA thesis template function.
 ///
 /// Apply this using `#show: uclathesis.with(...)`.
@@ -309,7 +335,7 @@
       counter(heading).display()
       linebreak()
     }
-    it.body
+    titlecase(it.body)
     v(0.3in)
   }
   show heading.where(level: 2): it => {
@@ -320,7 +346,7 @@
       counter(heading).display()
       h(0.5em)
     }
-    it.body
+    titlecase(it.body)
     v(0.75em)
   }
   show heading.where(level: 3): it => {
@@ -330,17 +356,15 @@
       counter(heading).display()
       h(0.5em)
     }
-    it.body
+    titlecase(it.body)
     v(0.5em)
   }
 
   // Figure and table captions
   set figure(gap: 1em)
   show figure.caption: set text(size: 10pt)
-  set figure(numbering: (..num) =>
-    numbering("1.1", counter(heading).get().first(), num.pos().first())
-  )
-  
+  set figure(numbering: (..num) => numbering("1.1", counter(heading).get().first(), num.pos().first()))
+
   // Footnotes: single-spaced with blank line between
   show footnote.entry: set text(size: 10pt)
   set footnote.entry(gap: 1.2em)
@@ -407,9 +431,12 @@
 
   // Table of Contents
   {
-    show outline.entry.where(level: 1): it => {
-      strong(it)
+    show outline.entry: it => {
+      titlecase(
+        if it.level == 1 { strong(it) } else { it },
+      )
     }
+    set heading(bookmarked: true)
     outline(
       title: [Table of Contents],
       indent: auto,
@@ -464,17 +491,13 @@
     pagebreak(weak: true)
   }
 
-  // ============================================================
   // BODY TEXT (Arabic numeral numbering, starting at 1)
-  // ============================================================
   set page(numbering: "1")
   counter(page).update(1)
 
   body
 
-  // ============================================================
   // BIBLIOGRAPHY (always last section)
-  // ============================================================
   if bibliography != none {
     set _builtin_bibliography(title: [Bibliography], style: "apa")
     bibliography

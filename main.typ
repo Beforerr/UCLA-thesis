@@ -1,4 +1,4 @@
-#import "lib.typ": uclathesis
+#import "lib.typ": appendices, uclathesis
 
 #show: uclathesis.with(
   title: [Kinetic-scale Solar Wind Current Sheets: Statistical Characteristics and Their Role in Energetic Particle Transport],
@@ -42,23 +42,7 @@
 
 #include "_summary.typ"
 
-// Appendices
-#counter(heading).update(0)
-#set heading(numbering: "A.1", supplement: [Appendix])
-#set figure(numbering: (..num) => numbering("A.1", counter(heading).get().first(), num.pos().first()))
-#show heading.where(level: 1): it => {
-  pagebreak(weak: true)
-  v(0.5in)
-  counter(figure.where(kind: image)).update(0)
-  set text(size: 14pt, weight: "bold")
-  if it.numbering != none {
-    [Appendix ]
-    counter(heading).display("A")
-    linebreak()
-  }
-  it.body
-  v(0.3in)
-}
+#show: appendices
 
 #include "_multifluid.typ"
 
