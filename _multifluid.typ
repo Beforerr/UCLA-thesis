@@ -3,367 +3,360 @@
 = Multifluid equilibrium model of current sheets with interpenetrating ion beams
 <multifluid-equilibrium-model>
 
-Solar wind discontinuities are localized, transient coherent structures widely observed in the heliosphere @vasquezNumerousSmallMagnetic2007@grecoComplexStructureMagnetic2016@podestaMostIntenseCurrent2017@vaskoKineticscaleCurrentSheets2022@zhangSolarWindDiscontinuities2025. They exhibit Alfvén-wave-like character, as evidenced by strong correlations between plasma velocity and Alfvén velocity fluctuations @dekeyserFlowShearSolar1998@paschmannDiscontinuitiesAlfvenicFluctuations2013@artemyevKineticPropertiesSolar2019@damicisAlfvenicSlowWind2021, and their magnetic structure is best described as a force-free current sheet with approximately constant field magnitude $B$ and a strong rotation of the field direction @neukirchFamilyVlasovMaxwell2020. Being quasi-one-dimensional plasma structures, these current sheets contain two main magnetic field components: $B_x \( z \)$ reversing sign across the sheet, and $B_y \( z \)$ reaching a local maximum at the $B_x$ reversal, where $z$ is the coordinate along the sheet normal. This configuration is of particular interest for energetic particle scattering @artemyevSuperfastIonScattering2020@zhangQuantificationIonScattering2025 (see @quantification-of-particle-scattering-by-solar-wind-current-sheets-pitch-angle-diffusion-rates and @energetic-particle-transport-driven-by-solar-wind-current-sheets).
+Solar wind discontinuities are localized, transient, intense coherent structures widely observed in the heliosphere @vasquezNumerousSmallMagnetic2007@grecoComplexStructureMagnetic2016@podestaMostIntenseCurrent2017@vaskoKineticscaleCurrentSheets2022@zhangSolarWindDiscontinuities2025. They exhibit Alfvén-wave-like character, as evidenced by strong correlations between fluctuations of plasma velocity and Alfvén velocity @dekeyserFlowShearSolar1998@paschmannDiscontinuitiesAlfvenicFluctuations2013@artemyevKineticPropertiesSolar2019@damicisAlfvenicSlowWind2021. Theoretical models predict that such discontinuities may originate from nonlinear Alfvén-wave evolution @medvedevDissipativeDynamicsCollisionless1997@medvedevFluidModelsKinetic1996 or plasma turbulence @servidioStatisticalAssociationDiscontinuities2011. Their magnetic structure is often best described as a current sheet with approximately constant magnetic-field magnitude $B$ and a strong rotation of the field direction @neukirchFamilyVlasovMaxwell2020. Being quasi-one-dimensional structures, these current sheets contain two main magnetic-field components: $B_x \(z\)$ reversing sign across the sheet, and $B_y \(z\)$ reaching a local maximum near the $B_x$ reversal, where $z$ denotes the coordinate along the current-sheet normal. This configuration is important for magnetic reconnection and energetic-particle scattering @shiStabilityMagnetotailCurrent2021@artemyevSuperfastIonScattering2020@malaraChargedparticleChaoticDynamics2021@malaraEnergeticParticleDynamics2023@zhangQuantificationIonScattering2025.
 
 #figure(
   image("figures/cs_theory/fig_examples.pdf"),
   caption: [
-    Three examples of current sheets (discontinuities) observed by the Parker Solar Probe (PSP) @foxSolarProbeMission2016, ARTEMIS @angelopoulosARTEMISMission2011, and Wind @acunaGlobalGeospaceScience1995 spacecraft in the $upright(bold(l m n))$ coordinate system, each with sub-Alfvénic velocity jumps, where $upright(bold(l))$ represents the maximum variance direcction, $upright(bold(m))$ the intermediate variance direction, and $upright(bold(n))$ the minimum variance direction. From top to bottom, the panels display the magnetic field components, the plasma velocity, the Alfvén velocity in the $x$-direction (maximum variance direction) with the mean value subtracted (shifted Alfvén velocity), the similarly shifted plasma velocity, and the plasma density. Details about the instruments and data sets are provided in the Appendix.
+    Three examples of current sheets (discontinuities) observed by the Parker Solar Probe (PSP) @foxSolarProbeMission2016, ARTEMIS @angelopoulosARTEMISMission2011, and Wind @acunaGlobalGeospaceScience1995 spacecraft in the $upright(bold(l m n))$ coordinate system, each with sub-Alfvénic velocity jumps. Here $upright(bold(l)) equiv x$ represents the maximum variance direction, $upright(bold(m)) equiv y$ the intermediate variance direction, and $upright(bold(n)) equiv z$ the minimum variance direction. From top to bottom, the panels display magnetic-field components, plasma velocity, shifted Alfvén velocity in the $x$-direction, shifted plasma velocity, and plasma density. Details about instruments and data sets are provided in the Appendix.
   ],
 )
 <fig-multifluid-examples>
 
-#ref(<fig-multifluid-examples>, supplement: [Figure]) presents three examples of current sheets observed in the solar wind and at Earth's distant magnetotail. These examples show similar magnetic field configurations, where the reversal in $B_x$ is accompanied by a peak in $B_y$ that compensates for the reduction in magnetic pressure, $B_x^2 \/ 2 mu_0$ (i.e., the stress balance across the sheet is $B_x^2 + B_y^2 = upright("const")$). Several models describe force-free current sheets with $B_z = 0$, where the current sheet configuration resembles a tangential discontinuity @harrisonOnedimensionalVlasovmaxwellEquilibrium2009@neukirchFamilyVlasovMaxwell2020. However, when $B_z eq.not 0$, tangential-discontinuity models are no longer applicable and an additional stress balance must be satisfied beyond $B_x^2 + B_y^2 = upright("const")$ @hudsonDiscontinuitiesAnisotropicPlasma1970, namely: $\| Delta v_(A \, x) \| = \| Delta U_x \|$, where $Delta$ denotes the change across the current sheet, and $v_(A \, x)$ and $U_x$ are the Alfvén and plasma velocities in the $x$-direction, respectively. This equality, expected within ideal single-fluid MHD, can be violated in multi-component and/or anisotropic plasmas. Indeed, spacecarft observations show that the Alfvénicity---defined as the ratio of $\| Delta U \| \/ \| Delta v_A \|$---is frequently less than unity in current sheets (see #ref(<fig-multifluid-examples>, supplement: [Figure]) and Refs. ). These deviations motivate extensions beyond the single-fluid MHD framework.
+#ref(<fig-multifluid-examples>, supplement: [Figure]) presents three examples of current sheets observed in the solar wind and at Earth's distant magnetotail. Each shows a $B_x$ reversal paired with a $B_y$ peak that compensates the loss in magnetic pressure $B_x^2 \/ 2 mu_0$, with typical half-widths $L tilde.op 1$--$20 d_i$ ($d_i approx 100$ km at 1 AU and $approx 10$ km near the Sun @zhangComparisonSolarWind2026). Several models describe current sheets with $B = upright("const")$ and $B_z = 0$, where the configuration resembles a tangential discontinuity @harrisonOnedimensionalVlasovmaxwellEquilibrium2009@neukirchFamilyVlasovMaxwell2020. However, when $B_z eq.not 0$, tangential-discontinuity models are no longer sufficient and an additional stress balance must hold beyond the pressure balance $B_x^2 + B_y^2 + 2 mu_0 P_perp = upright("const")$ @hudsonDiscontinuitiesAnisotropicPlasma1970. In ideal single-fluid MHD this additional condition is $lr(|Delta upright(bold(V))_A|) = lr(|Delta upright(bold(U))|)$, where $Delta$ denotes the change across the sheet, $upright(bold(V))_A equiv upright(bold(B)) \/ sqrt(mu_0 rho)$ is the Alfvén velocity, and $upright(bold(U))$ is the plasma bulk velocity.
 
-One important generalization involves considering a multi-component plasma. Spacecraft observations frequently reveal counter-streaming ion populations in and around solar wind current sheets @artemyevIonNongyrotropySolar2020@shenComparingPlasmaAnisotropy2024, and such interpenetrating beams can significantly modify the stress balance and internal structure of the current sheet @vaskoThinCurrentSheets2014. These kinetic features---the partitioning between thermal and drift energy, and the distinct dynamics of each ion population---cannot be captured by single-fluid models. In this study, we develop a multifluid model to describe the 1D structure of force-free current sheets (discontinuities) with $B_z eq.not 0$. This model is analytically tractable while retaining key multi-species effects.
+Spacecraft observations show that the Alfvénicity, defined here as $lr(|Delta upright(bold(U))|) \/ lr(|Delta upright(bold(V))_A|)$, is frequently below unity in current sheets (see #ref(<fig-multifluid-examples>, supplement: [Figure]) and @dekeyserFlowShearSolar1998@paschmannDiscontinuitiesAlfvenicFluctuations2013@artemyevKineticPropertiesSolar2019). One important generalization is therefore a multi-component plasma. Spacecraft observations frequently reveal counter-streaming ion populations in and around solar-wind current sheets @artemyevIonNongyrotropySolar2020@shenComparingPlasmaAnisotropy2024, and such interpenetrating beams can significantly modify stress balance and internal structure @vaskoThinCurrentSheets2014. These kinetic features, including the partitioning between thermal and drift energy and the distinct dynamics of each ion population, cannot be captured by single-fluid models.
+
+Following @steinhauerMultifluidModelOnedimensional2008@shiStabilityMagnetotailCurrent2021, this appendix develops a multifluid model for 1D current sheets with $B_z eq.not 0$. We extend that framework by including a shear (guide) magnetic field $B_y$ and gyrotropic pressure anisotropy, and we derive explicitly how the density contrast between counter-streaming ion beams controls the Alfvénicity of the current sheet. A fully kinetic treatment is more complete but difficult to solve analytically when $B_z eq.not 0$; the multifluid approach remains analytically tractable while retaining key multi-species effects.
 
 == Multifluid Model
 
-We used a multifluid model for the one-dimensional, quasi-neutral, current sheet equilibrium where the force free condition (a zero plasma pressure gradient) is satisfied for the bulk plasma. This approach, inspired by #cite(<steinhauerMultifluidModelOnedimensional2008>, form: "prose"), has the advantage of being analytically tractable while capturing key features of kinetic behavior, such as the partitioning between thermal and drift energy in each ion population. The fully kinetic approach, which examines the evolution of the velocity distribution function in phase space, is in principle more accurate, but hard to solve analytically for force-free current sheets with $B_n eq.not 0$ (see the discussion in Refs. ). Recent efforts to construct exact kinetic equilibria using action integrals with analytical approximations @egedalAnalyticalApproximationsCurrent2025@egedalPlasmaSheathSmall2023 represent a promising formulation that has a potential to be generalized on force-free equilibrium in order to address the observed discrepancies. The multifluid model is a good compromise between the simplicity of the MHD model and the complexity of the fully kinetic model.
-
-In this model, we assume that the asymptotic boundary conditions are known (e.g., determined from spacecraft measurements far away from the discontinuity), including the normal component of the magnetic field ($B_z$), the magnitude of the magnetic field ($B$), and the asymptotic properties of the incident fluid streams. It should be noted that while the velocity space boundary between different ion populations may be clearly distinguishable in the uniform field region outside the current sheet @artemyevIonNongyrotropySolar2020, this boundary becomes more subtle, diffuse, and less tractable within the current sheet. For instance, an individual ion may transition from one population to another, and some ions may even become trapped within the current sheet. These complexities, particularly ion behavior within the sheet, are beyond the scope of this paper and will not be addressed in the current analysis.
-
-The governing equations for the multifluid collisionless plasma model can be expressed in conservation law form as follows:
+We assume that the asymptotic boundary conditions are known, including the normal magnetic field $B_z$, magnetic-field magnitude $B$, and properties of incident fluid streams. The governing equations for a collisionless multifluid plasma are
 
 #math.equation(block: true, numbering: equation-numbering, [ $
   (frac(partial, partial t) + upright(bold(u))_alpha dot.c nabla) n_alpha = - n_alpha nabla dot.c upright(bold(u))_alpha
 $ ])<eq-density>
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  m_alpha n_alpha (frac(partial, partial t) + upright(bold(u))_alpha dot.c nabla) upright(bold(u))_alpha = - nabla dot.c upright(bold(P))_alpha + q_alpha n_alpha (upright(bold(E)) + upright(bold(u))_alpha times upright(bold(B)))
+  m_alpha n_alpha (frac(partial, partial t) + upright(bold(u))_alpha dot.c nabla) upright(bold(u))_alpha =
+  - nabla dot.c upright(bold(P))_alpha + q_alpha n_alpha (upright(bold(E)) + upright(bold(u))_alpha times upright(bold(B)))
 $ ])<eq-velocity>
 
 #math.equation(block: true, numbering: equation-numbering, [ $
   nabla times upright(bold(B)) = mu_0 (upright(bold(J)) + epsilon.alt_0 frac(partial upright(bold(E)), partial t))
 $ ])<eq-Ampere>
 
-#math.equation(block: true, numbering: equation-numbering, [ $ nabla dot.c upright(bold(B)) = 0 $ ])<eq-Gauss>
+#math.equation(block: true, numbering: equation-numbering, [ $
+  nabla dot.c upright(bold(B)) = 0 .
+$ ])<eq-Gauss>
 
-where $alpha$ indicates the particle species (electron and different ion populations), $n_alpha$ the number density, $m_alpha$ the mass, $q_alpha$ the charge, $upright(bold(u))_alpha$ the bulk velocity, $upright(bold(P))_alpha$ the pressure tensor, $upright(bold(E))$ the electric field, $upright(bold(B))$ the magnetic induction (magnetic field), $upright(bold(J))$ the current density, $epsilon.alt_0$ the vacuum permittivity, and $mu_0$ the vacuum permeability.
+Here $alpha$ indicates species, $n_alpha$ number density, $m_alpha$ mass, $q_alpha$ charge, $upright(bold(u))_alpha$ bulk velocity, $upright(bold(P))_alpha$ pressure tensor, $upright(bold(E))$ electric field, $upright(bold(B))$ magnetic field, $upright(bold(J))$ current density, $epsilon.alt_0$ vacuum permittivity, and $mu_0$ vacuum permeability.
 
-This work focuses on steady-state solutions in the deHoffman-Teller frame, where all partial derivatives with respect to time vanish, i.e., $frac(partial, partial t) = 0$. We further assume that the magnetic field varies only along a single Cartesian coordinate, $z$. Under these assumptions, conservation of mass for each species, expressed as $d \( n_alpha u_(alpha z) \) \/ d z = 0$, integrates to a constant, $Gamma_alpha = n_alpha u_(alpha z)$. Gauss's law for magnetism requires that $B_z$ remains constant throughout the current sheet. The steady-state Faraday's law further implies that the electric field can be derived from an electrostatic potential $phi.alt$. Additionally, electrons can be approximated as a massless, charge-neutralizing background. In this case, the electron momentum equation implies that electrons move along magnetic field lines, i.e., $upright(bold(u))_e times upright(bold(B)) = 0$. For further simplification, we assume an isotropic pressure model, eliminating all non-diagonal components of the pressure tensor for each ion species. Furthermore, we consider the ions to be single-charged, meaning that $q_alpha = e$ for all species.
-
-The momentum equations for each ion species are then given by:
+We seek steady-state solutions in the deHoffmann-Teller frame, with $partial \/ partial t = 0$, and assume all variables vary only along $z$. Conservation of mass integrates to $Gamma_alpha equiv n_alpha u_(alpha z) = upright("const")$, and Gauss's law requires constant $B_z$. Steady Faraday's law fixes $E_x$ and $E_y$ as constants, which vanish in the deHoffmann-Teller frame, leaving $upright(bold(E)) = - (d phi \/ d z) hat(upright(bold(z)))$. The steady momentum equations are
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  m_alpha Gamma_alpha frac(d u_(alpha x), d z) & = e \( n_alpha u_(alpha y) B_z - Gamma_alpha B_y \)\
-  m_alpha Gamma_alpha frac(d u_(alpha y), d z) & = e \( Gamma_alpha B_x - n_alpha u_(alpha x) B_z \)\
-  m_alpha Gamma_alpha frac(d u_(alpha z), d z) & = - frac(d p_alpha, d z) + n_alpha e \( - frac(d phi.alt, d z) + u_(alpha x) B_y - u_(alpha y) B_x \)
-$ ])<eq-momentum>
-
-Ampere's law connects the fields and the flow components:
+  m_alpha Gamma_alpha frac(d u_(alpha x), d z)
+  = - frac(d P_(x z \, alpha), d z) + q_alpha \(n_alpha u_(alpha y) B_z - Gamma_alpha B_y\)
+$ ])<eq-momentum-x>
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  1 / mu_0 frac(d B_y, d z) = - J_x = - sum_alpha e n_alpha u_(alpha x) + e n_e u_(e x)
+  m_alpha Gamma_alpha frac(d u_(alpha y), d z)
+  = - frac(d P_(y z \, alpha), d z) + q_alpha \(Gamma_alpha B_x - n_alpha u_(alpha x) B_z\)
+$ ])<eq-momentum-y>
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  m_alpha Gamma_alpha frac(d u_(alpha z), d z)
+  = - frac(d P_(z z \, alpha), d z) + n_alpha q_alpha \(- frac(d phi, d z) + u_(alpha x) B_y - u_(alpha y) B_x\)
+$ ])<eq-momentum-z>
+
+Ampere's law gives
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  1 \/ mu_0 frac(d B_y, d z) = - J_x = - sum_alpha q_alpha n_alpha u_(alpha x)
 $ ])<eq-Jx>
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  1 / mu_0 frac(d B_x, d z) = J_y = sum_alpha e n_alpha u_(alpha y) - e n_e u_(e y)
+  1 \/ mu_0 frac(d B_x, d z) = J_y = sum_alpha q_alpha n_alpha u_(alpha y)
 $ ])<eq-Jy>
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  0 = J_z = sum_alpha e n_alpha u_(alpha z) - e n_e u_(e z)
+  0 = J_z = sum_alpha q_alpha n_alpha u_(alpha z) = sum_alpha q_alpha Gamma_alpha .
 $ ])<eq-Jz>
 
-#ref(<eq-Jz>, supplement: [Equation]) allows the elimination of electron variables $Gamma_e = sum_alpha Gamma_alpha$.
-
-In the asymptotic region (far from the current sheet), as all variables approach constant values, the derivatives must vanish. For the $y$-component of the momentum equation (#ref(<eq-momentum>, supplement: [Equation])), this means $Gamma_alpha B_x \( oo \) - n_alpha \( oo \) u_(alpha x) \( oo \) B_z = 0$. This relates the asymptotic velocity of each species to the asymptotic magnetic field.
-
-Combining the $x$-component of the momentum equation (#ref(<eq-momentum>, supplement: [Equation])) for different ion populations and Ampere's law in the $y$-direction (#ref(<eq-Jy>, supplement: [Equation])), under the condition that the constant of integration vanishes at the center of the current sheet (which holds when the $x$-components of both the magnetic field and flow velocity are odd functions of $z$), we obtain:
+Far from the current sheet all derivatives vanish. #ref(<eq-momentum-y>, supplement: [Equation]) then reduces to
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  B_x B_z = mu_0 sum_alpha m_alpha Gamma_alpha u_(alpha x)
+  Gamma_alpha B_x(plus.minus oo) - n_alpha(plus.minus oo) u_(alpha x)(plus.minus oo) B_z = 0 .
+$ ])<eq-asym-ux>
+
+Introducing $U_x equiv sum_alpha m_alpha n_alpha u_(alpha x) \/ rho$, $V_(A \, x) equiv B_x \/ sqrt(mu_0 rho)$, and $rho equiv sum_alpha m_alpha n_alpha$, summing #ref(<eq-asym-ux>, supplement: [Equation]) with mass weights gives
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  frac(U_x, V_(A \, x)) |_plus.minus =
+  frac(sqrt(mu_0) sum_alpha m_alpha Gamma_alpha, B_z sqrt(rho|_plus.minus)) .
+$ ])<eq-ratio-pointwise>
+
+For matched asymptotic density, $rho(+ oo) = rho(- oo) equiv rho_oo$, both $Delta U_x$ and $Delta V_(A \, x)$ are proportional to $Delta B_x$, and
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  frac(Delta U_x, Delta V_(A \, x)) =
+  frac(sqrt(mu_0) sum_alpha m_alpha Gamma_alpha, B_z sqrt(rho_oo)) .
+$ ])<eq-vRatio-raw>
+
+The apparent $B_z$ dependence can be eliminated using transverse stress balance. Combining #ref(<eq-momentum-x>, supplement: [Equation])--#ref(<eq-momentum-y>, supplement: [Equation]) across species with Ampere's law yields
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  sum_alpha m_alpha Gamma_alpha u_(alpha x) + Pi_(x z) &= frac(B_x B_z, mu_0) + C_x \
+  sum_alpha m_alpha Gamma_alpha u_(alpha y) + Pi_(y z) &= frac(B_y B_z, mu_0) + C_y ,
 $ ])<eq-balance>
 
-Evaluating the above equation in the asymptotic limit and substituting $u_(alpha x) \( oo \)$, we have
+where $Pi_(i z) equiv sum_alpha P_(i z \, alpha)$ and $C_x$, $C_y$ are integration constants. Evaluating #ref(<eq-balance>, supplement: [Equation]) asymptotically and substituting #ref(<eq-asym-ux>, supplement: [Equation]) gives
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  B_z^2 = mu_0 sum_alpha m_alpha Gamma_alpha^2 \/ n_alpha \( oo \)
-$ ])<eq-asym1>
+  mu_0 sum_alpha frac(m_alpha Gamma_alpha^2, n_alpha|_plus.minus)
+  = B_z^2 \(1 - Lambda_d|_plus.minus\),
+  quad
+  Lambda_d|_plus.minus equiv frac(mu_0 \(Pi_(x z)|_plus.minus - C_x\), B_x|_plus.minus B_z) .
+$ ])<eq-asym-constraint>
 
-This imposes a constraint on the constant parameters of the system $B_z \, Gamma_alpha$ and $n_alpha \( oo \)$. For instance, once $Gamma_alpha$ and $n_alpha \( oo \)$ are defined from boundary conditions, $B_z$ is also determined.
-
-Using this equation, we may express the jump in velocities across the current sheet as:
-
-$
-         Delta U_x & = (sum_alpha m_alpha n_alpha \( oo \))^(- 1) sum_alpha m_alpha n_alpha \( oo \) Delta u_(alpha x) \
-  Delta v_(A \, x) & = frac(Delta B_x, sqrt(mu_0 sum_alpha m_alpha n_alpha \( oo \))) \,
-$
-
-where $Delta u_(alpha x) = u_(alpha x) \( + oo \) - u_(alpha x) \( - oo \)$ and $Delta B_x = B_x \( + oo \) - B_x \( - oo \)$ are evaluated in the $z arrow.r plus.minus oo$ limits. By substituting the expressions for $u_(alpha x) \( oo \)$ and $B_z$ (#ref(<eq-asym1>, supplement: [Equation])), we derive a simplified relation that links the jump in Alfvén velocity to the jump in plasma bulk velocity along the $x$-direction:
+The dimensionless coefficient $Lambda_d$ is a dynamical stress factor built from the asymptotic states. Solving #ref(<eq-asym-constraint>, supplement: [Equation]) for $B_z$ and substituting into #ref(<eq-vRatio-raw>, supplement: [Equation]) yields
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  (sum_alpha Gamma_alpha m_alpha) Delta v_(A \, x) = sqrt(sum_alpha m_alpha n_alpha \( oo \) sum_alpha frac(m_alpha Gamma_alpha^2, n_alpha \( oo \))) Delta U_x
-$ ])<eq-vRatio>
+  lr(|frac(Delta U_x, Delta V_(A \, x))|)
+  =
+  frac(sum_alpha m_alpha Gamma_alpha,
+       sqrt(rho_oo sum_alpha m_alpha Gamma_alpha^2 \/ n_alpha|_plus.minus))
+  sqrt(1 - Lambda_d|_plus.minus) .
+$ ])<eq-vRatio-general>
 
-In the case of a single-fluid plasma, this expression reduces to the simpler $Delta v_(A \, x) = Delta U_x$ force balance condition for a rotational discontinuity. In the case of a system consisting of two ion fluids with equal mass and equal but opposite velocities in the $z$-direction, i.e., $m_1 = m_2 \, u_(z \, 1) \( oo \) = - u_(z \, 2) \( oo \)$, the above expression can be further simplified to:
+The first factor encodes multifluid structure and is bounded by unity by the Cauchy--Schwarz inequality. The second factor captures anisotropy and agyrotropy contributions. For gyrotropic pressure, $upright(bold(P))_alpha = p_(perp \, alpha) upright(bold(I)) + (p_(parallel \, alpha) - p_(perp \, alpha)) hat(upright(bold(b))) hat(upright(bold(b)))$, with $Lambda_alpha equiv mu_0 (p_(parallel \, alpha) - p_(perp \, alpha)) \/ B^2$, the off-diagonal stress is $Pi_(x z) = (B_x B_z \/ mu_0) sum_alpha Lambda_alpha$. Thus $Lambda_d = sum_alpha Lambda_alpha$ when $C_x = 0$.
+
+When the stress factor is symmetric across the sheet, $Lambda_d|_+ = Lambda_d|_- equiv Lambda_d$, the modified Alfvén velocity $V'_(A \, x) equiv V_(A \, x) sqrt(1 - Lambda_d)$ satisfies $Delta V'_(A \, x) = sqrt(1 - Lambda_d) Delta V_(A \, x)$. The ratio of $Delta U_x$ to $Delta V'_(A \, x)$ then depends only on the multifluid factor. In the single-fluid limit this reduces to $Delta U_x = plus.minus Delta V'_(A \, x)$. For two ion fluids with equal mass and equal but opposite normal velocities, $m_1 = m_2$ and $u_(z \, 1)(plus.minus oo) = -u_(z \, 2)(plus.minus oo)$, #ref(<eq-vRatio-general>, supplement: [Equation]) becomes
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  \| n_1 \( oo \) - n_2 \( oo \) \| Delta v_(A \, x) = \( n_1 \( oo \) + n_2 \( oo \) \) Delta U_x
+  lr(|frac(Delta U_x, Delta V'_(A \, x))|)
+  =
+  lr(|frac(n_1(plus.minus oo) - n_2(plus.minus oo), n_1(plus.minus oo) + n_2(plus.minus oo))|) .
 $ ])<eq-vRatio2>
 
 == Results
 <results>
-The above multifluid model is applied here to study a specific plasma system consisting of multiple proton populations, where the ion mass is $m_alpha = m_p$ and the charge is $q_alpha = e$ for each species $alpha$. We focus on analyzing the effects of the model parameters on the plasma system.
 
-Under the force-free condition, the sum of the squared magnetic field components remains constant, $B_x^2 + B_y^2 = B^2 - B_z^2 = upright("const")$. Thus, the magnetic field can be parameterized by a rotation angle $theta$ and $B_0$, such that $B_x = B_0 cos theta$ and $B_y = B_0 sin theta$. By multiplying Ampere's law for the $x$-component (#ref(<eq-Jx>, supplement: [Equation])) by $B_y$ and for the $y$-component (#ref(<eq-Jy>, supplement: [Equation])) by $B_x$, and then adding the two equations, we find:
+We now apply the model to rotational current sheets. Assume gyrotropic pressure for each species. Let $theta(z)$ denote the azimuthal angle of $upright(bold(B))_(x y) equiv (B_x, B_y)$, so that $B_x = B_T cos theta$, $B_y = B_T sin theta$, and $B_T = lr(|upright(bold(B))_(x y)|)$. The transverse rotation is partial when $theta_+ - theta_- eq.not k pi$ for any integer $k$.
+
+Under the gyrotropic assumption, the integration constants in #ref(<eq-balance>, supplement: [Equation]) vanish for any partial rotation. Decompose each transverse velocity along $hat(upright(bold(b)))_T = (cos theta, sin theta)$ and $hat(upright(bold(b)))_perp = (-sin theta, cos theta)$,
 
 $
-  sum_alpha q_alpha n_alpha \( u_(alpha y) B_x - u_(alpha x) B_y \) = frac(1, 2 mu_0) frac(d \( B_x^2 + B_y^2 \), d z) = 0 .
+  u_(alpha T) equiv u_(alpha x) cos theta + u_(alpha y) sin theta,
+  quad
+  u_(alpha perp) equiv - u_(alpha x) sin theta + u_(alpha y) cos theta .
 $
 
-To satisfy this condition, we require that
+Projecting #ref(<eq-balance>, supplement: [Equation]) onto $hat(upright(bold(b)))_perp$ eliminates magnetic and gyrotropic pressure-anisotropy terms, leaving
 
-#math.equation(block: true, numbering: equation-numbering, [ $ u_(alpha y) B_x - u_(alpha x) B_y = 0 $ ])<eq-alpha>
+$
+  sum_alpha m_alpha Gamma_alpha u_(alpha perp) = - C_x sin theta + C_y cos theta .
+$
 
-Combining this relation with the first two components of the momentum equation (#ref(<eq-momentum>, supplement: [Equation])), we obtain: $u_(alpha x)^2 + u_(alpha y)^2 = upright("const")$. This allows us to express the velocity of each species in terms of the rotation angle $theta_alpha$ as $u_(alpha x) \( z \) = u_alpha cos theta_alpha \( z \)$ and $u_(alpha y) \( z \) = u_alpha sin theta_alpha \( z \)$, where $u_alpha$ is a constant for each species. By substituting the above expression into our assumption (#ref(<eq-alpha>, supplement: [Equation])), we have:
-
-$ tan theta = tan theta_alpha $
-
-Here we consider the case where $theta_alpha = theta$ for all species, but the same procedure can be applied to the case where $theta_alpha = theta + pi$.
-
-Ampere's law (#ref(<eq-Jy>, supplement: [Equation])) after substitution becomes:
-
-$ - B_0 sin theta med theta' = mu_0 e (sum_alpha n_alpha u_alpha sin theta - Gamma_e sin theta B_0 / B_z) $
+Asymptotically, #ref(<eq-asym-ux>, supplement: [Equation]) and its $y$ counterpart imply $u_(alpha perp)|_plus.minus = 0$. For partial rotations, the two asymptotic equations form a nonsingular homogeneous system for $(C_x, C_y)$, so $C_x = C_y = 0$. The singular $pi$ reversal also gives $C_x = C_y = 0$ when the asymptotic state is symmetric in density and dynamical stress factor. Therefore,
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  arrow.r.double theta' = mu_0 e (Gamma_e / B_z - frac(sum_alpha n_alpha u_alpha, B_0))
-$ ])<eq-theta>
+  sum_alpha m_alpha Gamma_alpha u_(alpha perp) = 0 .
+$ ])<eq-mGamma-uperp>
 
-The $x$-component of the momentum equation (#ref(<eq-momentum>, supplement: [Equation])) after substitution becomes:
+A second constraint follows from Ampere's law:
 
-$ - u_alpha sin theta med theta' = e / m_alpha \( n_alpha u_alpha sin theta med B_z \/ Gamma_alpha - B_0 sin theta \) $
+$
+  sum_alpha q_alpha n_alpha B_T u_(alpha perp)
+  = frac(1, 2 mu_0) frac(d B_T^2, d z) .
+$
+
+We now specialize to current sheets with constant total magnetic-field magnitude $lr(|upright(bold(B))|) = upright("const")$, a common condition in the solar wind @tsurutaniRelationshipInterplanetaryDiscontinuities1994@goslingOnesidedAspectAlfvenic2009, and to two counter-streaming proton populations plus one isotropic massless electron population. Since $B_z$ is constant, $B_T = B_0$ is constant and $upright(bold(B))_(x y)$ merely rotates. The Ampere-sum relation gives $sum_(alpha=1)^2 n_alpha u_(alpha perp) = 0$. With #ref(<eq-mGamma-uperp>, supplement: [Equation]), the two-ion system forces $u_(alpha perp) = 0$ for distinct normal flow velocities, so each ion transverse velocity lies along $upright(bold(B))_(x y)$:
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  arrow.r.double theta' = e / m_alpha (B_0 / u_alpha - frac(n_alpha B_z, Gamma_alpha))
+  u_(alpha y) B_x - u_(alpha x) B_y = 0 .
+$ ])<eq-alpha>
+
+Projecting transverse momentum along $upright(bold(B))_(x y)$ yields
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  K_alpha equiv m_alpha Gamma_alpha u_(alpha T) + frac(Lambda_alpha B_0 B_z, mu_0) = upright("const") .
+$ ])<eq-Kcons>
+
+Projecting perpendicular to $upright(bold(B))_(x y)$ gives
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  K_alpha theta' = e \(Gamma_alpha B_0 - n_alpha u_alpha B_z\) ,
 $ ])<eq-theta1>
 
-where $' = d \/ d z$. By equating the above two equations of $theta'$, we could get a relation connecting the plasma bulk property $sum_alpha n_alpha u_alpha$ to one specific species:
-
-$
-  sum_alpha n_alpha u_alpha = B_0 (Gamma_e / B_z + frac(1, mu_0 m_alpha) (frac(n_alpha B_z, Gamma_alpha) - B_0 / u_alpha))
-$
-
-In the asymptotic region, the derivative must vanish, leading to condition $- frac(n_alpha \( oo \) B_z, Gamma_alpha) + B_0 / u_alpha = 0$. This allows us to rewrite the above Equation (#ref(<eq-theta1>, supplement: [Equation])) in terms of asymptotic values:
+where $' = d \/ d z$. Ampere's law reduces to
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  theta' = frac(e B_z, m_alpha Gamma_alpha) (n_alpha \( oo \) - n_alpha) .
+  theta' = mu_0 e \(frac(Gamma_e, B_z) - frac(sum_(alpha=1)^2 n_alpha u_alpha, B_0)\) .
+$ ])<eq-theta>
+
+In the asymptotic region, $theta' = 0$, and #ref(<eq-theta1>, supplement: [Equation]) enforces $n_alpha u_alpha|_oo = Gamma_alpha B_0 \/ B_z$. Thus
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  K_alpha theta' = e B_z \(n_alpha u_alpha|_oo - n_alpha u_alpha\) .
 $ ])<eq-theta1-asym>
 
-Here, $theta$ and $n_alpha$ are dependent variables, while $B_z$, $m_alpha$, and $Gamma_alpha$ are constants predetermined by the system. Therefore, by specifying a profile for $n_alpha$ and imposing appropriate boundary conditions, one can solve this equation to determine the profile of $theta$.
-Conveniently, the center of the current sheet is chosen as the origin $z = 0$, which corresponds to the lower boundary of Equation (#ref(<eq-theta1-asym>, supplement: [Equation])). As a result, the boundary condition for the rotation angle is given by $theta_alpha \( 0 \) = pi \/ 2$.
+Under gyrotropy, $P_(z z \, alpha) = p_(perp \, alpha) + Lambda_alpha B_z^2 \/ mu_0$, so #ref(<eq-momentum-z>, supplement: [Equation]) becomes
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  frac(d, d z) (frac(m_alpha Gamma_alpha^2, n_alpha) + p_alpha) = - e n_alpha frac(d phi.alt, d z) .
+  frac(d, d z) \(frac(m_alpha Gamma_alpha^2, n_alpha) + p_(perp \, alpha) + frac(Lambda_alpha B_z^2, mu_0)\)
+  = - e n_alpha frac(d phi, d z) .
 $ ])<eq-mom-z>
 
-Notably, $n_alpha$ and $p_alpha$ are decoupled from the angle $theta$. The prescribed pressure model for ions and electrons introduces $N$ additional equations relating $p_alpha$ and $n_alpha$ and another equation connecting $phi.alt$ and $n_e$, making the system over-constrained when only a trivial solution is possible. Therefore, rather than imposing specific equations of state, we define the density profile for one of the ion species and treat it as a free parameter. By specifying this profile, the remaining equations can be solved. For this purpose, we adopt a Lorentzian function with a background density to describe the first ion population:
+The variables $n_alpha$, $p_(perp \, alpha)$, and $Lambda_alpha$ are decoupled from $theta$. A simple closure $p_(perp \, alpha) = p_(perp \, alpha)(n_alpha, B)$ and $Lambda_alpha = Lambda_alpha(n_alpha, B)$ for every species, combined with a relation between $phi$ and $n_e$ and constant $lr(|upright(bold(B))|)$, would over-determine the system and admit only the trivial uniform solution. We therefore leave pressure as a free parameter; equivalently, #ref(<eq-mom-z>, supplement: [Equation]) lets one ion density profile be specified freely, with remaining densities, pressures, and $phi$ determined self-consistently.
 
-$ n_1 \( z \) arrow.r n_1 \( oo \) + frac(kappa Gamma_1, V_A) frac(1, 1 + \( z \/ L \)^2) $
-
-where $L$ is the spatial scale of the current sheet, $Gamma_alpha equiv n_alpha \( oo \) u_(z \, alpha) \( oo \)$ is an integration constant, $V_A equiv B_z \/ sqrt(mu_0 m_p n \( oo \))$ is the Alfvén velocity in the $z$ direction, and $kappa$ is a dimensionless quantity that characterizes the magnitude of density variation.
-
-By solving Equation (#ref(<eq-theta1-asym>, supplement: [Equation])) analytically, we obtain the rotation angle profile as:
-
-$ theta \( z \) = pi / 2 - frac(e kappa L B_z tan^(- 1) (z \/ L), m_p V_A) $
-
-where $e L B_z \/ m_p V_A = L \/ d_i$ and $d_i$ is ion (proton) inertial length.
-
-Using this result, the density profiles for the other ion population and the total ion population can be expressed as:
+For concrete profiles we take isotropic pressure, $Lambda_alpha = 0$, set $theta(0) = pi \/ 2$, and choose a Lorentzian profile for the first ion population:
 
 $
-  n_alpha \( z \) & = n_alpha \( oo \) + frac(Delta n_alpha, 1 + \( z \/ L \)^2) \
-        n \( z \) & = n \( oo \) + frac(Delta n, 1 + \( z \/ L \)^2)
+  n_1(z) = n_1(oo) + frac(kappa Gamma_1, V_A) frac(1, 1 + (z \/ L)^2) ,
 $
 
-where $Delta n_alpha equiv n_alpha \( 0 \) - n_alpha \( oo \) = kappa Gamma_alpha \/ V_A$ and $Delta n equiv n \( 0 \) - n \( oo \) = kappa sum_alpha Gamma_alpha \/ V_A$.
-
-The corresponding models for the magnetic field, current density, and plasma flows are given by:
+where $L$ is the current-sheet scale, $V_A equiv B_z \/ sqrt(mu_0 m_p n(oo))$ is the asymptotic Alfvén speed in the $z$ direction, and $kappa$ controls the density perturbation. Other localized profiles give the same asymptotic Alfvénicity and qualitatively similar structure. Solving #ref(<eq-theta1-asym>, supplement: [Equation]) gives
 
 $
-                 B_x \( z \) & = B_0 cos (theta \( z \)) \
-                 B_y \( z \) & = B_0 sin (theta \( z \)) \
-    upright(bold(J)) \( z \) & = frac(e kappa B_z, mu_0 m_p V_A) frac(upright(bold(B)) \( z \), 1 + \( z \/ L \)^2) \
-  upright(bold(J))_e \( z \) & = - e frac(upright(bold(B)) \( z \), B_z) sum_alpha Gamma_alpha \
-  upright(bold(J))_i \( z \) & = upright(bold(J)) \( z \) - upright(bold(J))_e \( z \) \
-    upright(bold(U)) \( z \) & = frac(upright(bold(J))_i \( z \), e n \( z \))
+  theta(z) = frac(pi, 2) - frac(e kappa L B_z tan^(-1)(z \/ L), m_p V_A),
 $
 
-where $i$ and $e$ denote ion and electron currents, and the vectors $upright(bold(J))$, $upright(bold(B))$, $upright(bold(U))$ have two components, $x$ and $y$. Using the relation $Delta n_alpha \/ Delta n = Gamma_alpha \/ sum_alpha Gamma_alpha$ and (#ref(<eq-asym1>, supplement: [Equation])), $kappa$ and $sum_alpha Gamma_alpha$ can be expressed in a form that involves only densities of ion populations:
+with $e L B_z \/ m_p V_A = L \/ d_i$. The ion densities are
 
 $
-  kappa & = sqrt(sum_alpha frac(Delta n_alpha^2, n \( oo \) n_alpha \( oo \)))\
-  sum_alpha Gamma_alpha & = sqrt(frac(B_z^2, mu_0 m_p) frac(Delta n^2, sum_alpha Delta n_alpha^2 \/ n_alpha \( oo \))) = frac(V_A Delta n, kappa)
+  n_alpha(z) &= n_alpha(oo) + frac(hat(n)_alpha, 1 + (z \/ L)^2) \
+  n(z) & equiv n_1(z) + n_2(z) = n(oo) + frac(hat(n), 1 + (z \/ L)^2) ,
 $
 
-To facilitate subsequent analysis and visualization, it is useful to adopt a dimensionless system by normalizing the variables with their characteristic values: in this study, the magnetic field is normalized by $B_(upright("ref")) = B_z$, the density by $n_(upright("ref")) = n \( oo \)$, the length by $L_(upright("ref")) = d_i$, and the velocity by $V_(upright("ref")) = V_A$. In these normalized units, the relevant variables take the following form:
+where $hat(n)_alpha equiv n_alpha(0) - n_alpha(oo) = kappa Gamma_alpha \/ V_A$ and $hat(n) equiv n(0) - n(oo) = kappa sum_(alpha=1)^2 Gamma_alpha \/ V_A$.
+
+The transverse current and ion bulk-flow profiles are
 
 $
-  theta \( z \) & = & pi / 2 - frac(kappa L tan^(- 1) (z \/ L), d_i)\
-  frac(upright(bold(J)), e V_A n (oo)) & = & frac(upright(bold(B)) (z), B_z) frac(kappa, 1 + (z \/ L)^2)\
-  frac(upright(bold(J))_e, e V_A n (oo)) & = & - frac(upright(bold(B)) (z), B_z) frac(Delta n, kappa n (oo))\
-  upright(bold(U)) / V_A = frac(upright(bold(B)) (z), B_z) frac(n (oo), n (z)) & dot.op & (frac(kappa, 1 + (z \/ L)^2) + frac(Delta n, kappa n (oo)))\
+  J_j(z) &= frac(e kappa B_z, mu_0 m_p V_A) frac(B_j(z), 1 + (z \/ L)^2),
+  quad J_z = 0, \
+  J_(e \, j)(z) &= - frac(e B_j(z), B_z) sum_(alpha=1)^2 Gamma_alpha,
+  quad J_(e \, z) = - e sum_(alpha=1)^2 Gamma_alpha, \
+  J_(i \, j)(z) &= J_j(z) - J_(e \, j)(z),
+  quad J_(i \, z) = e sum_(alpha=1)^2 Gamma_alpha, \
+  U_j(z) &= frac(J_(i \, j)(z), e n(z)),
+  quad U_z(z) = frac(1, n(z)) sum_(alpha=1)^2 Gamma_alpha ,
 $
 
-The system is fully determined given $kappa$, $sum_alpha Gamma_alpha$, $L$, and $B_0$ (or equivalently, $Delta n_alpha$, $n_alpha \( oo \)$, $L$, and $B_0$). For the simplest situation where we have two populations of ions of the same density but with oppositely directed bulk velocities in the asymptotic limit, i.e.~$n_1 \( oo \) = n_2 \( oo \) \, u_(1 z) \( oo \) = - u_(2 z) \( oo \)$, the profile of the magnetic field, plasma density, and plasma velocity for one specific case ($L = d_i \, kappa = 1 \, B_0 = 2 B_z$) is plotted in #ref(<fig-profiles>, supplement: [Figure]). Note that in this symmetric case with $sum_alpha Gamma_alpha = 0$, $Delta n = Delta n_1 + Delta n_2 = 0$ we have
+for $j in {x, y}$. Using $hat(n)_alpha \/ hat(n) = Gamma_alpha \/ sum_(alpha=1)^2 Gamma_alpha$, the parameters can be written in terms of densities:
+
+#math.equation(block: true, numbering: equation-numbering, [ $
+  kappa &= sqrt(sum_(alpha=1)^2 frac(hat(n)_alpha^2, n(oo) n_alpha(oo))) \
+  sum_(alpha=1)^2 Gamma_alpha
+  &= sqrt(frac(B_z^2, mu_0 m_p) frac(hat(n)^2, sum_(alpha=1)^2 hat(n)_alpha^2 \/ n_alpha(oo)))
+  = frac(V_A hat(n), kappa) .
+$ ])<eq-kappa-Gamma>
+
+In dimensionless variables, normalized by $B_z$, $n(oo)$, $d_i$, and $V_A$, the profiles become
 
 $
-  upright(bold(J)) = frac(upright(bold(B)) (z), B_z) frac(e V_A n (oo), 1 + (z \/ L)^2) \, quad upright(bold(J))_e = 0 \, quad upright(bold(U)) = frac(upright(bold(J)), e n (oo))
+  theta(z) &= frac(pi, 2) - frac(kappa L tan^(-1)(z \/ L), d_i) \
+  frac(upright(bold(J)), e V_A n(oo)) &= frac(upright(bold(B))(z), B_z) frac(kappa, 1 + (z \/ L)^2) \
+  frac(upright(bold(J))_e, e V_A n(oo)) &= - frac(upright(bold(B))(z), B_z) frac(hat(n), kappa n(oo)) \
+  frac(upright(bold(U)), V_A) &= frac(upright(bold(B))(z), B_z) frac(n(oo), n(z))
+  \(frac(kappa, 1 + (z \/ L)^2) + frac(hat(n), kappa n(oo))\) .
 $
 
-and
+Here $upright(bold(B))$, $upright(bold(J))$, $upright(bold(J))_e$, and $upright(bold(U))$ denote transverse components; the $z$ components are given above.
 
-$ theta = pi / 2 - tan^(- 1) (z \/ L) $
-
-Therefore, we have zero electron current across the current sheet and zero $B_y$ in the asymptotic limit, corresponding to a $180^compose$ rotation of the magnetic field across the current sheet. However, in general cases with $Delta n eq.not 0$, we would expect the electron current to be nonzero.
-
-#ref(<fig-profiles>, supplement: [Figure]) (left) shows a constant density and zero $U_z$, because for $u_1 = - u_2$ we have $sum_alpha Gamma_alpha = 0$, which leads to $n = n \( oo \)$, $Delta n = 0$, and $U_z equiv sum_alpha Gamma_alpha \/ n = 0$. Plasma (ion) bulk flow velocities show profiles with $U_y$ peaked at the current sheet center and $U_x$ reversal across the current sheet center. The velocity magnitude goes to zero far away from the current sheet, and there is no velocity jump across the sheet (i.e., this is a current sheet with zero Alfvénicity).
-This symmetric case represents the limiting configuration where the stress balance across the force-free current sheet with $B_z eq.not 0$ is maintained entirely by the counter-streaming ion beams with $n_1 \( oo \) = n_2 \( oo \)$, without requiring a net bulk velocity jump $Delta U_x$.
-
-Substituting into the right side #ref(<eq-vRatio2>, supplement: [Equation]), one can show that the stress balance is satisfied.
-
-#ref(<fig-profiles>, supplement: [Figure]) (right) shows that in the absence of electron currents, the current density components have the same symmetry as the ion bulk velocity components: $U_x tilde.op J_x$ and $U_x tilde.op J_y$.
+The system is fully determined by $kappa$, $sum_alpha Gamma_alpha$, $L$, and $B_0$, or equivalently by $hat(n)_alpha$, $n_alpha(oo)$, $L$, and $B_0$. For the symmetric case $n_1(oo) = n_2(oo)$ and $u_(1 z)(oo) = - u_(2 z)(oo)$, with $L = d_i$, $kappa = 1$, and $B_0 = 2 B_z$, #ref(<fig-profiles>, supplement: [Figure]) shows the field, density, velocity, and current profiles. Since $sum_alpha Gamma_alpha = 0$ and $hat(n) = 0$, the electron current vanishes and $B_y$ has no asymptotic background, corresponding to a $180 degree$ magnetic-field rotation.
 
 #figure(
   [
     #grid(
       columns: 2,
       gutter: 2em,
-      [
-        #block[
-          #box(image("figures/cs_theory/profiles_sym.pdf"))
-
-        ]
-      ],
-      [
-        #block[
-          #box(image("figures/cs_theory/J_profiles_sym.pdf"))
-
-        ]
-      ],
+      [#block[#box(image("figures/cs_theory/profiles_sym.pdf"))]],
+      [#block[#box(image("figures/cs_theory/J_profiles_sym.pdf"))]],
     )
   ],
   caption: figure.caption(
     position: bottom,
     [
-      Left: Magnetic field, ion density, and ion bulk velocity for the case where $n_1 = n_2 \, u_1 = - u_2$ and $L = d_i \, sum_alpha Gamma_alpha = Delta n V_A = 1 \, B_0 = 2 B_z$. Right: Current density profiles for the same case. Note that the blue line ($J_x$) coincides with the green line ($J_(x \, i)$), and the yellow line ($J_y$) coincides with the red line ($J_(y \, i)$).
+      Left: Magnetic field, ion density, and ion bulk velocity for $n_1 = n_2$, $u_1 = -u_2$, $L = d_i$, $sum_(alpha=1)^2 Gamma_alpha = hat(n) V_A = 0$, and $B_0 = 2 B_z$. Right: Current density profiles for the same case. The blue line ($J_x$) coincides with the green line ($J_(x \, i)$), and the yellow line ($J_y$) coincides with the red line ($J_(y \, i)$).
     ],
   ),
 )
 <fig-profiles>
 
+#ref(<fig-profiles>, supplement: [Figure]) shows constant density and zero $U_z$ because $sum_alpha Gamma_alpha = 0$. The bulk flow has $U_y$ peaked at the sheet center and $U_x$ reversing across the center. The velocity magnitude vanishes far from the sheet, so the velocity jump is zero. This symmetric case is the limiting configuration where stress balance across a current sheet with $B_z eq.not 0$ is maintained entirely by counter-streaming ion beams rather than by a net bulk velocity jump. Substitution into #ref(<eq-vRatio2>, supplement: [Equation]) confirms that the stress balance is satisfied.
 
-The structure of the bulk velocity profile across the current sheet is directly controlled by the density asymmetry between ion populations. To demonstrate this, we consider the current sheet with finite $B_y \( oo \)$. We set $B_y \( oo \) = B_0 \/ 2 \, B_0 = 2 B_z$, and consider two ion populations with opposite bulk velocities but with different densities. By varying $n_1 \( oo \)$, we find that the magnetic field profiles remain unchanged, while plasma density and velocity profiles exhibit significant variations.
+For asymmetric beams we set $B_y(oo) = B_0 \/ 2$, $B_0 = 2 B_z$, and use two ion populations with opposite normal velocities but different densities. Varying $n_1(oo)$ leaves the magnetic-field profiles nearly unchanged, while density and velocity profiles vary strongly.
 
 #figure(
   [
     #grid(
       columns: 2,
       gutter: 2em,
-      [
-        #block[
-          #box(image("figures/cs_theory/profiles_n1Inf=0.6.pdf"))
-
-        ]
-      ],
-      [
-        #block[
-          #box(image("figures/cs_theory/J_profiles_n1Inf=0.6.pdf"))
-
-        ]
-      ],
+      [#block[#box(image("figures/cs_theory/profiles_n1Inf=0.6.pdf"))]],
+      [#block[#box(image("figures/cs_theory/J_profiles_n1Inf=0.6.pdf"))]],
     )
   ],
   caption: figure.caption(
     position: bottom,
     [
-      Same as #ref(<fig-profiles>, supplement: [Figure]), but for two ion species with same bulk velocity but different densities $n_1 \( oo \) \/ n_2 \( oo \) = 1.5$ and $B_y \( oo \) = B_0 \/ 2 = B_z$.
+      Same as #ref(<fig-profiles>, supplement: [Figure]), but for two ion populations with $n_1(oo) \/ n_2(oo) = 1.5$ and $B_y(oo) = B_0 \/ 2 = B_z$.
     ],
   ),
 )
 <fig-profilesEx2>
 
+#ref(<fig-profilesEx2>, supplement: [Figure]) shows results for $n_1(oo) \/ n_2(oo) = 1.5$. The reversal component $B_x$ resembles the symmetric case, whereas the $B_y$ peak is embedded in a constant background. The density and $U_z$ profiles show a small minimum at the sheet center; pressure balance then requires a compensating temperature maximum. Unlike the symmetric case, the ion velocities remain finite at the sheet boundaries and have a bulk velocity jump $Delta U_x = lr(|(n_1(oo) - n_2(oo)) \/ (n_1(oo) + n_2(oo))|) Delta V_(A \, x)$. Finite $hat(n)$ also produces nonzero electron currents. Ion and electron currents compensate outside the sheet, leaving nonzero total current only inside.
 
-#ref(<fig-profilesEx2>, supplement: [Figure]) shows the results for $n_1 \( oo \) \/ n_2 \( oo \) = 1.5$. The main (reversal) magnetic field component, $B_x$, has a profile similar to that of Fig. , whereas the peak of $B_y$ is embedded in a constant background. The plasma density and $U_z$ profiles have a small minimum in the current sheet center, and this minimum in density must be compensated by a maximum in ion temperature to maintain constant plasma pressure. Compared with Fig. , the ion velocity components do not go to zero at the current sheet boundaries, and we have a finite bulk velocity jump with $Delta U_x = lr(|frac(n_1 \( oo \) - n_2 \( oo \), n_1 \( oo \) + n_2 \( oo \))|) Delta v_(A \, x)$.
-
-A finite $Delta n$ results in nonzero electron currents. Therefore, the ion current density and the total current density profiles are not identical. There are finite ion and electron currents at the current sheet boundaries, but these currents compensate each other outside the current sheet and leave a nonzero total current only inside the current sheet.
-
-To illustrate how the relative density of ion populations controls the velocity structure, we show in #ref(<fig-UNormB0>, supplement: [Figure]) (left) profiles of normalized $U_x \/ v_A$ for different density values, $n_1 \( oo \)$ of the first ion population (note that $n_1 \( oo \) = 0.5$ is the symmetric case with $n_1 \( oo \) = n_2 \( oo \)$ and $Delta n = 0$). For $n_1 \( oo \) = 0.5$, we have zero bulk velocity change across the current sheet and the change increases as $n_1 \( oo \)$ decreases to zero. Therefore, the model allows regulation of $Delta U_x$ by the density of the ion beam. #ref(<fig-UNormB0>, supplement: [Figure]) (right) shows the normalized plasma velocity $U_y$ for different $n_1 \( oo \)$: There is no jump of $U_y$ across the sheet, but the asymptotic $U_y \( oo \)$ depends on $n_1$ and decreases to zero when $n_1 \( oo \) = n_2 \( oo \)$.
+To illustrate density control of velocity structure, #ref(<fig-UNormB0>, supplement: [Figure]) shows normalized $U_x \/ V_A$ and $U_y \/ V_A$ for different $n_1(oo)$. The symmetric case $n_1(oo) = 0.5$ has zero velocity jump. As $n_1(oo)$ decreases toward zero, the jump increases. Thus the model regulates $Delta U_x$ through ion-beam density contrast. There is no $U_y$ jump across the sheet, but asymptotic $U_y(oo)$ depends on $n_1(oo)$ and vanishes in the symmetric case.
 
 #figure(
   [
     #grid(
       columns: 2,
       gutter: 2em,
-      [
-        #block[
-          #box(image("figures/cs_theory/UxNormB0.pdf"))
-
-        ]
-      ],
-      [
-        #block[
-          #box(image("figures/cs_theory/UyNormB0.pdf"))
-
-        ]
-      ],
+      [#block[#box(image("figures/cs_theory/UxNormB0.pdf"))]],
+      [#block[#box(image("figures/cs_theory/UyNormB0.pdf"))]],
     )
   ],
   caption: figure.caption(
     position: bottom,
     [
-      Plasma velocity $U_x$ (left) and $U_y$ (right) profiles normalized by asymptotic Alfvén velocity $V_A \( oo \) = B_0 \/ sqrt(mu_0 m_p n \( oo \))$ for different $n_1 \( oo \)$.
+      Plasma velocity $U_x$ (left) and $U_y$ (right) normalized by asymptotic Alfvén velocity $V_A(oo) = B_0 \/ sqrt(mu_0 m_p n(oo))$ for different $n_1(oo)$.
     ],
   ),
 )
 <fig-UNormB0>
 
-
-The spatial profiles of $U_x$ and $U_y$ follow the profiles of $B_x$ and $B_y$. Consequently, the ratios $U_x \/ v_(A \, x)$ and $U_y \/ v_(A \, y)$ provide insight into the extent to which variations in the Alfvén velocity can be explained by variations in plasma flow. These ratios are plotted in #ref(<fig-UNormBlocal>, supplement: [Figure]). The normalized plasma velocity profiles are exactly the same for $U_x \/ v_(A \, x)$ and $U_y \/ v_(A \, y)$ and depend only on $n_1 \( oo \)$. As $n_1 \( oo \)$ approaches zero, the normalized plasma velocity at the current sheet boundaries tends to unity $U_x \/ v_(A \, x) arrow.r 1$. This corresponds to the single-fluid limit, where the stress balance reduces to that of a classical rotational discontinuity.
+The spatial profiles of $U_x$ and $U_y$ follow $B_x$ and $B_y$. Therefore $U_x \/ V_(A \, x)$ and $U_y \/ V_(A \, y)$ quantify how much Alfvén-velocity variation is reflected in plasma flow. #ref(<fig-UNormBlocal>, supplement: [Figure]) shows that the normalized profiles are identical for the two components and depend only on $n_1(oo)$. As $n_1(oo)$ approaches zero, the boundary value tends to unity, $U_x \/ V_(A \, x) arrow.r 1$, recovering the single-fluid rotational-discontinuity limit.
 
 #figure(
   [
     #grid(
       columns: 2,
       gutter: 2em,
-      [
-        #block[
-          #box(image("figures/cs_theory/UxNormBx.pdf"))
-
-        ]
-      ],
-      [
-        #block[
-          #box(image("figures/cs_theory/UyNormBy.pdf"))
-
-        ]
-      ],
+      [#block[#box(image("figures/cs_theory/UxNormBx.pdf"))]],
+      [#block[#box(image("figures/cs_theory/UyNormBy.pdf"))]],
     )
   ],
   caption: [
-    Plasma velocity $U_x$ (left) and $U_y$ (right) profiles normalized by local Alfvén velocity $v_(A \, x) \( z \) = B_x \( z \) \/ sqrt(mu_0 m_p n \( z \))$ and $v_(A \, y) \( z \) = B_y \( z \) \/ sqrt(mu_0 m_p n \( z \))$ for different $n_1 \( oo \)$.
+    Plasma velocity $U_x$ (left) and $U_y$ (right) normalized by local Alfvén velocities $V_(A \, x)(z) = B_x(z) \/ sqrt(mu_0 m_p n(z))$ and $V_(A \, y)(z) = B_y(z) \/ sqrt(mu_0 m_p n(z))$ for different $n_1(oo)$.
   ],
 )
 <fig-UNormBlocal>
 
-
 == Discussion
 <discussion>
-This work presents a phenomenological multifluid equilibrium model of current sheets with an arbitrary level of Alfvénicity. This model naturally accommodates interpenetrating ion beams and a tunable velocity structure controlled by the relative densities of ion populations.
-The primary application of this model is to describe current sheets in the solar wind @artemyevKineticNatureSolar2019 and planetary magnetotails @kamaletdinovCharacteristicsThinMagnetotail2024. It should be noted that this model does not represent the unique equilibrium solution for a force-free current sheet, but rather shows one of many possible solutions. A detailed analysis of the dynamical properties of plasma equilibria is necessary to identify which subclass of solutions is most likely to be realized in space plasmas (see the discussion in Refs. ). Therefore, our study proposes one possible direction for describing solar wind current sheets using a multifluid 1D equilibrium model, but further investigation, particularly of the kinetic dynamics of such equilibria, is needed to fully understand their relevance to observations.
 
-Within our model framework, the velocity ratio $Delta U_x \/ Delta v_(A \, x)$ across the current sheet can be controlled by the density asymmetry between ion populations (#ref(<eq-vRatio2>, supplement: [Equation])): configurations with $n_1 gt.double n_2$ approach the single-fluid limit with $Delta U_x \/ Delta v_(A \, x) arrow.r 1$, while more balanced densities ($n_1 approx n_2$) yield lower ratios. Previous observations have shown that this ratio is typically sub-unity in the solar wind @dekeyserFlowShearSolar1998@artemyevKineticPropertiesSolar2019 ---a finding confirmed systematically across 0.17--5 AU in @comparison-of-solar-wind-current-sheets-in-the-inner-heliosphere and @solar-wind-discontinuities-in-the-outer-heliosphere-spatial-distribution-between-1-and-5-au ---consistent with the presence of multiple ion populations with comparable densities, which creates an effective plasma pressure anisotropy ($P_parallel eq.not P_perp$) supported by two counter-streaming beams @steinhauerMultifluidModelOnedimensional2008. We note that the velocity ratio across current sheets is likely influenced by multiple physical effects beyond the multifluid structure described here. In particular, plasma pressure anisotropy ($P_parallel eq.not P_perp$) of each group can modify the effective Alfvén speed @hudsonDiscontinuitiesAnisotropicPlasma1970 and can independently affect the expected velocity ratio. A complete description of solar wind current sheets will likely require incorporating both multi-species effects and pressure anisotropy within a unified framework. The model presented here provides an analytically tractable foundation for such future work, while demonstrating that the presence of interpenetrating ion beams is a fundamental feature that shapes the internal structure and stress balance of force-free current sheets.
+This work presents a phenomenological multifluid equilibrium model of current sheets with arbitrary Alfvénicity. The model naturally accommodates interpenetrating ion beams and a tunable velocity structure controlled by relative ion-population densities. Its primary applications are current sheets in the solar wind @artemyevKineticNatureSolar2019 and planetary magnetotails @kamaletdinovCharacteristicsThinMagnetotail2024.
+
+Two kinetic effects remain beyond this fluid treatment. First, trapped ions that oscillate within the current-sheet potential well contribute locally to current and pressure, modifying the internal profile without changing the asymptotic stress balance set by freely streaming populations. Second, the boundary between ion populations in velocity space, sharp in the uniform-field asymptotic region, becomes diffuse within the sheet: nonadiabatic scattering drives slow diffusion of transient Speiser-like ions into quasi-trapped orbits @mingalevKineticModelsCurrent2012@zelenyiAgingMagnetotailThin2002@zelenyiSplittingThinCurrent2003, progressively reducing the effective ion density contrast and reshaping the current profile. The equilibria derived here should therefore be understood as quasi-stationary snapshots along this slow evolution, satisfying #ref(<eq-vRatio-general>, supplement: [Equation]) at each instant.
+
+The model is not a unique equilibrium solution. Three considerations nevertheless make this subclass physically relevant. First, the constant-$lr(|upright(bold(B))|)$ condition used above is a known nonlinear attractor of Alfvénic relaxation in simulations @teneraniNonlinearFirehoseRelaxation2018@matteiniAlfvenicFluctuationsExpanding2024. Second, the two-fluid tearing-mode analysis of @shiStabilityMagnetotailCurrent2021 identifies the most stable configuration as one with finite normal $B_z$ and counter-streaming ion flows, both embedded here. Third, counter-streaming ion populations are generic in current-sheet environments, arising from distinct solar origins, reflected and pickup ions in the solar wind, and opposite hemispheric sources in planetary magnetospheres. Further work on kinetic properties and dynamical selection @yoonEquilibriumSelectionCurrent2023@yoonNonequilibriumFormationRelaxation2024 is still needed.
+
+Within the model, $Delta U_x \/ Delta V_(A \, x)$ is controlled by density asymmetry between ion populations (#ref(<eq-vRatio2>, supplement: [Equation])). Configurations with $n_1 gt.double n_2$ approach the single-fluid limit, while balanced densities give lower ratios. Solar-wind observations typically show sub-unity ratios @dekeyserFlowShearSolar1998@artemyevKineticPropertiesSolar2019, consistent with multiple ion populations of comparable density and the effective pressure anisotropy supported by counter-streaming beams @abraham-shraunerPropagationHydromagneticWaves1967@hudsonDiscontinuitiesAnisotropicPlasma1970. Internal structure is also likely shaped by effects beyond the gyrotropic specialization used here, especially pressure nongyrotropy associated with nonadiabatic ion motion across thin sheets @artemyevIonNongyrotropySolar2020. Incorporating nongyrotropic stresses into this multifluid framework is a natural next step.
 
 == Data Availability
 <data-availability>
-The codes and data supporting the findings of this study are available in the GitHub repository #link("https://github.com/Beforerr/cs_theory").
+
+The codes and data supporting this study are available at #link("https://github.com/Beforerr/cs_theory").
 
 == Appendix
 <appendix>
-The appendix describes the procedures used to identify current sheets and to characterize their properties for #ref(<fig-multifluid-examples>, supplement: [Figure]).
 
-We use three main data sets collected by the PSP, ARTEMIS, and Wind missions during PSP Encounter 7 from 2021-01-14 to 2021-01-21. Magnetic field measurements for PSP were obtained with the FIELDS instrument suite @baleFIELDSInstrumentSuite2016, while plasma velocity and density were provided by the electrostatic analyzer (SPAN-Ion) on the SWEAP suite @kasperSolarWindElectrons2016. For ARTEMIS, magnetic field data were acquired using the Fluxgate Magnetometer @austerTHEMISFluxgateMagnetometer2008, and plasma measurements were obtained from the Electrostatic Analyzers @mcfaddenTHEMISESAPlasma2009. The Wind spacecraft used the Magnetic Field Investigation instrument @leppingWINDMagneticField1995 for magnetic field measurements, and 3D Plasma Analyzer electrostatic analyzers on the Solar Wind Experiment @ogilvieSWEComprehensivePlasma1995 for proton velocity and density.
+This appendix describes the procedures used to identify current sheets and characterize their properties for #ref(<fig-multifluid-examples>, supplement: [Figure]).
 
-To identify current sheets in the solar wind, we employ the method of . For each sampling time $t$, we define three intervals: the pre-interval $\[ - 1 \, - 1 \/ 2 \] dot.op T + t$, the middle interval $\[ - 1 \/ 2 \, 1 \/ 2 \] dot.op T + t$, and the post-interval $\[ 1 \/ 2 \, 1 \] dot.op T + t$, where $T$ represents the time lag. The magnetic field time series within these intervals are labeled as $upright(bold(B))_(-)$, $upright(bold(B))_0$, and $upright(bold(B))_(+)$, respectively. We then apply three detection criteria to establish time intervals containing current sheet candidates: (1) $sigma \( upright(bold(B))_0 \) > 2 max [sigma \( upright(bold(B))_(-) \) \, sigma \( upright(bold(B))_(+) \)]$\; (2) $sigma (upright(bold(B))_(-) + upright(bold(B))_(+)) > sigma \( upright(bold(B))_(-) \) + sigma \( upright(bold(B))_(+) \)$\; and (3) $\| Delta upright(bold(B)) \| > \| upright(bold(B))_(b g) \| \/ 10$. Here, $sigma$ denotes the standard deviation, $upright(bold(B))_(b g)$ is the magnitude of the background magnetic field, and $Delta upright(bold(B)) = upright(bold(B)) \( t + T \/ 2 \) - upright(bold(B)) \( t - T \/ 2 \)$. The first two conditions ensure that field changes are distinguishable from stochastic fluctuations, while the third serves as an additional filter to reduce recognition uncertainty @liuMagneticDiscontinuitiesSolar2022.
+We use three data sets collected by PSP, ARTEMIS, and Wind. Magnetic-field measurements for PSP were obtained with the FIELDS instrument suite @baleFIELDSInstrumentSuite2016, while plasma velocity and density were provided by the SPAN-Ion electrostatic analyzer on SWEAP @kasperSolarWindElectrons2016. For ARTEMIS, magnetic-field data were acquired with the Fluxgate Magnetometer @austerTHEMISFluxgateMagnetometer2008, and plasma measurements were obtained from the Electrostatic Analyzers @mcfaddenTHEMISESAPlasma2009. Wind used the Magnetic Field Investigation instrument @leppingWINDMagneticField1995 for magnetic-field measurements and 3D Plasma Analyzer electrostatic analyzers on the Solar Wind Experiment @ogilvieSWEComprehensivePlasma1995 for proton velocity and density.
 
-After identifying current sheet candidates, we use the magnetic field time series to construct a distance matrix following @dokmanicEuclideanDistanceMatrices2015. The distance between two magnetic field vectors, $upright(bold(B)) \( t_i \)$ and $upright(bold(B)) \( t_j \)$, is defined as the Euclidean norm: $d \( t_i \, t_j \) = parallel upright(bold(B)) \( t_i \) - upright(bold(B)) \( t_j \) parallel$. The leading and trailing edges of the current sheet are located at times $t_1$ and $t_2$ (with $t_1 < t_2$), corresponding to the maximum value of $d \( t_i \, t_j \)$ within the interval. Subsequently, we apply maximum variance analysis (MVA) @sonnerupMinimumMaximumVariance1998 to transform the magnetic field into the local current sheet coordinate system ($upright(bold(l m n))$). Finally, we examine the plasma bulk velocity within the time interval $\[ t_1 \, t_2 \]$, project it onto the $l$-direction, and compare the change in plasma velocity with the corresponding change in Alfvén velocity along the same direction.
+To identify current sheets, we use the sliding three-interval method of @liuMagneticDiscontinuitiesSolar2022. Around each sample time $t$, a window of lag $T$ is divided into pre-, middle-, and post-intervals with magnetic-field segments $upright(bold(B))_-$, $upright(bold(B))_0$, and $upright(bold(B))_+$. A candidate is flagged when (1) $sigma(upright(bold(B))_0) > 2 max[sigma(upright(bold(B))_-), sigma(upright(bold(B))_+)]$ and (2) $sigma(upright(bold(B))_- + upright(bold(B))_+) > sigma(upright(bold(B))_-) + sigma(upright(bold(B))_+)$, where $sigma$ denotes standard deviation. After identifying candidates, we apply maximum variance analysis @sonnerupMinimumMaximumVariance1998 to transform magnetic field and plasma velocity into the local current-sheet coordinate system $upright(bold(l m n))$.

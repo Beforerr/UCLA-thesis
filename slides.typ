@@ -6,7 +6,7 @@
   config-info(
     title: [Energetic Particle Transport driven by Solar Wind Current Sheets],
     subtitle: [How kinetic-scale magnetic structures scatter and transport SEPs],
-    author: [Zijin Zhang],
+    author: [Zijin Zhang, Anton Artemyev, Vassilis Angelopoulos],
     date: datetime.today(),
   ),
 )
@@ -96,8 +96,6 @@ $
   $D_(mu mu) (mu)$ is an integral over magnetic power spectrum.
 ]
 
-
-
 === Quasi-linear theory (QLT)
 
 #cols(columns: (1.5fr, 1fr))[
@@ -170,8 +168,7 @@ $ Omega_c = (q B) / (m c), quad rho = v_perp / Omega_c. $
 
 If the field varies slowly over a gyroradius ($l_B gt.double rho$),
 the *first adiabatic invariant*
-$ mu = (m v_perp^2) / (2 B) $
-is approximately conserved.
+$ mu = (m v_perp^2) / (2 B) $ is approximately conserved.
 
 // Underlies mirroring, radiation belts, magnetic bottles.
 
@@ -181,70 +178,8 @@ is approximately conserved.
 
 When a particle encounters a structure of thickness $lambda tilde.op rho$:
 - particle cannot complete a gyration in uniform field
-- $mu$ ceases to be conserved
+- $mu$ ceases to be conserved, pitch angle changes
 - *guiding-center description breaks down*.
-
-== The quasi-adiabatic invariant $I_z$
-
-This is exactly the regime of solar-wind kinetic current sheets!
-Need a *different* invariant — the *quasi-adiabatic invariant* $I_z$.
-
-#v(0.5em)
-
-Treat motion across the sheet ($z$, $p_z$) as the *fast* d.o.f., in-plane drift ($x$, $p_x$) as *slow*, with small parameter $kappa = B_n \/ B_t sqrt(L \/ rho_0)$.
-
-For a 1-D current sheet with normal $hat(bold(z))$ and reversing
-in-plane field, the *fast* motion is bounce in $z$.
-
-Action of the fast motion:
-$
-  I_z = 1 / (2 pi) integral.cont p_z thin d z
-$
-
-For frozen slow variables, the $(z, p_z)$ phase plane has
-*two types* of orbits:
-- oscillation in *one* of two potential wells (one side of the sheet)
-- *figure-eight* orbit crossing $z=0$ (across the sheet).
-
-These types are separated by a *separatrix*.
-
-== Separatrix crossings destroy adiabaticity
-
-#side-by-side(columns: (0.85fr, 1.15fr))[
-  When slow variables drift, a particle's orbit can hit the separatrix.
-
-  Two contributions to the jump in $I_z$:
-
-  *Geometrical jump $tilde.op cal(O)(1)$* — area difference between the
-  two separatrix loops; *independent of $kappa$*.
-
-  *Dynamical jump $tilde.op kappa ln kappa$* — phase-dependent random kick
-  from the logarithmic divergence of the period.
-][
-  #image("figures/ref/neishtadtMechanismsDestructionAdiabatic2019-fig3.png", height: 230pt)
-
-  #text(size: 10pt)[Fast-system phase portrait with separatrix @neishtadtMechanismsDestructionAdiabatic2019.]
-]
-
-== Geometrical chaotization: superfast scattering
-
-In *symmetric* current sheets ($B_m = 0$), the two geometrical jumps cancel
-over a full period → only slow dynamical diffusion ($t tilde.op kappa^(-3)$).
-
-In *force-free* sheets observed in the solar wind,
-$|bold(B)| approx upright("const")$ requires a peak in the *intermediate* component
-$B_m$ at the sheet center.
-
-This breaks the symmetry of the $(z, p_z)$ phase portrait.
-*Geometrical jumps no longer cancel:*
-$
-  Delta I_z^upright("geom") tilde.op cal(O)(1) quad upright("each crossing")
-$
-
-→ *Order-unity pitch-angle change* in a single interaction
-@artemyevSuperfastIonScattering2020 @artemyevRapidGeometricalChaotization2014.
-
-This mechanism is *qualitatively distinct* from QLT diffusion.
 
 == Results I: Pitch-Angle Scattering by a Current Sheet
 
@@ -270,10 +205,10 @@ with $L$ — half-thickness, $beta$ — shear angle, $theta$ angle between $bold
   *Sensitivity to initial gyrophase* → treat the outcome statistically.
 ]
 
-== Test-particle simulations:  Transition matrices reveal scattering modes
+== Test-particle simulations: Transition matrices reveal scattering modes
 
 #slide(composer: (1fr, 1fr))[
-  For each magnetic field configuration $(theta, omega_(i n), tilde(v)_B)$:
+  For each magnetic field configuration $(theta, beta, L)$:
 
   - Initialize particles far from the sheet with all $(alpha_0, psi_0)$ uniformly:
     $alpha_0 in [0, pi]$ in $1 degree$ bins, $psi_0$ in $3 degree$ bins.
@@ -303,7 +238,7 @@ with $L$ — half-thickness, $beta$ — shear angle, $theta$ angle between $bold
 
   #image("figures/scattering/wind_hist3d.png", width: 100%)
 
-  Most-probable parameters: $omega_(i n) tilde.op 100 degree$, $theta tilde.op 85 degree$ (small $B_n$).
+  Most-probable parameters: $beta tilde.op 50 degree$, $theta tilde.op 85 degree$ (small $B_n$).
 
   The TM for an *individual* sheet is one realization; what matters for transport is the *ensemble*.
 ]
@@ -322,11 +257,12 @@ with $L$ — half-thickness, $beta$ — shear angle, $theta$ angle between $bold
   // 100 keV protons, 1 AU:
   // - bright diagonal (most encounters weak)
   // - significant *non-diagonal* probability
-  // Strong jumps come from sheets with $L tilde.op rho_g$.
 
   #figure(
-    image("figures/scattering/tm_stats_100keV.pdf", width: 100%),
+    image("figures/scattering/tm_stats_100keV.pdf", width: 90%),
   )
+
+  Strong jumps come from sheets with $L <= rho_g$ and large $beta$.
 ][
   #pause
   #set text(size: 15pt)
@@ -552,3 +488,68 @@ adiabatic invariant can be destroyed in *one* gyration through the sheet.
 ]
 
 *Point:* scattering dominated by *a few special locations*, not many weak waves.
+
+
+== Geometrical chaotization: superfast scattering
+
+In *symmetric* current sheets ($B_m = 0$), the two geometrical jumps cancel
+over a full period → only slow dynamical diffusion ($t tilde.op kappa^(-3)$).
+
+In *force-free* sheets observed in the solar wind,
+$|bold(B)| approx upright("const")$ requires a peak in the *intermediate* component
+$B_m$ at the sheet center.
+
+This breaks the symmetry of the $(z, p_z)$ phase portrait.
+*Geometrical jumps no longer cancel:*
+$
+  Delta I_z^upright("geom") tilde.op cal(O)(1) quad upright("each crossing")
+$
+
+→ *Order-unity pitch-angle change* in a single interaction
+@artemyevSuperfastIonScattering2020 @artemyevRapidGeometricalChaotization2014.
+
+This mechanism is *qualitatively distinct* from QLT diffusion.
+
+
+
+== The quasi-adiabatic invariant $I_z$
+
+This is exactly the regime of solar-wind kinetic current sheets!
+Need a *different* invariant — the *quasi-adiabatic invariant* $I_z$.
+
+#v(0.5em)
+
+Treat motion across the sheet ($z$, $p_z$) as the *fast* d.o.f., in-plane drift ($x$, $p_x$) as *slow*, with small parameter $kappa = B_n \/ B_t sqrt(L \/ rho_0)$.
+
+For a 1-D current sheet with normal $hat(bold(z))$ and reversing
+in-plane field, the *fast* motion is bounce in $z$.
+
+Action of the fast motion:
+$
+  I_z = 1 / (2 pi) integral.cont p_z thin d z
+$
+
+For frozen slow variables, the $(z, p_z)$ phase plane has
+*two types* of orbits:
+- oscillation in *one* of two potential wells (one side of the sheet)
+- *figure-eight* orbit crossing $z=0$ (across the sheet).
+
+These types are separated by a *separatrix*.
+
+== Separatrix crossings destroy adiabaticity
+
+#side-by-side(columns: (0.85fr, 1.15fr))[
+  When slow variables drift, a particle's orbit can hit the separatrix.
+
+  Two contributions to the jump in $I_z$:
+
+  *Geometrical jump $tilde.op cal(O)(1)$* — area difference between the
+  two separatrix loops; *independent of $kappa$*.
+
+  *Dynamical jump $tilde.op kappa ln kappa$* — phase-dependent random kick
+  from the logarithmic divergence of the period.
+][
+  #image("figures/ref/neishtadtMechanismsDestructionAdiabatic2019-fig3.png", height: 230pt)
+
+  #text(size: 10pt)[Fast-system phase portrait with separatrix @neishtadtMechanismsDestructionAdiabatic2019.]
+]
