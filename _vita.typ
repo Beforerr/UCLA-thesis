@@ -9,7 +9,7 @@
   row-gutter: 1.5em,
   [2018--2022], [B.S. in Space Physics, University of Science and Technology of China],
   [2022--2025], [M.S. in Planetary Science, University of California, Los Angeles],
-  [2025--2026], [Ph.D. in Planetary Science, University of California, Los Angeles],
+  [2025--2026], [Ph.D. Candidate in Planetary Science, University of California, Los Angeles],
 )
 
 #text(size: 13pt)[*Publications*]
@@ -18,5 +18,5 @@
 + #cite(<zhangMultifluidEquilibriumModel2026>, form: "full")
 + #cite(<zhangComparisonSolarWind2026>, form: "full")
 + #cite(<zhangQuantificationIonScattering2025>, form: "full")
-+ #cite(<zhangSolarWindDiscontinuities2025>, form: "full")
++ #cite(<zhangSolarWindDiscontinuities2025a>, form: "full")
 + #cite(<zhangRelativisticElectronFlux2024a>, form: "full")

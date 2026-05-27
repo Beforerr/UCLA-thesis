@@ -23,8 +23,8 @@ The chapter is structured as follows. First, we outline the missions, instrument
 #figure(
   image("figures/juno/fig_overview.pdf"),
   caption: [
-      Overview. #strong[\(a)] Juno's orbit during its cruise phase (2011-2016). #strong[\(b)] Absolute difference in heliographic longitude between Juno and Earth (blue) and between Juno and Stereo-A (STA, green). #strong[\(c)] Monthly and smoothed sunspot numbers. #strong[\(d-g)] Solar wind plasma density and speed from Near-Earth (OMNI) and STEREO-A missions.
-    ],
+    Overview. #strong[\(a)] Juno's orbit during its cruise phase (2011-2016). #strong[\(b)] Absolute difference in heliographic longitude between Juno and Earth (blue) and between Juno and Stereo-A (STA, green). #strong[\(c)] Monthly and smoothed sunspot numbers. #strong[\(d-g)] Solar wind plasma density and speed from Near-Earth (OMNI) and STEREO-A missions.
+  ],
 )
 <fig-overview>
 
@@ -46,7 +46,7 @@ Since in-situ measurements from JADE are only available for the final 40 days of
     [
       #strong[\(a)] Magnetic field magnitude from MSWIM2D and Juno. #strong[\(b-c)] Plasma speed and density from MSWIM2D model. #strong[\(d)] Juno radial distance from the Sun.
     ],
-  )
+  ),
 )
 <fig-model>
 
@@ -82,8 +82,8 @@ Assuming that the SWD structures are planar, the normal direction can be obtaine
 #figure(
   image("figures/juno/fig_examples.pdf"),
   caption: [
-      Examples of solar wind discontinuities observed by various spacecraft at different heliocentric distances and times. Panels (a)--(c) display data from Juno at 1 AU (a), 3 AU (b), and 5 AU (c), showing magnetic field components $B_l$ (blue), $B_n$ (red), $B_m$ (green), and the magnetic field magnitude $B_(upright("total"))$ (black). Panels (d)--(f) show magnetic field and ion speed observations at 1 AU from other spacecraft: THEMIS-B (ARTEMIS) on March 27, 2012 (d), STEREO-A on June 28, 2016 (e), and Wind on August 26, 2011 (f).
-    ]
+    Examples of solar wind discontinuities observed by various spacecraft at different heliocentric distances and times. Panels (a)--(c) display data from Juno at 1 AU (a), 3 AU (b), and 5 AU (c), showing magnetic field components $B_l$ (blue), $B_n$ (red), $B_m$ (green), and the magnetic field magnitude $B_(upright("total"))$ (black). Panels (d)--(f) show magnetic field and ion speed observations at 1 AU from other spacecraft: THEMIS-B (ARTEMIS) on March 27, 2012 (d), STEREO-A on June 28, 2016 (e), and Wind on August 26, 2011 (f).
+  ],
 )
 <fig-examples>
 
@@ -107,9 +107,9 @@ where $alpha$ and $theta$ represent the shape and scale parameters, respectively
   caption: figure.caption(
     position: bottom,
     [
-      Waiting time probability density functions $p \( tau \)$ for Juno at 1 AU in 2011 (top) and 5 AU in 2016 (bottom). Observed data (black) are fitted with Weibull (blue) and exponential (orange) distributions. Vertical dashed lines denote the mean waiting times for each fitted distribution. %In 2011, the Weibull distribution is characterized by parameters $alpha = 0.99 \, theta = 30.29$, and a mean waiting time of 30.41 minutes, while the exponential distribution has a mean of 30.42 minutes. In 2016, the Weibull distribution has parameters $alpha = 0.65 \, theta = 110.50$, and a mean of 150.96 minutes, whereas the exponential distribution has a mean of 165.02 minutes.
+      Waiting time probability density functions $p \( tau \)$ for Juno at 1 AU in 2011 (top) and 5 AU in 2016 (bottom). Observed data (black) are fitted with Weibull (blue) and exponential (orange) distributions. Vertical dashed lines denote the mean waiting times for each fitted distribution.
     ],
-  )
+  ),
 )
 <fig-waitingTime>
 
@@ -137,7 +137,7 @@ The normalized occurrence rate is shown in Panel (b) of #ref(<fig-rate>, supplem
     [
       Left: the occurrence rate of discontinuities measured by Juno, STEREO-A, THEMIS-B, and Wind. Right: the normalized occurrence rate as a function of radial distance, where the radial distance of Juno for 2011-2016 is shown in #ref(<fig-model>, supplement: [Figure])\(d).
     ],
-  )
+  ),
 )
 <fig-rate>
 
@@ -161,8 +161,8 @@ Panels (a,c) show that the thickness increases with radial distance. However, af
 #figure(
   image("figures/juno/juno_distribution_r_sw.pdf"),
   caption: [
-      Distribution of various properties of SWDs observed by Juno, grouped by radial distance from the Sun (with color coding shown at the top). The label data indicates distributions calculated using solar wind properties from JADE observations rather than model predictions. Panels show: (a) discontinuity thickness, (b) current density, (c) normalized thickness, and (d) normalized current density.
-    ]
+    Distribution of various properties of SWDs observed by Juno, grouped by radial distance from the Sun (with color coding shown at the top). The label data indicates distributions calculated using solar wind properties from JADE observations rather than model predictions. Panels show: (a) discontinuity thickness, (b) current density, (c) normalized thickness, and (d) normalized current density.
+  ],
 )
 <fig-junoDistribution>
 
@@ -170,8 +170,8 @@ Panels (a,c) show that the thickness increases with radial distance. However, af
 #figure(
   image("figures/juno/wind_distribution_time.pdf"),
   caption: [
-      Distribution of various properties of SWDs observed by 1-AU satellites (Wind, ARTEMIS and STEREO-A), grouped by the year of observation (with colors shown at the top). Panel (a) thickness, (b) current density, (c) normalized thickness, (d) normalized current density.
-    ]
+    Distribution of various properties of SWDs observed by 1-AU satellites (Wind, ARTEMIS and STEREO-A), grouped by the year of observation (with colors shown at the top). Panel (a) thickness, (b) current density, (c) normalized thickness, (d) normalized current density.
+  ],
 )
 <fig-windDistribution>
 
@@ -179,8 +179,8 @@ Panels (a,c) show that the thickness increases with radial distance. However, af
 #figure(
   image("figures/juno/wind_sw_paramters.pdf"),
   caption: [
-      Solar wind parameters associated with the SWDs observed by 1-AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) solar wind density, (b), plasma beta, (c) magnetic field, (d) fitted magnetic field $B_(l \, i)$ in Equation~#ref(<eq-fit>, supplement: [Equation]).
-    ],
+    Solar wind parameters associated with the SWDs observed by 1-AU satellites (Wind, ARTEMIS and STEREO-A) grouped by the year of observation. Panel (a) solar wind density, (b), plasma beta, (c) magnetic field, (d) fitted magnetic field $B_(l \, i)$ in Equation~#ref(<eq-fit>, supplement: [Equation]).
+  ],
 )
 <fig-swParameters>
 
@@ -198,7 +198,7 @@ The observed increase in the average waiting time (time between two discontinuit
 
 First, we consider the limitations of our method for SWD detection. An increase in the duration (thickness) of discontinuities may render some unidentifiable if their duration becomes comparable to the time interval used in our analysis, $T$. Although we observe a slight increase in the average duration of discontinuities with radial distance, this increase is relatively small. The overall population of discontinuities is still predominantly characterized by those with short durations, typically less than $20$ seconds - which are effectively captured with $T = 20$ seconds (see #ref(<fig-TEffect>, supplement: [Figure]) in the Appendix). Although increasing $T$ beyond $60$ seconds may capture a few additional events, their number remains small. Importantly, our conclusions are not sensitive to a single $T$ value; instead, the critical factor is the broad coverage provided by the range of $T$. In addition, since our method normalizes the change in the magnetic field relative to the surrounding field, any overall drop in the magnetic field magnitude with radial distance does not itself remove potential discontinuities from detection. Thus, it is unlikely that our methodology causes the observed decrease in occurrence rate at larger radial distances.
 
-%Notably, our results differ from previous studies @tsurutaniInterplanetaryDiscontinuitiesTemporal1979, which reported typical durations of 2 to 3 seconds at 1 AU and 10 to 30 seconds at 5 AU. In our analysis, however, the observed durations remain below 10 seconds at 5 AU, suggesting that our method may be more effective at identifying shorter-duration events than those reported before.
+// Notably, our results differ from previous studies @tsurutaniInterplanetaryDiscontinuitiesTemporal1979, which reported typical durations of 2 to 3 seconds at 1 AU and 10 to 30 seconds at 5 AU. In our analysis, however, the observed durations remain below 10 seconds at 5 AU, suggesting that our method may be more effective at identifying shorter-duration events than those reported before.
 
 If most discontinuities are generated locally, their generation mechanism should depend on plasma parameters, mainly plasma $beta$ @chenIonscaleSpectralBreak2014@franciPlasmaBetaDependence2016. This dependence might potentially explain the variation of the discontinuity occurrence rate with radial distance. To test this hypothesis, we examine the relationship between waiting time $tau$ and $beta$. We use the Wind spacecraft at 1 AU and calculate the average plasma beta $macron(beta) = \( beta_i + beta_(i - 1) \) \/ 2$, where $beta_i$ is the plasma beta of the $i$-th discontinuity event. However, even at a 99% statistical significance level, the results of our analysis do not provide sufficient evidence to reject the null hypothesis that these two variables $tau \, macron(beta)$ are independent. Therefore, if discontinuities are generated primarily locally, factors other than plasma beta must influence their generation rates.
 
@@ -223,8 +223,8 @@ This supplementary material includes @fig-juno_sw_comparison, which compares sol
 #figure(
   image("figures/juno/fig_juno_sw_comparision.pdf"),
   caption: [
-      \(a-d) Comparison of solar wind properties between the model (x-axis) and JADE observations (y-axis): velocity (a), density (b), temperature (c), and plasma beta (d). (e-h) Comparison of discontinuity properties between the model and JADE observations: thickness (e), current density (f), normalized thickness (g), and normalized current density (h). The blue dots represent values derived using the cross-product normal method, while the yellow dots correspond to those obtained using the minimum variance analysis (MVA). (i-j) Scatter plots directly comparing discontinuity thickness (i) and current density (j), with values from the cross-product method on the y-axis and those from MVA on the x-axis.
-    ]
+    \(a-d) Comparison of solar wind properties between the model (x-axis) and JADE observations (y-axis): velocity (a), density (b), temperature (c), and plasma beta (d). (e-h) Comparison of discontinuity properties between the model and JADE observations: thickness (e), current density (f), normalized thickness (g), and normalized current density (h). The blue dots represent values derived using the cross-product normal method, while the yellow dots correspond to those obtained using the minimum variance analysis (MVA). (i-j) Scatter plots directly comparing discontinuity thickness (i) and current density (j), with values from the cross-product method on the y-axis and those from MVA on the x-axis.
+  ],
 )
 <fig-juno_sw_comparison>
 
@@ -232,8 +232,8 @@ This supplementary material includes @fig-juno_sw_comparison, which compares sol
 #figure(
   image("figures/juno/juno_T_r.pdf"),
   caption: [
-      The relative percentage of events as a function of radial distance (in AU) for different values of the parameter $T$ (20s, 30s, 40s, 50s, and 60s). At a given radial distance, we remove duplicate discontinuities identified across multiple datasets with different values of the parameter $T$. Specifically, discontinuities identified at lower $T$ values are excluded from datasets with higher $T$ values. Subsequently, we calculate the relative percentage of discontinuities, normalized to the total number of discontinuities identified across all $T$ values.
-    ]
+    The relative percentage of events as a function of radial distance (in AU) for different values of the parameter $T$ (20s, 30s, 40s, 50s, and 60s). At a given radial distance, we remove duplicate discontinuities identified across multiple datasets with different values of the parameter $T$. Specifically, discontinuities identified at lower $T$ values are excluded from datasets with higher $T$ values. Subsequently, we calculate the relative percentage of discontinuities, normalized to the total number of discontinuities identified across all $T$ values.
+  ],
 )
 <fig-TEffect>
 

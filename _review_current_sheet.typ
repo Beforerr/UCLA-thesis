@@ -99,7 +99,7 @@ To process the vast amounts of spacecraft data, various automated identification
     [Relative standard deviation],
     [Relative standard deviation of #strong[B]],
     [#citet(<liuMagneticDiscontinuitiesSolar2022>)],
-    [#citet(<zhangSolarWindDiscontinuities2025>)],
+    [#citet(<zhangSolarWindDiscontinuities2025a>)],
   ),
   caption: figure.caption(
     position: top,

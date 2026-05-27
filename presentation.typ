@@ -477,7 +477,7 @@ Leading to significant uncertainties.
     table.hline(stroke: (dash: "dashed")),
     [*Rel. std dev* ✓],
     [$"RSD"_w (t) = sigma_w (|bold(B)|) \/ lr(chevron.l |bold(B)| chevron.r)_w > "RSD"_"min"$],
-    [#citet(<liuMagneticDiscontinuitiesSolar2022>); #citet(<zhangSolarWindDiscontinuities2025>); #citet(
+    [#citet(<liuMagneticDiscontinuitiesSolar2022>); #citet(<zhangSolarWindDiscontinuities2025a>); #citet(
         <zhangComparisonSolarWind2026>,
       )],
   )
@@ -582,7 +582,7 @@ Leading to significant uncertainties.
 ][
   #v(0.3em)
   #text(size: 0.8em, style: "italic")[
-    #cite(<zhangSolarWindDiscontinuities2025a>, form: "full")
+    #cite(<zhangSolarWindDiscontinuities2025aa>, form: "full")
 
     #cite(<zhangComparisonSolarWind2026>, form: "full")
   ]
@@ -1202,7 +1202,7 @@ $U_x \/ V_(A,x)$ and $U_y \/ V_(A,y)$ depend only on $n_1(infinity)$. As $n_1 ar
   #v(2em)
   #text(size: 14pt, fill: luma(100))[
     Published work:\
-    #cite(<zhangSolarWindDiscontinuities2025a>, form: "full") \
+    #cite(<zhangSolarWindDiscontinuities2025aa>, form: "full") \
     #cite(<zhangComparisonSolarWind2026>, form: "full") \
     #cite(<zhangQuantificationIonScattering2025>, form: "full")
   ]

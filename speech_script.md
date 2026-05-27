@@ -27,8 +27,6 @@ Part 2 covers the modeling work: how I turn those observed current-sheet distrib
 
 I'll close with a brief synthesis and outlook.
 
----
-
 ## ENERGETIC PARTICLES IN THE HELIOSPHERE (~2 min)
 
 Let me set the stage.

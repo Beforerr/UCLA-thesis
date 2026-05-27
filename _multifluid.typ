@@ -3,7 +3,7 @@
 = Multifluid equilibrium model of current sheets with interpenetrating ion beams
 <multifluid-equilibrium-model>
 
-Solar wind discontinuities are localized, transient, intense coherent structures widely observed in the heliosphere @vasquezNumerousSmallMagnetic2007@grecoComplexStructureMagnetic2016@podestaMostIntenseCurrent2017@vaskoKineticscaleCurrentSheets2022@zhangSolarWindDiscontinuities2025. They exhibit Alfvén-wave-like character, as evidenced by strong correlations between fluctuations of plasma velocity and Alfvén velocity @dekeyserFlowShearSolar1998@paschmannDiscontinuitiesAlfvenicFluctuations2013@artemyevKineticPropertiesSolar2019@damicisAlfvenicSlowWind2021. Theoretical models predict that such discontinuities may originate from nonlinear Alfvén-wave evolution @medvedevDissipativeDynamicsCollisionless1997@medvedevFluidModelsKinetic1996 or plasma turbulence @servidioStatisticalAssociationDiscontinuities2011. Their magnetic structure is often best described as a current sheet with approximately constant magnetic-field magnitude $B$ and a strong rotation of the field direction @neukirchFamilyVlasovMaxwell2020. Being quasi-one-dimensional structures, these current sheets contain two main magnetic-field components: $B_x \(z\)$ reversing sign across the sheet, and $B_y \(z\)$ reaching a local maximum near the $B_x$ reversal, where $z$ denotes the coordinate along the current-sheet normal. This configuration is important for magnetic reconnection and energetic-particle scattering @shiStabilityMagnetotailCurrent2021@artemyevSuperfastIonScattering2020@malaraChargedparticleChaoticDynamics2021@malaraEnergeticParticleDynamics2023@zhangQuantificationIonScattering2025.
+Solar wind discontinuities are localized, transient, intense coherent structures widely observed in the heliosphere @vasquezNumerousSmallMagnetic2007@grecoComplexStructureMagnetic2016@podestaMostIntenseCurrent2017@vaskoKineticscaleCurrentSheets2022@zhangSolarWindDiscontinuities2025a. They exhibit Alfvén-wave-like character, as evidenced by strong correlations between fluctuations of plasma velocity and Alfvén velocity @dekeyserFlowShearSolar1998@paschmannDiscontinuitiesAlfvenicFluctuations2013@artemyevKineticPropertiesSolar2019@damicisAlfvenicSlowWind2021. Theoretical models predict that such discontinuities may originate from nonlinear Alfvén-wave evolution @medvedevDissipativeDynamicsCollisionless1997@medvedevFluidModelsKinetic1996 or plasma turbulence @servidioStatisticalAssociationDiscontinuities2011. Their magnetic structure is often best described as a current sheet with approximately constant magnetic-field magnitude $B$ and a strong rotation of the field direction @neukirchFamilyVlasovMaxwell2020. Being quasi-one-dimensional structures, these current sheets contain two main magnetic-field components: $B_x \(z\)$ reversing sign across the sheet, and $B_y \(z\)$ reaching a local maximum near the $B_x$ reversal, where $z$ denotes the coordinate along the current-sheet normal. This configuration is important for magnetic reconnection and energetic-particle scattering @shiStabilityMagnetotailCurrent2021@artemyevSuperfastIonScattering2020@malaraChargedparticleChaoticDynamics2021@malaraEnergeticParticleDynamics2023@zhangQuantificationIonScattering2025.
 
 #figure(
   image("figures/cs_theory/fig_examples.pdf"),
@@ -96,8 +96,8 @@ $ ])<eq-vRatio-raw>
 The apparent $B_z$ dependence can be eliminated using transverse stress balance. Combining #ref(<eq-momentum-x>, supplement: [Equation])--#ref(<eq-momentum-y>, supplement: [Equation]) across species with Ampere's law yields
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  sum_alpha m_alpha Gamma_alpha u_(alpha x) + Pi_(x z) &= frac(B_x B_z, mu_0) + C_x \
-  sum_alpha m_alpha Gamma_alpha u_(alpha y) + Pi_(y z) &= frac(B_y B_z, mu_0) + C_y ,
+  sum_alpha m_alpha Gamma_alpha u_(alpha x) + Pi_(x z) & = frac(B_x B_z, mu_0) + C_x \
+  sum_alpha m_alpha Gamma_alpha u_(alpha y) + Pi_(y z) & = frac(B_y B_z, mu_0) + C_y ,
 $ ])<eq-balance>
 
 where $Pi_(i z) equiv sum_alpha P_(i z \, alpha)$ and $C_x$, $C_y$ are integration constants. Evaluating #ref(<eq-balance>, supplement: [Equation]) asymptotically and substituting #ref(<eq-asym-ux>, supplement: [Equation]) gives
@@ -114,8 +114,10 @@ The dimensionless coefficient $Lambda_d$ is a dynamical stress factor built from
 #math.equation(block: true, numbering: equation-numbering, [ $
   lr(|frac(Delta U_x, Delta V_(A \, x))|)
   =
-  frac(sum_alpha m_alpha Gamma_alpha,
-       sqrt(rho_oo sum_alpha m_alpha Gamma_alpha^2 \/ n_alpha|_plus.minus))
+  frac(
+    sum_alpha m_alpha Gamma_alpha,
+    sqrt(rho_oo sum_alpha m_alpha Gamma_alpha^2 \/ n_alpha|_plus.minus)
+  )
   sqrt(1 - Lambda_d|_plus.minus) .
 $ ])<eq-vRatio-general>
 
@@ -215,8 +217,8 @@ $
 with $e L B_z \/ m_p V_A = L \/ d_i$. The ion densities are
 
 $
-  n_alpha(z) &= n_alpha(oo) + frac(hat(n)_alpha, 1 + (z \/ L)^2) \
-  n(z) & equiv n_1(z) + n_2(z) = n(oo) + frac(hat(n), 1 + (z \/ L)^2) ,
+  n_alpha(z) & = n_alpha(oo) + frac(hat(n)_alpha, 1 + (z \/ L)^2) \
+        n(z) & equiv n_1(z) + n_2(z) = n(oo) + frac(hat(n), 1 + (z \/ L)^2) ,
 $
 
 where $hat(n)_alpha equiv n_alpha(0) - n_alpha(oo) = kappa Gamma_alpha \/ V_A$ and $hat(n) equiv n(0) - n(oo) = kappa sum_(alpha=1)^2 Gamma_alpha \/ V_A$.
@@ -224,33 +226,32 @@ where $hat(n)_alpha equiv n_alpha(0) - n_alpha(oo) = kappa Gamma_alpha \/ V_A$ a
 The transverse current and ion bulk-flow profiles are
 
 $
-  J_j(z) &= frac(e kappa B_z, mu_0 m_p V_A) frac(B_j(z), 1 + (z \/ L)^2),
-  quad J_z = 0, \
-  J_(e \, j)(z) &= - frac(e B_j(z), B_z) sum_(alpha=1)^2 Gamma_alpha,
-  quad J_(e \, z) = - e sum_(alpha=1)^2 Gamma_alpha, \
-  J_(i \, j)(z) &= J_j(z) - J_(e \, j)(z),
-  quad J_(i \, z) = e sum_(alpha=1)^2 Gamma_alpha, \
-  U_j(z) &= frac(J_(i \, j)(z), e n(z)),
-  quad U_z(z) = frac(1, n(z)) sum_(alpha=1)^2 Gamma_alpha ,
+         J_j(z) & = frac(e kappa B_z, mu_0 m_p V_A) frac(B_j(z), 1 + (z \/ L)^2),
+                  quad J_z = 0, \
+  J_(e \, j)(z) & = - frac(e B_j(z), B_z) sum_(alpha=1)^2 Gamma_alpha,
+                  quad J_(e \, z) = - e sum_(alpha=1)^2 Gamma_alpha, \
+  J_(i \, j)(z) & = J_j(z) - J_(e \, j)(z),
+                  quad J_(i \, z) = e sum_(alpha=1)^2 Gamma_alpha, \
+         U_j(z) & = frac(J_(i \, j)(z), e n(z)),
+                  quad U_z(z) = frac(1, n(z)) sum_(alpha=1)^2 Gamma_alpha ,
 $
 
 for $j in {x, y}$. Using $hat(n)_alpha \/ hat(n) = Gamma_alpha \/ sum_(alpha=1)^2 Gamma_alpha$, the parameters can be written in terms of densities:
 
 #math.equation(block: true, numbering: equation-numbering, [ $
-  kappa &= sqrt(sum_(alpha=1)^2 frac(hat(n)_alpha^2, n(oo) n_alpha(oo))) \
-  sum_(alpha=1)^2 Gamma_alpha
-  &= sqrt(frac(B_z^2, mu_0 m_p) frac(hat(n)^2, sum_(alpha=1)^2 hat(n)_alpha^2 \/ n_alpha(oo)))
-  = frac(V_A hat(n), kappa) .
+                        kappa & = sqrt(sum_(alpha=1)^2 frac(hat(n)_alpha^2, n(oo) n_alpha(oo))) \
+  sum_(alpha=1)^2 Gamma_alpha & = sqrt(frac(B_z^2, mu_0 m_p) frac(hat(n)^2, sum_(alpha=1)^2 hat(n)_alpha^2 \/ n_alpha(oo)))
+                                = frac(V_A hat(n), kappa) .
 $ ])<eq-kappa-Gamma>
 
 In dimensionless variables, normalized by $B_z$, $n(oo)$, $d_i$, and $V_A$, the profiles become
 
 $
-  theta(z) &= frac(pi, 2) - frac(kappa L tan^(-1)(z \/ L), d_i) \
-  frac(upright(bold(J)), e V_A n(oo)) &= frac(upright(bold(B))(z), B_z) frac(kappa, 1 + (z \/ L)^2) \
-  frac(upright(bold(J))_e, e V_A n(oo)) &= - frac(upright(bold(B))(z), B_z) frac(hat(n), kappa n(oo)) \
-  frac(upright(bold(U)), V_A) &= frac(upright(bold(B))(z), B_z) frac(n(oo), n(z))
-  \(frac(kappa, 1 + (z \/ L)^2) + frac(hat(n), kappa n(oo))\) .
+                               theta(z) & = frac(pi, 2) - frac(kappa L tan^(-1)(z \/ L), d_i) \
+    frac(upright(bold(J)), e V_A n(oo)) & = frac(upright(bold(B))(z), B_z) frac(kappa, 1 + (z \/ L)^2) \
+  frac(upright(bold(J))_e, e V_A n(oo)) & = - frac(upright(bold(B))(z), B_z) frac(hat(n), kappa n(oo)) \
+            frac(upright(bold(U)), V_A) & = frac(upright(bold(B))(z), B_z) frac(n(oo), n(z))
+                                          \(frac(kappa, 1 + (z \/ L)^2) + frac(hat(n), kappa n(oo))\) .
 $
 
 Here $upright(bold(B))$, $upright(bold(J))$, $upright(bold(J))_e$, and $upright(bold(U))$ denote transverse components; the $z$ components are given above.
@@ -306,8 +307,7 @@ To illustrate density control of velocity structure, #ref(<fig-UNormB0>, supplem
     #grid(
       columns: 2,
       gutter: 2em,
-      [#block[#box(image("figures/cs_theory/UxNormB0.pdf"))]],
-      [#block[#box(image("figures/cs_theory/UyNormB0.pdf"))]],
+      [#block[#box(image("figures/cs_theory/UxNormB0.pdf"))]], [#block[#box(image("figures/cs_theory/UyNormB0.pdf"))]],
     )
   ],
   caption: figure.caption(
@@ -326,8 +326,7 @@ The spatial profiles of $U_x$ and $U_y$ follow $B_x$ and $B_y$. Therefore $U_x \
     #grid(
       columns: 2,
       gutter: 2em,
-      [#block[#box(image("figures/cs_theory/UxNormBx.pdf"))]],
-      [#block[#box(image("figures/cs_theory/UyNormBy.pdf"))]],
+      [#block[#box(image("figures/cs_theory/UxNormBx.pdf"))]], [#block[#box(image("figures/cs_theory/UyNormBy.pdf"))]],
     )
   ],
   caption: [

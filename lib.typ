@@ -176,9 +176,9 @@
 ) = {
   set par(justify: false)
 
-  align(center)[
-    The #doc-type of #author is approved.
+  [The #doc-type of #author is approved.]
 
+  align(center)[
     #v(3em)
 
     #for member in members [
@@ -308,7 +308,7 @@
 
   // Global text settings: 12pt, double-spaced
   set text(
-    font: "New Computer Modern",
+    font: ("New Computer Modern", "Songti SC"),
     size: 12pt,
     lang: "en",
   )
