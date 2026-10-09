@@ -30,7 +30,7 @@
 // ── helpers ──────────────────────────────────────────────────────────────────
 #let img(path, width: 100%, height: auto) = image(path, width: width, height: height, fit: "contain")
 
-#import "utils.typ": citet
+#import "lib.typ": citet
 
 #let quote-block(body, attribution) = block(
   width: 100%,

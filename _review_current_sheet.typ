@@ -1,4 +1,4 @@
-#import "utils.typ": citet
+#import "lib.typ": citet
 
 = Observations of Solar Wind Current Sheets <observations-of-solar-wind-current-sheets>
 

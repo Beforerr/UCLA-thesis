@@ -1,4 +1,4 @@
-#import "utils.typ": citet
+#import "lib.typ": citet
 #let equation-numbering = "(1)"
 
 = Energetic Particle Interaction with Solar Wind Current Sheets

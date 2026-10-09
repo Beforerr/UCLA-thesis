@@ -6,6 +6,8 @@
 
 #import "@preview/titleize:0.1.1": titlecase
 
+#let citet(..citation) = cite(..citation, form: "prose")
+
 /// Create the UCLA thesis title page.
 ///
 /// - title (content): The thesis/dissertation title.
@@ -205,7 +207,7 @@
 }
 
 /// Begin the appendix section. Call this before including appendix files.
-/// Resets heading counter, switches to "A.1" numbering, and restykes level-1 headings.
+/// Resets heading counter, switches to "A.1" numbering, and restyles level-1 headings.
 ///
 /// - body (content): The appendix content.
 #let appendices(body) = {
