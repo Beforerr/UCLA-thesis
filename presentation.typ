@@ -108,7 +108,7 @@ $ <eq-parker>
   columns: (1fr, 1fr, 1fr),
   img("figures/ref/tanTurbulentOriginsParticle2023-fig1b.png", height: 7.5cm),
   img("figures/ref/tanTurbulentOriginsParticle2023-fig4.png", height: 7.5cm),
-  img("sources/papers/thomasProbingCosmicRayTransport2020/fig2_p3.png", height: 7.5cm),
+  img("figures/ref/thomasProbingCosmicRayTransport2020-fig2.png", height: 7.5cm),
 )
 
 @thomasProbingCosmicRayTransport2020
@@ -582,7 +582,7 @@ Leading to significant uncertainties.
 ][
   #v(0.3em)
   #text(size: 0.8em, style: "italic")[
-    #cite(<zhangSolarWindDiscontinuities2025aa>, form: "full")
+    #cite(<zhangSolarWindDiscontinuities2025a>, form: "full")
 
     #cite(<zhangComparisonSolarWind2026>, form: "full")
   ]
@@ -1202,7 +1202,7 @@ $U_x \/ V_(A,x)$ and $U_y \/ V_(A,y)$ depend only on $n_1(infinity)$. As $n_1 ar
   #v(2em)
   #text(size: 14pt, fill: luma(100))[
     Published work:\
-    #cite(<zhangSolarWindDiscontinuities2025aa>, form: "full") \
+    #cite(<zhangSolarWindDiscontinuities2025a>, form: "full") \
     #cite(<zhangComparisonSolarWind2026>, form: "full") \
     #cite(<zhangQuantificationIonScattering2025>, form: "full")
   ]
