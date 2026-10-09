@@ -5,6 +5,5 @@
 PDF and defense slides: [Releases](https://github.com/Beforerr/UCLA-thesis/releases/latest).
 
 ```sh
-typst compile main.typ          # dissertation
-typst compile presentation.typ  # defense slides
+typst compile main.typ
 ```
