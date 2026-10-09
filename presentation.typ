@@ -93,7 +93,7 @@
     #img("figures/ref/en_parts_helio.jpg", height: 4.5cm)
 
     #v(0.3em)
-    #img("figures_extracted/slide03_img02_92e32c43.png", height: 4cm)
+    #img("figures/ref/desaiLargeGradualSolar2016-spectrum.png", height: 4cm)
     @desaiLargeGradualSolar2016 @mewaldtLongtermFluencesEnergetic2001
   ],
 )
@@ -214,7 +214,6 @@ Time profiles of low-energy He ion intensities. A dropout in ion intensity lasti
 
 //     Wavelet-based synthetic turbulence model (Juneja et al. 1994) similar to p-model (Meneveau and Sreenivasan 1987).
 //   ],
-//   img("figures_extracted/slide07_img01_d9878c98.png"),
 // )
 
 #set text(size: 18pt)
@@ -263,7 +262,7 @@ Particle transport is very different from the strong guide-field case. Low-energ
 == The Role of Coherent Structure in Particle Transport
 
 #cols()[
-  #img("figures_extracted/slide08_img02_c1b665d9.png", height: 100%)
+  #img("figures/ref/moraalCosmicRayModulationEquations2013-trajectories.png", height: 100%)
   @moraalCosmicRayModulationEquations2013
 ][
   #image("figures/scattering/fig-B_diagram_particle_trajectory.pdf", width: 100%)
@@ -517,7 +516,7 @@ Leading to significant uncertainties.
 == Discontinuity Properties: Current Density and Thickness
 
 #align(center)[
-  #img("figures_extracted/slide19_img01_f0135a4b.png", width: 90%)
+  #img("figures/psp/J_thickness_scatter.png", width: 90%)
 ]
 
 == Discontinuity Properties: Waiting time
@@ -716,11 +715,11 @@ Particle accumulates a nonvanishing change in the adiabatic invariant: dynamical
   columns: (1fr, 1fr),
   gutter: 1em,
   [
-    #img("figures_extracted/slide24_img01_8186bf68.gif")
+    #img("figures/scattering/solution_regions.gif")
     #text(size: 0.7em)[One solution (left) $arrow$ Two solutions (right)]
   ],
   [
-    #img("figures_extracted/slide24_img02_791fd195.png")
+    #img("figures/scattering/separatrix_phase_portrait.png")
     #text(size: 0.7em, style: "italic")[Uncertainty curve]
   ],
 )
@@ -769,7 +768,7 @@ Particle accumulates a nonvanishing change in the adiabatic invariant: dynamical
   columns: (1.5fr, 1fr),
   gutter: 1em,
   [
-    #img("figures_extracted/slide27_img01_6200b1a8.png")
+    #img("figures/ref/malaraChargedparticleChaoticDynamics2021-trajectories.png")
     #text(size: 0.7em, style: "italic")[Malara, Perri & Zimbardo (2021)]
   ],
   [
